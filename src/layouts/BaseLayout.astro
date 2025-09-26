@@ -72,15 +72,11 @@ import Navigation from '../components/Navigation.astro';
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	</head>
 	<body class="text-gray-900">
-		<div class="relative min-h-screen">
-			<img
-			  class="absolute left-0 top-0 -z-20 h-full w-full object-cover"
-			  src="https://tailkits.com/ui/iframe/assets/img/bg-12.png"
-			  alt="Background image"
-			/>
+		<div>
 			<Banner />
 			<Navigation />
 			<slot />
-		</div>
+			</div>
+			
 	</body>
 </html>

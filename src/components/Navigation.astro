@@ -1,80 +1,107 @@
-<header class="sticky top-0 z-50 py-6 backdrop-blur-md border-b border-white/20">
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 w-full z-50 py-2 backdrop-blur-md border-b border-none">
   <div class="max-w-7xl mx-auto px-6 xl:px-0" x-data="{ mobileMenuOpen: false }">
     
-    <div class="backdrop-blur-md bg-white/95 border border-white/30 flex items-center justify-between gap-x-6 rounded-2xl py-4 pl-6 pr-6 shadow-[0_2px_15px_0px_rgba(0,0,0,0.2)] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:justify-stretch lg:gap-x-14 lg:rounded-[1.5rem]">
-      
+    <!-- Barra principal -->
+    <div class="backdrop-blur-md bg-white/95 border border-white/30 flex items-center justify-between gap-x-4 rounded-xl py-2 pl-4 pr-4 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]
+                lg:grid lg:grid-cols-[1fr_auto_1fr] lg:justify-stretch lg:gap-x-10 lg:rounded-2xl">
+
       <!-- Logo -->
-      <div class="flex items-center gap-x-12">
-        <a href="/" title="Home">
-          <img class="h-12" src="/images/logosinfondo.png" alt="Logo" />
+      <div class="flex items-center gap-x-8">
+        <a href="/" title="Home" class="animate-slideRight delay-100">
+          <img class="h-10" src="/images/logosinfondo.png" alt="Logo" />
         </a>
-        <span class="hidden h-6 w-[1px] bg-neutral-300 lg:block"></span>
       </div>
 
-      <!-- Navegación -->
-      <nav class="hidden lg:block">
-        <ul class="flex items-center gap-x-8">
-          <li>
-            <a class="px-4 py-3 text-base font-semibold text-neutral-700 transition hover:text-neutral-600" href="#">Inicio</a>
+      <!-- Navegación desktop -->
+      <nav class="hidden lg:flex gap-x-6 items-center">
+        <ul class="flex items-center gap-x-6">
+          <li class="animate-slideRight delay-200">
+            <a href="/" class={`font-semibold transition ${currentPath === "/" ? "text-[#3aabe4]" : "text-neutral-700 hover:text-neutral-600"}`}>Inicio</a>
           </li>
-          <li>
-            <a class="px-4 py-3 text-base font-semibold text-neutral-700 transition hover:text-neutral-600" href="#">Nosotros</a>
+          <li class="animate-slideRight delay-300">
+            <a href="/nosotros" class={`font-semibold transition ${currentPath === "/nosotros" ? "text-[#3aabe4]" : "text-neutral-700 hover:text-neutral-600"}`}>Nosotros</a>
           </li>
-          <li>
-            <a class="px-4 py-3 text-base font-semibold text-neutral-700 transition hover:text-neutral-600" href="#">Servicios</a>
+          <li class="animate-slideRight delay-400">
+            <a href="/servicios" class={`font-semibold transition ${currentPath === "/servicios" ? "text-[#3aabe4]" : "text-neutral-700 hover:text-neutral-600"}`}>Servicios</a>
           </li>
-          <li>
-            <a class="flex items-center gap-x-2 px-4 py-3 text-base font-semibold text-neutral-700 transition hover:text-neutral-600" href="#">
-              Contactanos
-              <svg class="h-5 text-neutral-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <li class="animate-slideRight delay-500">
+            <a href="/contacto" class={`flex items-center gap-x-2 font-semibold transition ${currentPath === "/contacto" ? "text-[#3aabe4]" : "text-neutral-700 hover:text-neutral-600"}`}>
+              Contáctanos
+              <svg class="w-4 h-4 text-neutral-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path fill-rule="evenodd" d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z" clip-rule="evenodd" />
               </svg>
             </a>
           </li>
         </ul>
       </nav>
+        <!-- Banderas -->
+   <!-- Contenedor extremo derecho (banderas + botón menú móvil) -->
+<div class="flex items-center gap-x-4 justify-end ml-auto">
+  <!-- Línea divisoria opcional -->
+  <span class="hidden h-6 w-[1px] bg-neutral-300 lg:block"></span>
 
-      <!-- Botones / Iconos -->
-      <div class="flex items-center gap-x-8 justify-self-end">
-        <span class="hidden h-6 w-[1px] bg-neutral-300 lg:block"></span>
+  <!-- Banderas visibles siempre (desktop y mobile) -->
+  <a href="/login.astro" title="Log in" class="animate-fall delay-600">
+    <img src="/images/bandera_us.png"
+         alt="Bandera USA"
+         class="rounded-full object-cover hover:scale-105 transition-transform w-8 h-8" />
+  </a>
+  <a href="/tryfree.astro" title="Try free" class="animate-fall delay-700">
+    <img src="/images/mexico.png"
+         alt="Bandera México"
+         class="rounded-full object-cover hover:scale-105 transition-transform w-8 h-8" />
+  </a>
 
-        <!-- Imagen redonda para Log in -->
-        <a href="/login.astro" title="Log in">
-          <img src="/images/bandera_us.png" alt="Log in" class="w-12 h-12 rounded-full object-cover hover:scale-105 transition-transform" />
-        </a>
+  <!-- Botón menú móvil -->
+  <button
+    type="button"
+    aria-label="Open menu"
+    class="lg:hidden ml-2"
+    @click="mobileMenuOpen = !mobileMenuOpen">
+    <svg class="h-6 w-6 text-slate-500"
+         xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24"
+         fill="currentColor">
+      <path fill-rule="evenodd"
+            d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+            clip-rule="evenodd" />
+    </svg>
+  </button>
+  </div>
+</div>
 
-        <!-- Imagen redonda para Try free -->
-        <a href="/tryfree.astro" title="Try free">
-          <img src="/images/mexico.png" alt="Try Free" class="w-12 h-12 rounded-full object-cover hover:scale-105 transition-transform" />
-        </a>
 
-        <!-- Menú móvil -->
-        <button type="button" aria-label="Open menu" class="lg:hidden" title="Open menu" @click="mobileMenuOpen = !mobileMenuOpen">
-          <svg class="h-8 text-slate-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
-          </svg>
-        </button>
-      </div>
-    </div>
 
-    <!-- Mobile Menu -->
-    <div x-show="mobileMenuOpen"
-         x-transition:enter="transition ease-out duration-200"
-         x-transition:enter-start="opacity-0 scale-95"
-         x-transition:enter-end="opacity-100 scale-100"
-         x-transition:leave="transition ease-in duration-150"
-         x-transition:leave-start="opacity-100 scale-100"
-         x-transition:leave-end="opacity-0 scale-95"
-         class="lg:hidden mt-4 max-w-7xl mx-auto px-6">
-      <div class="backdrop-blur-md bg-white/95 border border-white/30 rounded-2xl py-4 px-4 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]">
-        <nav class="space-y-4">
-          <a href="#" class="block px-4 py-3 text-base font-semibold text-neutral-700 hover:text-neutral-600 transition-colors">Inicio</a>
-          <a href="#" class="block px-4 py-3 text-base font-semibold text-neutral-700 hover:text-neutral-600 transition-colors">Nosotros</a>
-          <a href="#" class="block px-4 py-3 text-base font-semibold text-neutral-700 hover:text-neutral-600 transition-colors">Servicios</a>
-          <a href="#" class="block px-4 py-3 text-base font-semibold text-neutral-700 hover:text-neutral-600 transition-colors">Contactanos</a>
-        </nav>
-      </div>
+    <!-- Menú móvil -->
+    <div x-show="mobileMenuOpen" x-transition class="lg:hidden mt-2 bg-white/95 border border-white/30 rounded-xl shadow-md">
+      <ul class="flex flex-col px-4 py-2 gap-2">
+        <li><a href="/" class={`block py-2 px-3 rounded transition ${currentPath === "/" ? "bg-[#3aabe4] text-white" : "text-neutral-700 hover:bg-[#e0f0ff]"}`}>Inicio</a></li>
+        <li><a href="/nosotros" class={`block py-2 px-3 rounded transition ${currentPath === "/nosotros" ? "bg-[#3aabe4] text-white" : "text-neutral-700 hover:bg-[#e0f0ff]"}`}>Nosotros</a></li>
+        <li><a href="/servicios" class={`block py-2 px-3 rounded transition ${currentPath === "/servicios" ? "bg-[#3aabe4] text-white" : "text-neutral-700 hover:bg-[#e0f0ff]"}`}>Servicios</a></li>
+        <li><a href="/contacto" class={`block py-2 px-3 rounded transition ${currentPath === "/contacto" ? "bg-[#3aabe4] text-white" : "text-neutral-700 hover:bg-[#e0f0ff]"}`}>Contáctanos</a></li>
+      </ul>
     </div>
 
   </div>
+
+  <style>
+    /* Animaciones originales */
+    @keyframes fall {0% { transform: translateY(-50px); opacity: 0; }100% { transform: translateY(0); opacity: 1; }}
+    .animate-fall { opacity: 0; transform: translateY(-50px); animation: fall 0.6s ease forwards; }
+
+    @keyframes slideRight {0% { transform: translateX(50px); opacity: 0; }100% { transform: translateX(0); opacity: 1; }}
+    .animate-slideRight { opacity: 0; transform: translateX(50px); animation: slideRight 0.6s ease forwards; }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-600 { animation-delay: 0.6s; }
+    .delay-700 { animation-delay: 0.7s; }
+  </style>
 </header>

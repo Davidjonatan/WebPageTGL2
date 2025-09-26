@@ -36,3 +36,24 @@ body {
 .text-gradient {
   @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
 }
+
+:root {
+  /* Tamaños de texto */
+  --nav-text-size: .9 rem; /* text-sm */
+  --nav-text-size-mobile: 0.875rem;
+
+  /* Paddings links */
+  --nav-padding-x: 0.75rem; /* px-3 */
+  --nav-padding-y: 0.5rem; /* py-2 */
+
+  /* Gap horizontal */
+  --nav-gap-x: 1.5rem; /* gap-x-6 */
+
+  /* Tamaños iconos */
+  --icon-size-desktop: 2.5rem; /* w-10 h-10 */
+  --icon-size-mobile: 1.5rem; /* h-6 */
+  --icon-contactanos: 1rem; /* h-4 */
+
+  /* Gap vertical menú móvil */
+  --mobile-gap-y: 0.5rem; /* space-y-2 */
+}
