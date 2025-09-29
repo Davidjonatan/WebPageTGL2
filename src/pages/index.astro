@@ -20,13 +20,15 @@ const features = [
 
 <BaseLayout>
 	<Hero />
-	<LogoCloud />
+	<LogoCloud 
+   backgroundImage="/images/tanques-05.jpg"
+  title="Déjanos moverte con honestidad y grandeza."
+  height="h-[60vh]"/>
 	<Feature
   imageSrc="/images/tractocamion.jpg" 
   imageAlt="Tracto camión" 
   items={features}
-  reverse={false} 
-/>
+  reverse={false} />
 	<Stats 
   title="Nuestra Infraestructura"
   description='Más de 32 años de experiencia brindando transporte confiable, con unidades modernas, personal altamente capacitado, rastreo satelital, procesos sanitizados y certificaciones internacionales que garantizan calidad y seguridad.'
@@ -34,9 +36,7 @@ const features = [
     { number: 32, label: "Años de expereincia" },
     { number: 400, label: "Tractocamiones" },
     { number: 550, label: "Remolques" },
-    { number: 600, label: "Personal dedicado" },
-  ]}
-/>
+    { number: 600, label: "Personal dedicado" },]}/>
 	<Cta />
 	<HowItWorks />
 	<Testimonials />

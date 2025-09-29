@@ -1,40 +1,30 @@
 ---
---- 
-<section 
-  class="relative bg-white pt-12 lg:pt-16 pb-8 md:pb-12 lg:pb-16 overflow-hidden"
-  id="animated-section"
->
-  <!-- Imagen de fondo -->
-  <div 
-    class="absolute top-0 left-0 w-full h-full bg-cover bg-center parallax-bg"
-    style="background-image: url('/images/tanques-05.jpg'); z-index:0;"
-  ></div>
+import SlideDownOnScroll from "./animations/SlideDownOnScroll.tsx";
 
-  <div class="relative z-10 flex flex-col items-center">
-    <div
-      class="mt-6 bg-gradient-to-b from-slate-800 to-slate-600 bg-clip-text text-center text-3xl font-semibold text-transparent sm:mx-auto sm:w-2/3 md:w-1/2 lg:mt-9 lg:text-4xl lg:leading-tight xl:w-2/5 opacity-0 transform -translate-x-10 transition-all duration-1000"
-      id="animated-text"
-    >
-      Déjanos moverte con honestidad y grandeza.
-    </div>
+const {
+  backgroundImage = '/images/tanques-05.jpg', // imagen de fondo
+  title = 'Déjanos moverte con honestidad y grandeza.', // texto central
+  height = 'h-[80vh]', // altura de la sección
+} = Astro.props;
+---
+<SlideDownOnScroll client:load>
+<section
+  class={`relative bg-cover bg-center overflow-hidden ${height}`}
+  style={`background-image: url('${backgroundImage}');`}
+>
+  <!-- Capa oscura opcional para contraste -->
+  <div class="absolute inset-0 bg-black/30"></div>
+
+  <!-- Contenido -->
+  <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
+   
+      <h1
+        class="bg-gradient-to-b from-slate-200 to-slate-50 bg-clip-text text-transparent 
+        text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight max-w-3xl"
+      >
+        {title}
+      </h1>
+   
   </div>
 </section>
-
-<script>
-  const section = document.getElementById('animated-section');
-  const text = document.getElementById('animated-text');
-
-  window.addEventListener('scroll', () => {
-    if (!section || !text) return;
-
-    const rect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    // Si el componente entra en viewport
-    if(rect.top < windowHeight && rect.bottom > 0){
-      // Activar animación
-      text.classList.remove('-translate-x-10', 'opacity-0');
-      text.classList.add('translate-x-0', 'opacity-100');
-    }
-  });
-</script>
+</SlideDownOnScrol>
