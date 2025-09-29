@@ -9,13 +9,34 @@ import Testimonials from '../components/Testimonials.astro';
 import Footer from '../components/Footer.astro';
 import Cta from '../components/Cta.astro';
 import Pricing from '../components/Pricing.astro';
+
+const features = [
+  { text: 'Rastreo satelital 24 hrs' },
+  { text: 'Cobertura nacional y extranjera' },
+  { text: 'Lavado y sanitizado previo a cada viaje' },
+  { text: 'Servicio dedicado de acuerdo a las necesidades de cada cliente.' },
+]
 ---
 
 <BaseLayout>
 	<Hero />
 	<LogoCloud />
-	<Feature />
-	<Stats />
+	<Feature
+  imageSrc="/images/tractocamion.jpg" 
+  imageAlt="Tracto camión" 
+  items={features}
+  reverse={false} 
+/>
+	<Stats 
+  title="Nuestra Infraestructura"
+  description='Más de 32 años de experiencia brindando transporte confiable, con unidades modernas, personal altamente capacitado, rastreo satelital, procesos sanitizados y certificaciones internacionales que garantizan calidad y seguridad.'
+  stats={[
+    { number: 32, label: "Años de expereincia" },
+    { number: 400, label: "Tractocamiones" },
+    { number: 550, label: "Remolques" },
+    { number: 600, label: "Personal dedicado" },
+  ]}
+/>
 	<Cta />
 	<HowItWorks />
 	<Testimonials />
