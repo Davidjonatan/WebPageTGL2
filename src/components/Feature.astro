@@ -20,8 +20,9 @@ const gridClass = reverse
   ? 'lg:grid-cols-2 lg:grid-flow-col-dense' // texto primero
   : 'lg:grid-cols-2'; // imagen primero
 ---
-<section class="bg-gray-50 pt-12 lg:pt-16 lg:pb-16">
-  <div class={`max-w-7xl mx-auto px-6 lg:px-0 grid ${gridClass} gap-0 items-stretch h-full`}>
+
+<section class="w-full h-screen bg-gray-50">
+  <div class={`grid ${gridClass} gap-0 w-full h-full`}>
 
     <!-- Imagen -->
     <AnimateOnScroll client:load>
@@ -29,18 +30,17 @@ const gridClass = reverse
         <img 
           src={imageSrc} 
           alt={imageAlt} 
-          class="w-full h-full object-cover object-top rounded-lg"
+          class="w-full h-full object-cover object-center"
         />
       </div>
     </AnimateOnScroll>
 
     <!-- Texto -->
     <AnimateListOnScroll client:load>
-      <div class="flex flex-col justify-center h-full p-6 lg:p-12 bg-white">
+      <div class="flex flex-col justify-center w-full h-full p-6 lg:p-12 bg-[#056FB5]">
         <ul class="flex flex-col gap-y-6 p-0 m-0">
           {items.map((item) => (
             <li class="flex items-start gap-x-4">
-              <!-- Aquí puedes también pasar un SVG diferente por item si lo necesitas -->
               <svg 
                 version="1.1" viewBox="0 0 32 32" width="32" height="32" fill="#1C274C" class="flex-shrink-0 mt-1"
               >
