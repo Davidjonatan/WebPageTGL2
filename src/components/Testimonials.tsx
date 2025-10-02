@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-
+import AnimateOnScrollTop from "./animations/AnimateOnScrollTop";
 interface Testimonial {
   quote: string;
 }
@@ -42,7 +42,9 @@ export default function TestimonialsCarousel({
 
   return (
     <section class="bg-gradient-to-b from-[#1E2A47] to-slate-900 py-8 lg:py-12">
-  <div class="max-w-3xl mx-auto px-4 xl:px-0 relative">
+        <AnimateOnScrollTop>
+    
+        <div class="max-w-3xl mx-auto px-4 xl:px-0 relative">
     <figure class="relative flex flex-col gap-y-4 sm:mx-auto sm:w-11/12 xl:gap-y-6 text-center">
       <blockquote>
         <p class="text-base md:text-lg xl:text-xl font-medium text-slate-100">
@@ -85,6 +87,7 @@ export default function TestimonialsCarousel({
       </div>
     </figure>
   </div>
+    </AnimateOnScrollTop>
 </section>
 
 
