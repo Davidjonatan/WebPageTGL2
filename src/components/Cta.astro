@@ -1,47 +1,80 @@
-<section class="bg-white pt-12 lg:pt-16 pb-12 lg:pb-16">
-    <div class="max-full mx-auto px-4 xl:px-0">
+---
+// HeroSection.astro
+import AnimateOnScroll from "./animations/AnimateOnScroll.tsx"; // para la imagen
+import AnimateFromLeft from "./animations/AnimateFromLeft.tsx"; // para el texto
+
+const {
+  backgroundColor = "bg-gray-900", // fondo de la section
+  cardColor = "bg-[#0F3595]",      // fondo del div principal
+  title = "Experience innovation like never before",
+  text = "",
+  buttonText = "Try free",
+  buttonSubtext = "- 14 days",
+  buttonColor = "bg-amber-500 text-white hover:bg-amber-600",
+  image = "https://tailkits.com/ui/iframe/assets/img/browser-mock-up-dark.png",
+} = Astro.props;
+---
+
+<section class={`relative ${backgroundColor} py-16`}>
+  <div class="max-w-7xl mx-auto px-4 xl:px-0">
+    <div
+      class={`relative overflow-hidden rounded-3xl ${cardColor} lg:grid lg:grid-cols-2`}
+    >
+      <!-- Texto -->
+      <AnimateFromLeft client:load>
       <div
-        class="relative overflow-hidden rounded-3xl bg-[#7C7FD9] lg:grid lg:grid-cols-2 lg:rounded-[3rem]"
+        class="flex flex-col justify-center px-6 py-12 lg:px-16 lg:py-24"
       >
-        <div
-          class="flex flex-col items-start px-4 pb-80 pt-4 lg:px-16 lg:pb-16 lg:pt-40"
+       
+          <div class="bg-black/40 p-4 rounded-xl shadow-lg inline-block">
+  <h2
+    class="text-3xl font-semibold text-red-500 sm:w-4/5 lg:w-11/12 lg:text-5xl lg:leading-tight xl:w-3/4"
+  >
+    {title}
+  </h2>
+</div>
+
+<!-- salto de línea -->
+<div class="mt-4">
+  <h6
+    class="text-xl font-semibold text-white sm:w-4/5 lg:w-11/12 lg:text-2xl lg:leading-snug xl:w-3/4"
+  >
+    {text}
+  </h6>
+</div>
+
+        <a
+          href="#"
+          class={`mt-6 flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all px-4 py-2.5 rounded-xl shadow-lg ${buttonColor}`}
         >
-          <div
-            class="text-3xl font-semibold text-white sm:w-4/5 lg:w-11/12 lg:text-5xl lg:leading-tight xl:w-3/4"
+          {buttonText}
+          <span class="ml-1 opacity-80">{buttonSubtext}</span>
+          <svg
+            class="shrink-0 ml-2 h-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
           >
-            Experience innovation like never before
-          </div>
-          <a
-            href="#"
-            title="Try free"
-            class="items-center justify-center whitespace-nowrap text-sm font-medium transition-all focus:shadow-[0_0px_0px_2px_rgba(15,23,42,0.25),0_2px_10px_0px_rgba(0,0,0,0.05)] shadow-[0_2px_10px_0px_rgba(0,0,0,0.05)] bg-slate-900 text-white hover:bg-slate-800 disabled:bg-slate-900/30 disabled:text-slate-50/70 px-4 py-2.5 rounded-[0.625rem] mt-6 flex"
-          >
-            Try free
-            <span class="ml-1 text-slate-400"> - 14 days</span>
-            <svg
-              class="shrink-0 ml-2 h-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-              data-slot="icon"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-        </div>
-        <figure class="lg:relative">
+            <path
+              fill-rule="evenodd"
+              d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </a>
+      </div>
+      </AnimateFromLeft>
+      <!-- Imagen -->
+      <figure class="flex items-center justify-center py-12 lg:py-0">
+        <AnimateOnScroll client:load>
           <img
-            class="absolute left-16 top-52 h-80 object-cover object-left-top sm:left-44 sm:top-44 sm:h-[30rem] lg:left-24 lg:top-24 lg:h-[42rem]"
-            src="https://tailkits.com/ui/iframe/assets/img/browser-mock-up-dark.png"
+            class="h-96 lg:h-[36rem] object-contain"
+            src={image}
             alt="Mockup"
           />
-        </figure>
-      </div>
+        </AnimateOnScroll>
+      </figure>
     </div>
-  </section>
-  
+  </div>
+</section>
