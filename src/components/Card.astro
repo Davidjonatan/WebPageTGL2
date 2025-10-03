@@ -1,0 +1,54 @@
+---
+import AnimateOnScroll from './animations/AnimateOnScroll.tsx';
+import AnimateFromLeft from './animations/AnimateFromLeft.tsx'; // 👈 tu animación personalizada
+
+interface Props {
+  text: string;
+  reverse?: boolean; // true = texto izquierda / imagen derecha
+  imageWeb: string;   // imagen para web
+  imageMobile: string; // imagen para mobile
+}
+
+const {
+  text = '',
+  reverse = false,
+  imageWeb,
+  imageMobile
+} = Astro.props;
+
+const gridClass = reverse
+  ? 'lg:grid-cols-2 lg:grid-flow-col-dense' // texto primero en desktop
+  : 'lg:grid-cols-2'; // imagen primero
+---
+<section class="w-full h-[80vh] sm:h-[60vh] relative">
+  <div class={`grid ${gridClass} gap-0 w-full h-full`}>
+
+    <!-- Imagen de fondo -->
+    <AnimateOnScroll client:load>
+      <div class="w-full h-full relative">
+        <!-- Desktop -->
+        <img 
+          src={imageWeb} 
+          alt="Background" 
+          class="hidden lg:block w-full h-full object-cover object-center"
+        />
+        <!-- Mobile -->
+        <img 
+          src={imageMobile} 
+          alt="Background" 
+          class="block lg:hidden w-full h-full object-cover object-center"
+        />
+      </div>
+    </AnimateOnScroll>
+
+    <!-- Texto -->
+    <AnimateFromLeft client:load>
+      <div class="flex flex-col justify-center w-full h-full p-6 lg:p-12 bg-[#1E2A47]/80">
+        <p class="text-white text-lg lg:text-2xl leading-relaxed">
+          {text}
+        </p>
+      </div>
+    </AnimateFromLeft>
+
+  </div>
+</section>

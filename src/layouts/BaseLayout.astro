@@ -11,8 +11,8 @@ export interface Props {
 }
 
 const { 
-  title = "TailKits Astro - Modern Starter Theme",
-  description = "A modern, beautiful Astro starter theme with Tailwind CSS. Perfect for building fast, responsive websites.",
+  title = "TRANSPORTES GARZA LEAL",
+  description = "",
   image = "/og-image.jpg",
   canonical = Astro.url.href,
   noindex = false,
@@ -23,6 +23,7 @@ const {
 import '../styles/global.css';
 import Banner from '../components/Banner.astro';
 import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <html lang="en">
@@ -76,6 +77,7 @@ import Navigation from '../components/Navigation.astro';
 			 <Banner/>
     		<Navigation />
 			<slot />
+			<Footer />
 			</div>
 			
 	</body>
