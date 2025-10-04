@@ -2,13 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import LogoCloud from '../components/LogoCloud.astro';
-import Feature from '../components/Feature.astro';
+import Card2 from '../components/Card2.astro';
 import Stats from '../components/Stats.astro';
 import Testimonials from '../components/Testimonials.tsx';
 import Cta from '../components/Cta.astro';
 import Pricing from '../components/Pricing.astro';
 
-const features = [
+const items = [
   { text: '32 años de experiencia.' },
   { text: 'Unidades de modelo reciente.' },
   { text: 'Responsables con el medio ambiente.' },
@@ -56,11 +56,13 @@ const tabs = {
     { number: 400, label: "Tractocamiones" },
     { number: 550, label: "Remolques" },
     { number: 600, label: "Personal dedicado" },]}/>
-    <Feature
-  imageSrc="./images/tractocamion.jpg" 
-  imageAlt="Tracto camión" 
-  items={features}
-  reverse={false} />
+    <Card2
+  bgImage = "./images/Card.svg",
+  items = {items},
+  image= "./images/thermo.jpg",
+  imagePosition = "left",
+  listColor = "text-white",
+  listSize = "text-lg md:text-xl",  />
  <LogoCloud 
    backgroundImage="./images/wave.svg"
   title="Déjanos moverte con honestidad y grandeza."

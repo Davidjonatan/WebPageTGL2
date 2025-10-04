@@ -1,28 +1,43 @@
 ---
+interface Props {
+  bgSvg?: string;     
+  image?: string;     
+  title?: string;     
+  textColor?: string; 
+  imagePosition?: "left" | "right"; 
+  textSize?: string; 
+}
+
 const {
-  backgroundSvg = '/images/Card.svg', // Fondo SVG
-  imageSrc = '/images/default.png',    // Imagen de la card
-  title = 'Título aquí',               // Texto principal
-  description = 'Descripción aquí',    // Texto secundario
-  imagePosition = 'left',              // 'left' o 'right'
-  textColor = 'text-white',            // Color del texto
-  height = 'h-64',                     // Altura de la card
-  width = 'w-full',                    // Ancho de la card
+  bgSvg = "/images/Card.svg",
+  image = "/images/default.jpg",
+  title = "Texto de ejemplo",
+  textColor = "text-black",
+  imagePosition = "right",
+  textSize = "text-3xl md:text-4xl lg:text-5xl",
 } = Astro.props;
 ---
 
-<section
-  class={`relative ${width} ${height} flex items-center overflow-hidden rounded-xl shadow-lg`}
-  style={`background-image: url('${backgroundSvg}'); background-size: cover; background-position: center;`}
+<section 
+  class="relative w-full flex items-center justify-center px-6 md:px-12 lg:px-20 py-16"
+  style={`background-image: url(${bgSvg}); background-size: cover; background-position: center;`}
 >
-  <!-- Imagen -->
-  <div class={`flex-1 ${imagePosition === 'left' ? 'order-1' : 'order-2'} flex justify-center items-center px-4`}>
-    <img src={imageSrc} alt={title} class="max-h-full max-w-full object-contain rounded-lg" />
-  </div>
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    
+    <!-- Texto -->
+    <div class={`flex flex-col justify-center text-center md:text-left ${imagePosition === "right" ? "order-1 md:order-1" : "order-1 md:order-2"}`}>
+      <h2 class={`${textSize} font-bold leading-tight ${textColor}`}>
+        {title}
+      </h2>
+    </div>
 
-  <!-- Texto -->
-  <div class={`flex-1 ${imagePosition === 'left' ? 'order-2' : 'order-1'} px-6 py-4`}>
-    <h2 class={`text-2xl md:text-3xl font-bold ${textColor} mb-2`}>{title}</h2>
-    <p class={`text-base md:text-lg ${textColor}/90`}>{description}</p>
+    <!-- Imagen -->
+    <div class={`flex justify-center md:justify-${imagePosition} order-2 ${imagePosition === "right" ? "md:order-2" : "md:order-1"}`}>
+      <img 
+        src={image} 
+        alt="Imagen decorativa"
+        class="w-full max-w-md md:max-w-lg rounded-xl shadow-2xl object-cover"
+      />
+    </div>
   </div>
 </section>

@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LogoCloud from '../components/LogoCloud.astro';
-import Feature from '../components/Feature.astro';
+import Card3 from '../components/Card3.astro';
 import Testimonials from '../components/Testimonials.tsx';
 import Cta from '../components/Cta.astro';
 import HowItWorks from '../components/HowItWorks';
 import Card from '../components/Card.astro'
+import Card2 from '../components/Card2.astro'
+
 
 const features = [
   { text: '32 años de experiencia.' },
@@ -22,27 +24,39 @@ const tabs = {
   tab2: { text: 'Caja Thermo', image: './images/thermo.jpg' },
   tab3: { text: 'Caja Seca', image: './images/seca.jpg' },
 };
+
+const items = [
+  { text: '32 años de experiencia.' },
+  { text: 'Unidades de modelo reciente.' },
+  { text: 'Responsables con el medio ambiente.' },
+  { text: 'Unidades con rastreo satelital.' },
+  { text: 'Unidades limpias y sanitizadas.' },
+  { text: 'Implementacion de Web Service con nuestros clientes.' },
+  { text: 'Personal de logistica y atencion a clientes 24/7.' },
+  { text: 'Certificaciones ISO 9001:2015 C-TPAT, HACCP.' },
+];
 ---
 
 <BaseLayout>
     <Card 
-  backgroundSvg="./images/Card.svg"
-  imageSrc="./images/hero.png"
-  title="Innovación tecnológica"
-  description="Creamos soluciones que se adaptan a tu negocio."
-  imagePosition="right"
-  textColor="text-yellow-300"
-  height="h-80"
+    bgSvg = "./images/Card.svg",
+  image = "./images/DSC_.JPG",
+  title = "Con innovación constante, un equipo altamente capacitado y tecnología avanzada, garantizamos calidad y confianza en cada servicio que ofrecemos.",
+  textColor = "text-white",
+  imagePosition = "right",
+  textSize = "text-1xl md:text-2xl lg:text-3xl", 
 />
 	<LogoCloud 
    backgroundImage="./images/wave.svg"
   title="Déjanos moverte con honestidad y grandeza."
-  height="h-[60vh]"/>
-	<Feature
-  imageSrc="./images/tractocamion.jpg" 
-  imageAlt="Tracto camión" 
-  items={features}
-  reverse={false} />
+  height="h-[40vh]"/>
+  <Card2
+  bgImage = "./images/Card.svg",
+  items = {items},
+  image= "./images/thermo.jpg",
+  imagePosition = "right",
+  listColor = "text-white",
+  listSize = "text-lg md:text-xl",  />
 	<Cta
   backgroundColor = "bg-gray-900", // fondo de la section
   cardColor = "bg-[#1D5884]",      // fondo del div principal

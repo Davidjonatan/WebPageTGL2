@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LogoCloud from '../components/LogoCloud.astro';
-import Feature from '../components/Feature.astro';
 import Testimonials from '../components/Testimonials.tsx';
 import Cta from '../components/Cta.astro';
 import HowItWorks from '../components/HowItWorks';
@@ -28,11 +27,6 @@ const tabs = {
    backgroundImage="./images/wave.svg"
   title="Déjanos moverte con honestidad y grandeza."
   height="h-[60vh]"/>
-	<Feature
-  imageSrc="./images/tractocamion.jpg" 
-  imageAlt="Tracto camión" 
-  items={features}
-  reverse={false} />
 	<Cta
   backgroundColor = "bg-gray-900", // fondo de la section
   cardColor = "bg-[#1D5884]",      // fondo del div principal

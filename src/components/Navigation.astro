@@ -7,24 +7,23 @@ const currentPath = Astro.url.pathname;
     <!-- Barra principal -->
     <div
       class="backdrop-blur-md bg-white/70 border-b border-white/30
-             flex items-center justify-between gap-x-4
-             py-3 px-6 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]
-             lg:grid lg:grid-cols-[1fr_auto_1fr] lg:justify-stretch lg:gap-x-10"
+             flex items-center justify-between
+             py-2 px-6 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]"
     >
-      <!-- Logo -->
-      <div class="flex items-center gap-x-8">
+      <!-- Logo a la izquierda -->
+      <div class="flex items-center">
         <a href="/" title="Home" class="animate-slideRight delay-100">
-          <img class="h-10" src="./images/logosinfondo.png" alt="Logo" />
+          <img class="h-12 lg:h-14" src="./images/logosinfondo.png" alt="Logo" />
         </a>
       </div>
 
-      <!-- Navegación desktop -->
-      <nav class="hidden lg:flex gap-x-6 items-center">
-        <ul class="flex items-center gap-x-6">
+      <!-- Navegación centrada -->
+      <nav class="hidden lg:flex items-center">
+        <ul class="flex items-center gap-x-8">
           <li class="animate-slideRight delay-200">
             <a
               href="/ejemplo/"
-              class={`font-semibold transition ${
+              class={`font-semibold transition px-3 py-2 ${
                 currentPath === "/ejemplo/"
                   ? "text-[#3aabe4]"
                   : "text-neutral-700 hover:text-neutral-600"
@@ -36,7 +35,7 @@ const currentPath = Astro.url.pathname;
           <li class="animate-slideRight delay-300">
             <a
               href="/ejemplo/nosotros"
-              class={`font-semibold transition ${
+              class={`font-semibold transition px-3 py-2 ${
                 currentPath === "/ejemplo/nosotros"
                   ? "text-[#3aabe4]"
                   : "text-neutral-700 hover:text-neutral-600"
@@ -48,47 +47,32 @@ const currentPath = Astro.url.pathname;
           <li class="animate-slideRight delay-400">
             <a
               href="/ejemplo/servicios"
-              class={`font-semibold transition ${
+              class={`font-semibold transition px-3 py-2 ${
                 currentPath === "/ejemplo/servicios"
                   ? "text-[#3aabe4]"
                   : "text-neutral-700 hover:text-neutral-600"
               }`}
             >
-              Servicios
+              Nuestros Servicios
             </a>
           </li>
           <li class="animate-slideRight delay-500">
             <a
               href="/ejemplo/contacto"
-              class={`flex items-center gap-x-2 font-semibold transition ${
+              class={`font-semibold transition px-3 py-2 ${
                 currentPath === "/ejemplo/contacto"
                   ? "text-[#3aabe4]"
                   : "text-neutral-700 hover:text-neutral-600"
               }`}
             >
               Contáctanos
-              <svg
-                class="w-4 h-4 text-neutral-500"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
             </a>
           </li>
         </ul>
       </nav>
 
-      <!-- Contenedor extremo derecho (banderas + botón móvil) -->
-      <div class="flex items-center gap-x-4 justify-end ml-auto">
-        <!-- Línea divisoria -->
-        <span class="hidden h-6 w-[1px] bg-neutral-300 lg:block"></span>
-
+      <!-- Elementos a la derecha (banderas) -->
+      <div class="flex items-center gap-x-3">
         <!-- Banderas -->
         <a href="/login.astro" title="Log in" class="animate-fall delay-600">
           <img
@@ -168,7 +152,7 @@ const currentPath = Astro.url.pathname;
                 : "text-neutral-700 hover:bg-[#e0f0ff]"
             }`}
           >
-            Servicios
+            Nuestros Servicios
           </a>
         </li>
         <li>
