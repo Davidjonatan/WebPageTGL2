@@ -4,67 +4,63 @@ import AnimateOnScroll from "./animations/AnimateOnScroll.tsx"; // para la image
 import AnimateFromLeft from "./animations/AnimateFromLeft.tsx"; // para el texto
 
 const {
-  backgroundColor = "bg-gray-900", // fondo de la section
-  cardColor = "bg-[#0F3595]",      // fondo del div principal
-  title = "Experience innovation like never before",
+  backgroundColor = "", // fondo de la section
+  title = "",
   text = "",
-  buttonText = "Try free",
-  buttonSubtext = "- 14 days",
-  buttonColor = "bg-amber-500 text-white hover:bg-amber-600",
-  image = "https://tailkits.com/ui/iframe/assets/img/browser-mock-up-dark.png",
+  buttonText = "",
+  buttonSubtext = "",
+  image = "",
 } = Astro.props;
 ---
 
 <section class={`relative ${backgroundColor} py-16`}>
   <div class="max-w-7xl mx-auto px-4 xl:px-0">
     <div
-      class={`relative overflow-hidden rounded-3xl ${cardColor} lg:grid lg:grid-cols-2`}
+      class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#1E2A47] via-slate-800 to-slate-900 lg:grid lg:grid-cols-2"
     >
       <!-- Texto -->
       <AnimateFromLeft client:load>
-      <div
-        class="flex flex-col justify-center px-6 py-12 lg:px-16 lg:py-24"
-      >
-       
-          <div class="bg-black/40 p-4 rounded-xl shadow-lg inline-block">
-  <h2
-    class="text-3xl font-semibold text-red-500 sm:w-4/5 lg:w-11/12 lg:text-5xl lg:leading-tight xl:w-3/4"
-  >
-    {title}
-  </h2>
-</div>
-
-<!-- salto de línea -->
-<div class="mt-4">
-  <h6
-    class="text-xl font-semibold text-white sm:w-4/5 lg:w-11/12 lg:text-2xl lg:leading-snug xl:w-3/4"
-  >
-    {text}
-  </h6>
-</div>
-
-        <a
-          href="#"
-          class={`mt-6 flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all px-4 py-2.5 rounded-xl shadow-lg ${buttonColor}`}
-        >
-          {buttonText}
-          <span class="ml-1 opacity-80">{buttonSubtext}</span>
-          <svg
-            class="shrink-0 ml-2 h-4"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
+        <div class="flex flex-col justify-center px-6 py-12 lg:px-16 lg:py-24">
+          
+          <!-- Div del título amarillo -->
+          <div class="bg-yellow-500 p-3 lg:p-4 rounded-xl shadow-lg inline-block max-w-xl">
+            <h2
+              class="text-2xl lg:text-4xl font-semibold text-white leading-tight"
+            >
+              {title}
+            </h2>
+          </div>
+          <!-- Texto secundario -->
+          <div class="mt-4 max-w-2xl">
+            <h6
+              class="text-lg lg:text-2xl font-semibold text-gray-100 leading-snug"
+            >
+              {text}
+            </h6>
+          </div>
+          <!-- Botón rojo -->
+          <a
+            href="#"
+            class="mt-6 flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all px-5 py-3 rounded-xl shadow-lg bg-red-600 text-white hover:bg-red-700"
           >
-            <path
-              fill-rule="evenodd"
-              d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </a>
-      </div>
+            {buttonText}
+            <svg
+              class="shrink-0 ml-2 h-4 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </div>
       </AnimateFromLeft>
+
       <!-- Imagen -->
       <figure class="flex items-center justify-center py-12 lg:py-0">
         <AnimateOnScroll client:load>

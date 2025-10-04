@@ -7,13 +7,13 @@ interface Service {
 }
 
 const services: Service[] = [
-  { title: "Tanques", image: "/images/tanque2.jpg" },
-  { title: "Cajas Secas", image: "/images/seca.jpg" },
-  { title: "Cajas Thermo", image: "/images/thermo.jpg" },
+  { title: "Tanques", image: "./images/tanque2.jpg" },
+  { title: "Cajas Secas", image: "./images/seca.jpg" },
+  { title: "Cajas Thermo", image: "./images/thermo.jpg" },
 ];
 ---
 
-<section class="bg-gradient-to-b from-[#1E2A47] to-slate-900 py-16 lg:py-20" x-data="{ modalOpen: false, modalImage: '' }">
+<section class="bg-gradient-to-t from-[#1E2A47] to-slate-900 py-16 lg:py-20" x-data="{ modalOpen: false, modalImage: '' }">
   <div class="max-w-7xl mx-auto px-4">
     <!-- Título -->
      <AnimateFromLeft client:load>

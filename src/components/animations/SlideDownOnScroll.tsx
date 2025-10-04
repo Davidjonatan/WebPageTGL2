@@ -1,6 +1,5 @@
-/** SlideDownOnScroll.tsx */
 import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState, useRef } from 'preact/hooks';
 
 interface Props {
   children: preact.ComponentChildren;
@@ -8,8 +7,11 @@ interface Props {
 
 export default function SlideDownOnScroll({ children }: Props) {
   const [inView, setInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!ref.current) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -19,15 +21,14 @@ export default function SlideDownOnScroll({ children }: Props) {
       { threshold: 0.1 }
     );
 
-    const el = document.getElementById('slide-down-container');
-    if (el) observer.observe(el);
+    observer.observe(ref.current);
 
     return () => observer.disconnect();
   }, []);
 
   return (
     <div
-      id="slide-down-container"
+      ref={ref}
       class={`transition-transform duration-1000 ease-out ${
         inView ? 'translate-y-0 opacity-90' : '-translate-y-20 opacity-30'
       }`}
