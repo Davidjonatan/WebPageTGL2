@@ -1,67 +1,45 @@
 ---
-import AnimateOnScroll from './animations/AnimateOnScroll.tsx';
-import AnimateListOnScroll from './animations/AnimateListOnScroll.tsx';
-
 interface Props {
   bgImage?: string;
-  items: { text: string }[];
   image: string;
   imagePosition?: "left" | "right";
-  listColor?: string;
-  listSize?: string;
   title?: string;
+  text?: string;
   textSize?: string;
-  bgSvg?: string;
+  titlesize?: string;
+  textColor?: string;
+  titleColor?: string;
 }
 
 const {
   bgImage = "/images/Card.svg",
-  items = [],
   image,
   imagePosition = "right",
-  listColor = "text-white",
-  listSize = "text-lg md:text-xl",
   title = "",
-  textSize = "text-base",
-  bgSvg = "",
+  titlesize = "",
+  text = "",
+  textSize = "text-base md:text-lg",
+  textColor = "text-black",
+  titleColor = "",
 } = Astro.props;
 ---
 <section
   class="relative w-full flex flex-col md:flex-row items-stretch min-h-[400px]"
   style={`background-image: url(${bgImage}); background-size: cover; background-position: center;`}
 >
-  <!-- En móvil: texto siempre arriba, imagen siempre abajo -->
-  <!-- En desktop: orden según imagePosition -->
-  
   <!-- Contenedor de texto (siempre primero en móvil) -->
-  <AnimateListOnScroll client:load>
-    <div class="flex flex-col justify-center items-center z-10 w-full md:w-1/2 text-center p-8 md:p-12 order-1 md:order-none">
-      {title && <h2 class={`${textSize} font-bold mb-6 ${listColor}`}>{title}</h2>}
-      <ul class={`space-y-6 ${listSize} ${listColor}`}>
-        {items.map((item) => (
-          <li class="flex items-start gap-x-4">
-            <svg 
-              version="1.1" viewBox="0 0 32 32" width="28" height="28" fill="#3aabe4" class="flex-shrink-0 mt-1"
-            >
-              <polyline fill="none" stroke="#3aabe4" stroke-width="2" stroke-miterlimit="10" points="28,8 16,20 11,15"/>
-              <path d="M26.7,13.5c0.2,0.8,0.3,1.6,0.3,2.5c0,6.1-4.9,11-11,11S5,22.1,5,16S9.9,5,16,5c3,0,5.7,1.2,7.6,3.1l1.4-1.4 C22.7,4.4,19.5,3,16,3C8.8,3,3,8.8,3,16s5.8,13,13,13s13-5.8,13-13c0-1.4-0.2-2.8-0.7-4.1L26.7,13.5z"/>
-            </svg>  
-            <p class="text-left">{item.text}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </AnimateListOnScroll>
+  <div class="flex flex-col justify-center items-center z-10 w-full md:w-1/2 text-center p-8 md:p-12 order-1 md:order-none">
+    {title && <h2 class={`${titlesize} ${titleColor}`}>{title}</h2>}
+    {text && <p class={`${textSize} ${textColor} max-w-xl`}>{text}</p>}
+  </div>
 
-  <!-- Contenedor de imagen (siempre segundo en móvil) -->
-  <AnimateOnScroll client:load>
-    <div class={`w-full md:w-1/2 flex justify-center px-4 pb-4 md:px-0 md:pb-0 mt-auto md:mt-0 order-2 
-                ${imagePosition === "right" ? "md:order-last" : "md:order-first"}`}>
-      <img
-        src={image}
-        alt="Imagen lateral"
-        class="w-full max-w-md object-cover md:w-full md:h-full md:max-w-none"
-      />
-    </div>
-  </AnimateOnScroll>
+  <!-- Contenedor de imagen -->
+  <div class={`w-full md:w-1/2 flex justify-center px-4 pb-4 md:px-0 md:pb-0 mt-auto md:mt-0 order-2 
+              ${imagePosition === "right" ? "md:order-last" : "md:order-first"}`}>
+    <img
+      src={image}
+      alt="Imagen lateral"
+      class="w-full max-w-md object-cover md:w-full md:h-full md:max-w-none"
+    />
+  </div>
 </section>

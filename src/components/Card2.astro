@@ -7,10 +7,11 @@ interface Props {
   image: string;
   imagePosition?: "left" | "right";
   listColor?: string;
-  listSize?: string;
+  titleSize?: string;
   title?: string;
-  textSize?: string;
+  listSize?: string;
   bgSvg?: string;
+  titleColor?: string;
 }
 
 const {
@@ -21,8 +22,9 @@ const {
   listColor = "text-black",
   listSize = "text-lg md:text-xl",
   title = "",
-  textSize = "text-base",
+  titleSize = "text-3xl",
   bgSvg = "",
+  titleColor = "",
 } = Astro.props;
 ---
 <section
@@ -34,7 +36,7 @@ const {
   
   <!-- Contenedor de texto (siempre primero en móvil) -->
   <div class="flex flex-col justify-center items-center z-10 w-full md:w-1/2 text-center p-8 md:p-12 order-1 md:order-none">
-    {title && <h2 class={`${textSize} font-bold mb-6 ${listColor}`}>{title}</h2>}
+    {title && <h2 class={`${titleSize} font-bold mb-6 ${titleColor}`}>{title}</h2>}
     
     <AnimateListOnScroll client:load>
       <ul class={`space-y-6 ${listSize} ${listColor}`}>

@@ -4,6 +4,7 @@ import LogoCloud from '../components/LogoCloud.astro';
 import Testimonials from '../components/Testimonials.tsx';
 import Cta from '../components/Cta.astro';
 import HowItWorks from '../components/HowItWorks';
+import ImageCarousel from '../components/Carrouselimages';
 
 const features = [
   { text: '32 años de experiencia.' },
@@ -16,9 +17,32 @@ const features = [
   { text: 'Certificaciones ISO 9001:2015 C-TPAT, HACCP.' },
 ]
 const tabs = {
-  tab1: { text: 'Tanque', image: './images/tanque2.jpg' },
-  tab2: { text: 'Caja Thermo', image: './images/thermo.jpg' },
-  tab3: { text: 'Caja Seca', image: './images/seca.jpg' },
+  tab1: {
+    text: "Tanques",
+    subtitle: "Explora nuestra flota de tanques.",
+    images: [
+      { src: "./images/tanque2.jpg", alt: "Tanque 1" },
+      { src: "./images/tanque2.jpg", alt: "Tanque 2" },
+      { src: "./images/tanque2.jpg", alt: "Tanque 3" },
+    ],
+  },
+  tab2: {
+    text: "Cajas Secas",
+    subtitle: "Nuestras cajas secas modernas.",
+    images: [
+      { src: "./images/seca.jpg", alt: "Caja Seca 1" },
+      { src: "./images/seca.jpg", alt: "Caja Seca 2" },
+    ],
+  },
+  tab3: {
+    text: "Thermo",
+    subtitle: "Soluciones de carga refrigerada.",
+    images: [
+      { src: "./images/thermo.jpg", alt: "Thermo 1" },
+      { src: "./images/thermo.jpg", alt: "Thermo 2" },
+      { src: "./images/thermo.jpg", alt: "Thermo 3" },
+    ],
+  },
 };
 ---
 
@@ -27,22 +51,21 @@ const tabs = {
    backgroundImage="./images/wave.svg"
   title="Déjanos moverte con honestidad y grandeza."
   height="h-[60vh]"/>
-	<Cta
-  backgroundColor = "bg-gray-900", // fondo de la section
-  cardColor = "bg-[#1D5884]",      // fondo del div principal
-  title = "Cobertura",
-  text= "Prestamos nuestros servicios a todo lo largo y ancho del territorio nacional, así como productos de exportación hacia los Estados Unidos, contamos con diferentes tipos de licencia para el cruce de mercancía y unidades en los estados unidos",
-  buttonText = "Contactanos",
-  buttonSubtext = "Now",
-  buttonColor = "bg-amber-500 text-white hover:bg-amber-600",
-  image = "./images/mapa.jpg",
-  />
 	  <HowItWorks 
         title="Servicio de transporte confiable" 
-        subtitle="Optimización logística inteligente" 
         tabs={tabs} 
         client:load 
       />
+      <ImageCarousel client:load
+      title="Nuestros Proyectos"
+      description="Mira algunos de los trabajos que hemos realizado con pasión y dedicación."
+      slides={[
+        { src: "./images/seca.jpg", alt: "Proyecto 1" },
+        { src: "./images/thermo.jpg", alt: "Proyecto 2" },
+        { src: "./images/tanque2.jpg", alt: "Proyecto 3" },
+      ]}
+      interval={4000} 
+    />
 	<Testimonials client:load
   testimonials={[
     { quote: "Todas nuestras unidades cuentan con sistema de rastreo satelital el cual es monitoreado las 24 hrs para asegurar que el viaje llegue a su destino sin ningún contratiempo"},
