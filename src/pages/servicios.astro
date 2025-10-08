@@ -2,9 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LogoCloud from '../components/LogoCloud.astro';
 import Testimonials from '../components/Testimonials.tsx';
-import Cta from '../components/Cta.astro';
 import HowItWorks from '../components/HowItWorks';
-import ImageCarousel from '../components/Carrouselimages';
+import Card3 from '../components/Card3.astro';
+
 
 const features = [
   { text: '32 años de experiencia.' },
@@ -48,7 +48,7 @@ const tabs = {
 
 <BaseLayout>
 	<LogoCloud 
-   backgroundImage = './images/wave.svg',
+    backgroundImage = './images/wave.svg',
   title = 'Déjanos moverte con honestidad y grandeza.',
   height = 'h-[80vh]',
   titleColor = 'text-white',
@@ -61,15 +61,68 @@ const tabs = {
         tabs={tabs} 
         client:load 
       />
-      <ImageCarousel client:load
-      title="Nuestros Proyectos"
-      description="Mira algunos de los trabajos que hemos realizado con pasión y dedicación."
-      slides={[
-        { src: "./images/seca.jpg", alt: "Proyecto 1" },
-        { src: "./images/thermo.jpg", alt: "Proyecto 2" },
-        { src: "./images/tanque2.jpg", alt: "Proyecto 3" },
-      ]}
-      interval={4000} 
+    <Card3 
+      bgImage="./images/Card.svg"
+    image="./images/seca.jpg"
+    imagePosition="left"
+    title="Misión"
+    text="Somos una empresa con años de experiencia en el sector, comprometida con la calidad y la innovación."
+    textSize="text-lg md:text-3xl"
+    textColor="text-white"
+    titleColor='text-white',
+    titlesize='text-lg md:text-5xl',
+    />
+    <LogoCloud 
+     backgroundImage = './images/wave.svg',
+  title = 'Déjanos moverte con honestidad y grandeza.',
+  height = 'h-[80vh]',
+  titleColor = 'text-white',
+  titleSize = 'text-4xl sm:text-5xl md:text-6xl',
+  titleWeight = 'font-extrabold',
+  titleAlign = 'text-center',
+  maxWidth = 'max-w-3xl',
+    />
+        <Card3 
+      bgImage="./images/Card.svg"
+    image="./images/seca.jpg"
+    imagePosition="left"
+    title="Misión"
+    text="Somos una empresa con años de experiencia en el sector, comprometida con la calidad y la innovación."
+    textSize="text-lg md:text-3xl"
+    textColor="text-white"
+    titleColor='text-white',
+    titlesize='text-lg md:text-5xl',
+    />
+    <LogoCloud 
+     backgroundImage = './images/wave.svg',
+  title = 'Déjanos moverte con honestidad y grandeza.',
+  height = 'h-[80vh]',
+  titleColor = 'text-white',
+  titleSize = 'text-4xl sm:text-5xl md:text-6xl',
+  titleWeight = 'font-extrabold',
+  titleAlign = 'text-center',
+  maxWidth = 'max-w-3xl',
+    />
+        <Card3 
+        bgImage="./images/Card.svg"
+    image="./images/seca.jpg"
+    imagePosition="left"
+    title="Misión"
+    text="Somos una empresa con años de experiencia en el sector, comprometida con la calidad y la innovación."
+    textSize="text-lg md:text-3xl"
+    textColor="text-white"
+    titleColor='text-white',
+    titlesize='text-lg md:text-5xl',
+    />
+    <LogoCloud 
+     backgroundImage = './images/wave.svg',
+  title = 'Déjanos moverte con honestidad y grandeza.',
+  height = 'h-[80vh]',
+  titleColor = 'text-white',
+  titleSize = 'text-4xl sm:text-5xl md:text-6xl',
+  titleWeight = 'font-extrabold',
+  titleAlign = 'text-center',
+  maxWidth = 'max-w-3xl',
     />
 	<Testimonials client:load
   testimonials={[
