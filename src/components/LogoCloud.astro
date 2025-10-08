@@ -1,30 +1,44 @@
 ---
 import SlideDownOnScroll from "./animations/SlideDownOnScroll.tsx";
 
+interface Props {
+  backgroundImage?: string;
+  title?: string;
+  height?: string;
+  titleColor?: string;
+  titleSize?: string;
+  titleWeight?: string;
+  titleAlign?: string;
+  maxWidth?: string;
+}
+
 const {
-  backgroundImage = './images/wave.svg', // imagen de fondo
-  title = 'Déjanos moverte con honestidad y grandeza.', // texto central
-  height = 'h-[80vh]', // altura de la sección
+  backgroundImage = '',
+  title = '',
+  height = '',
+  titleColor = '',
+  titleSize = '',
+  titleWeight = '',
+  titleAlign = '',
+  maxWidth = '',
 } = Astro.props;
 ---
-<SlideDownOnScroll client:load>
-<section
-  class={`relative bg-cover bg-center overflow-hidden ${height}`}
-  style={`background-image: url('${backgroundImage}');`}
->
-  <!-- Capa oscura opcional para contraste -->
-  <div class="absolute inset-0 bg-black/30"></div>
 
-  <!-- Contenido -->
-  <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
-   
+<SlideDownOnScroll client:load>
+  <section
+    class={`relative bg-cover bg-center overflow-hidden ${height}`}
+    style={`background-image: url('${backgroundImage}');`}
+  >
+    <!-- Capa oscura opcional -->
+    <div class="absolute inset-0 bg-black/30"></div>
+
+    <!-- Contenido -->
+    <div class={`relative z-10 flex flex-col justify-center h-full px-4 ${titleAlign}`}>
       <h1
-        class="bg-gradient-to-b from-slate-200 to-slate-50 bg-clip-text text-transparent 
-        text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight max-w-3xl"
+        class={`${titleColor} ${titleSize} ${titleWeight} leading-tight ${maxWidth} mx-auto`}
       >
         {title}
       </h1>
-   
-  </div>
-</section>
-</SlideDownOnScrol>
+    </div>
+  </section>
+</SlideDownOnScroll>

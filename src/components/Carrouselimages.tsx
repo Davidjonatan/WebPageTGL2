@@ -37,17 +37,21 @@ export default function ImageCarousel({
     setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
 
   return (
-    <section class="bg-gradient-to-b from-[#1E2A47] to-slate-900 py-10 lg:py-16">
-      <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        {/* Texto (izquierda) */}
-        <div class="text-center md:text-left space-y-6">
-          <h2 class="text-3xl md:text-4xl font-bold text-white">{title}</h2>
-          <p class="text-base md:text-lg text-slate-300">{description}</p>
+    <section class="bg-gradient-to-b from-[#1E2A47] to-slate-900 py-12 lg:py-20">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 items-start">
+        {/* Texto (izquierda, arriba) */}
+        <div class="flex flex-col justify-start self-start text-center md:text-left space-y-4 mt-4">
+          <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight">
+            {title}
+          </h2>
+          <p class="text-base md:text-lg text-slate-300 max-w-md">
+            {description}
+          </p>
         </div>
 
-        {/* Carrusel de imágenes (derecha) */}
+        {/* Carrusel de imágenes (derecha, grande) */}
         <div class="relative flex flex-col items-center">
-          <figure class="relative w-full max-w-lg h-64 md:h-80 lg:h-96 overflow-hidden rounded-xl shadow-lg">
+          <figure class="relative w-full max-w-2xl h-80 md:h-[28rem] lg:h-[32rem] overflow-hidden rounded-2xl shadow-2xl">
             <img
               src={slides[current].src}
               alt={slides[current].alt ?? "Slide"}
@@ -55,33 +59,33 @@ export default function ImageCarousel({
             />
           </figure>
 
-          {/* botones de navegación */}
-          <div class="mt-4 flex items-center justify-center gap-x-3">
+          {/* Botones de navegación */}
+          <div class="mt-6 flex items-center justify-center gap-x-4">
             <button
               aria-label="Previous slide"
               onClick={prev}
-              class="rounded-full cursor-pointer flex items-center justify-center transition-all focus:ring-2 ring-slate-500 shadow-md bg-slate-800 text-white hover:bg-slate-700 w-9 h-9"
+              class="rounded-full cursor-pointer flex items-center justify-center transition-all focus:ring-2 ring-slate-500 shadow-lg bg-slate-800 text-white hover:bg-slate-700 w-10 h-10"
             >
               ←
             </button>
             <button
               aria-label="Next slide"
               onClick={next}
-              class="rounded-full cursor-pointer flex items-center justify-center transition-all focus:ring-2 ring-slate-500 shadow-md bg-slate-800 text-white hover:bg-slate-700 w-9 h-9"
+              class="rounded-full cursor-pointer flex items-center justify-center transition-all focus:ring-2 ring-slate-500 shadow-lg bg-slate-800 text-white hover:bg-slate-700 w-10 h-10"
             >
               →
             </button>
           </div>
 
-          {/* dots de progreso */}
-          <div class="mt-3 flex justify-center gap-x-2">
+          {/* Dots de progreso */}
+          <div class="mt-4 flex justify-center gap-x-3">
             {slides.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrent(idx)}
-                class={`w-3 h-3 rounded-full transition-all duration-200 ${
+                class={`w-3.5 h-3.5 rounded-full transition-all duration-200 ${
                   current === idx
-                    ? "bg-slate-100 scale-110"
+                    ? "bg-slate-100 scale-125"
                     : "bg-slate-600 hover:bg-slate-500"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
