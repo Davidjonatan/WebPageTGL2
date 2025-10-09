@@ -9,6 +9,7 @@ interface Props {
   titlesize?: string;
   textColor?: string;
   titleColor?: string;
+  textAlign?: "left" | "center" | "right"; // 🔹 Nueva propiedad
 }
 
 const {
@@ -21,7 +22,15 @@ const {
   textSize = "text-base md:text-lg leading-relaxed", // texto legible
   textColor = "text-black",
   titleColor = "text-gray-900",
+  textAlign = "left", // 🔹 Valor por defecto
 } = Astro.props;
+
+// 🔹 Convertimos la alineación de texto en una clase de Tailwind
+const textAlignClass = textAlign === "center" 
+  ? "text-center items-center" 
+  : textAlign === "right" 
+  ? "text-right items-end" 
+  : "text-left items-start";
 ---
 
 <section
@@ -30,7 +39,7 @@ const {
 >
   <!-- Contenedor de texto -->
   <div
-    class="flex flex-col justify-center items-start z-10 w-full md:w-1/2 text-left p-8 md:p-12 space-y-4 order-1 md:order-none"
+    class={`flex flex-col justify-center z-10 w-full md:w-1/2 p-8 md:p-12 space-y-4 order-1 md:order-none ${textAlignClass}`}
   >
     {title && <h2 class={`${titlesize} ${titleColor}`}>{title}</h2>}
     {text && <p class={`${textSize} ${textColor} max-w-xl`}>{text}</p>}
