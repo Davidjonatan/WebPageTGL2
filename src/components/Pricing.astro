@@ -1,72 +1,77 @@
 ---
-import AnimateOnScroll from "./animations/AnimateOnScroll";
-import AnimateFromLeft from "./animations/AnimateFromLeft";
+import AnimateEntrance from "./animations/AnimateEntrance";
+import AnimatedGlowBorder from "./animations/AnimatedGlowBorder"; 
+
 interface Service {
   title: string;
   image: string;
+  tabKey: string;
 }
 
 const services: Service[] = [
-  { title: "Tanques", image: "./images/tanque2.jpg" },
-  { title: "Cajas Secas", image: "./images/seca.jpg" },
-  { title: "Cajas Thermo", image: "./images/thermo.jpg" },
+  { title: "Tanques", image: "./images/tanque2.jpg", tabKey: "tab1" },
+  { title: "Cajas Secas", image: "./images/seca.jpg", tabKey: "tab2" },
+  { title: "Thermo", image: "./images/thermo.jpg", tabKey: "tab3" },
 ];
 ---
 
 <section class="bg-gradient-to-t from-[#1E2A47] to-slate-900 py-16 lg:py-20" x-data="{ modalOpen: false, modalImage: '' }">
   <div class="max-w-7xl mx-auto px-4">
     <!-- Título -->
-     <AnimateFromLeft client:load>
-      <h2 class="text-center text-3xl md:text-4xl font-bold text-white mb-12">
-      Nuestros Servicios
-      </h2>
-     </AnimateFromLeft>
- 
+    <AnimateEntrance client:load origin={"Left"} useScrollTrigger={true} triggerClass="title-col" stagger={0.2}>
+  <h2 class="titulo-pricing title-col">
+    Nuestros Servicios
+  </h2>
+</AnimateEntrance>
 
-    <!-- Grid de servicios -->
-     <AnimateOnScroll client:load>
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      {services.map((service) => (
-        <div class="flex flex-col items-center">
-          <!-- Título de la card -->
-          <h3 class="text-xl font-semibold text-white mb-4 text-center">
-            {service.title}
-          </h3>
+  <AnimateEntrance client:load origin={"bottom"} useScrollTrigger={true} triggerClass="images-col" stagger={0.2}>
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 images-col">
+    {services.map((service) => (
+      <div class="flex flex-col items-center">
+        <!-- Título de la card -->
+        <h3 class="titulo-card-pricing">
+          {service.title}
+        </h3>
 
-          <!-- Imagen con overlay -->
-          <div 
-            class="relative w-full max-w-xs h-56 sm:h-64 lg:h-72 rounded-xl overflow-hidden shadow-lg group cursor-pointer"
-            @click={`modalImage = '${service.image}'; modalOpen = true`}
-          >
-            <img 
-              src={service.image} 
-              alt={service.title} 
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
-            />
+        <!-- Imagen con overlay -->
+        <div 
+          class="relative w-full glow-container max-w-xs h-56 sm:h-64 lg:h-72 rounded-xl overflow-hidden shadow-lg group cursor-pointer"
+          @click={`modalImage = '${service.image}'; modalOpen = true`}
+        >
+            <!-- 🔥 Glow animado detrás -->
+          <AnimatedGlowBorder client:load color="rgba(79,70,229,1)" thickness={4} />
 
-            <!-- Overlay oscuro -->
-            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-              <!-- Icono lupa -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z" />
-              </svg>
-            </div>
-          </div>
+          <img 
+            src={service.image} 
+            alt={service.title} 
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+          />
 
-          <!-- Botón -->
-          <button
-            class="mt-4 px-5 py-2 rounded-lg bg-white/60 hover:bg-white/80 text-slate-900 text-sm font-medium shadow-md transition flex items-center gap-2"
-          >
-            <!-- Icono dentro del botón -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4l3 10 4-18 3 8h4" />
+          <!-- Overlay oscuro -->
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+            <!-- Icono lupa -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z" />
             </svg>
-            Ver más
-          </button>
+          </div>
         </div>
-      ))}
-    </div>
-     </AnimateOnScroll>
+
+        <!-- Botón -->
+        <button class="boton-card-pricing">
+        <a
+    href={`/ejemplo/servicios?tab=${service.tabKey}`}
+    class="boton-card-servicio inline-flex items-center gap-2"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4l3 10 4-18 3 8h4" />
+      </svg>
+      Ver más
+      </a>
+        </button>
+      </div>
+    ))}
+  </div>
+  </AnimateEntrance>
     
   </div>
 

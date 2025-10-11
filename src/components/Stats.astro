@@ -1,5 +1,5 @@
 ---
-import AnimateOnScroll from "./animations/AnimateOnScroll.tsx";
+import AnimateEntrance from "./animations/AnimateEntrance";
 import CountUp from "./animations/CountUp.tsx";
 import AnimateOnScrollTop from "./animations/AnimateOnScrollTop.tsx";
 
@@ -28,18 +28,18 @@ const {
   <div class="max-w-7xl mx-auto px-4 xl:px-0 w-full">
     <!-- Header -->
     <div class="flex flex-col items-center text-center">
-      <AnimateOnScroll client:load>
+      <AnimateEntrance client:load origin={"bottom"} useScrollTrigger={true} triggerClass="text-col" stagger={0.2}>
         <div
           class="bg-white/90 text-neutral-800 rounded-2xl shadow-lg px-6 py-6 inline-block"
         >
-          <h2 class="text-3xl lg:text-5xl font-extrabold">
+          <h2 class="text-3xl lg:text-5xl font-extrabold text-col">
             {title} <br />
-            <span class="block text-base lg:text-lg font-medium text-neutral-700 mt-2">
+            <span class="block text-base lg:text-lg font-medium text-neutral-700 mt-2 text-col">
               {description}
             </span>
           </h2>
         </div>
-      </AnimateOnScroll>
+      </AnimateEntrance>
     </div>
 
     <!-- Stats con animación individual -->

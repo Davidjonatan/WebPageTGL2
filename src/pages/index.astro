@@ -9,10 +9,7 @@ import Cta from '../components/Cta.astro';
 import Pricing from '../components/Pricing.astro';
 
 const items = [
-  { text: '32 años de experiencia.' },
-  { text: 'Unidades de modelo reciente.' },
   { text: 'Responsables con el medio ambiente.' },
-  { text: 'Unidades con rastreo satelital.' },
   { text: 'Unidades limpias y sanitizadas.' },
   { text: 'Implementacion de Web Service con nuestros clientes.' },
   { text: 'Personal de logistica y atencion a clientes 24/7.' },
@@ -27,23 +24,20 @@ const tabs = {
 
 <BaseLayout>
 	<Hero />
-	<LogoCloud 
-   backgroundImage = './images/wave.svg',
+	<LogoCloud client:load
+  backgroundImage = './images/wave.svg',
   title = 'Déjanos moverte con honestidad y grandeza.',
-  height = 'h-[80vh]',
-  titleColor = 'text-white',
-  titleSize = 'text-4xl sm:text-5xl md:text-6xl',
-  titleWeight = 'font-extrabold',
-  titleAlign = 'text-center',
-  maxWidth = 'max-w-3xl',/>
-  <Pricing />	 
+  height = 'h-[50vh]',
+  titleStyle='logo-indexarriba'
+  origin = "topRight",/>
+  <Pricing client:load/>	 
   <Testimonials client:load
   testimonials={[
     { quote: "Todas nuestras unidades cuentan con sistema de rastreo satelital el cual es monitoreado las 24 hrs para asegurar que el viaje llegue a su destino sin ningún contratiempo"},
     { quote: "Equipos de telecomunicaciones con cobertura en todo el territorio nacional y extranjero"},
     { quote: "Al ser grado alimenticio todas nuestras unidades pasan por un proceso de lavado y sanitizado antes de salir a cada viaje asegurando la calidad a nuestros clientes"}
   ]}/>
-  <Cta
+  <Cta client:load
   backgroundColor = "bg-gray-900", // fondo de la section
   cardColor = "bg-[#1D5884]",      // fondo del div principal
   title = "Cobertura",
@@ -66,17 +60,14 @@ const tabs = {
   items = {items},
   image= "./images/tracto3.png",
   imagePosition = "left",
-  listColor = "text-white",
-  listSize = "text-lg md:text-xl",
-  titleColor='',
-  titleSize='',  />
+  listStyle='list-1',
+  animateImage = {true},
+  animateList = {true},
+   />
  <LogoCloud 
-   backgroundImage = './images/wave.svg',
-  title = 'Déjanos moverte con honestidad y grandeza.',
-  height = 'h-[80vh]',
-  titleColor = 'text-white',
-  titleSize = 'text-4xl sm:text-5xl md:text-6xl',
-  titleWeight = 'font-extrabold',
-  titleAlign = 'text-center',
-  maxWidth = 'max-w-3xl',/>
+   backgroundImage = './images/waves.svg',
+  title = 'Transportes Garza Leal es fundada el 23 de Noviembre 1989,incursion en el negocio del Autotransporte Federal con base en la ciudad de Lerdo, Durango que forma parte de la Comarca Lagunera.',
+  height = 'h-[50vh]',
+  titleStyle='logo-indexabajo'
+  origin = "topRight",/>
 </BaseLayout>

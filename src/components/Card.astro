@@ -2,20 +2,22 @@
 interface Props {
   bgSvg?: string;     
   image?: string;     
-  title?: string;     
-  textColor?: string; 
-  imagePosition?: "left" | "right"; 
-  textSize?: string; 
+  text?: string;     
+  textStyle?: string;
+  textOrigin?: "topRight" | "bottomLeft" | "topLeft" | "bottomRight" | "top" | "bottom" | "Left" | "Right";
+  imageOrigin?: "topRight" | "bottomLeft" | "topLeft" | "bottomRight" | "top" | "bottom" | "Left" | "Right";
 }
 
 const {
   bgSvg = "/images/Card.svg",
   image = "/images/default.jpg",
-  title = "Texto de ejemplo",
-  textColor = "text-black",
-  imagePosition = "right",
-  textSize = "text-3xl md:text-4xl lg:text-5xl",
+  text = "Texto de ejemplo",
+  textStyle = "",
+  imageOrigin = "bottomLeft",
+  textOrigin = "topRight",
 } = Astro.props;
+
+import AnimateEntrance from './animations/AnimateEntrance';
 ---
 
 <section 
@@ -25,19 +27,22 @@ const {
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-8 md:gap-x-16">
     
     <!-- Texto -->
-    <div class="flex flex-col justify-center text-right z-10 order-1 md:order-1">
-      <h2 class={`${textSize} font-bold leading-tight ${textColor}`}>
-        {title}
+   <AnimateEntrance client:load origin={textOrigin} useScrollTrigger={true} triggerClass="title-col" stagger={0.2}>
+    <div class="flex flex-col justify-center text-right z-10 order-1 md:order-1 title-col">
+      <h2 class={`${textStyle}`}>
+        {text}
       </h2>
     </div>
-
+    </AnimateEntrance>
     <!-- Imagen -->
-    <div class="flex justify-center md:justify-start order-2 md:order-2 md:ml-4">
+    <AnimateEntrance client:load origin={imageOrigin} useScrollTrigger={true} triggerClass="image-col" stagger={0.2}>
+    <div class="flex justify-center md:justify-start order-2 md:order-2 md:ml-4 image-col">
       <img 
         src={image} 
         alt="Imagen decorativa"
         class="rounded-xl shadow-lg object-cover w-[580px] h-[340px]"
       />
     </div>
+  </AnimateEntrance>
   </div>
 </section>

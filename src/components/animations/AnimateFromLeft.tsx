@@ -1,32 +1,42 @@
+// AnimateFromLeft.tsx
 import { useEffect, useRef } from "preact/hooks";
 
 interface Props {
-  children: any;
+  children: preact.ComponentChildren;
+  distance?: number;   // cuánto se desplaza desde la izquierda
+  duration?: number;   // duración de la animación
+  delay?: number;      // retraso antes de iniciar
 }
 
-export default function AnimateFromLeft({ children }: Props) {
-  const elementRef = useRef<HTMLDivElement>(null);
+export default function AnimateFromLeft({
+  children,
+  distance = 50,
+  duration = 1.5,
+  delay = 0,
+}: Props) {
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!elementRef.current) return;
+    if (!ref.current) return;
 
     import("gsap").then((gsapModule) => {
       import("gsap/ScrollTrigger").then((ScrollTriggerModule) => {
         const gsap = gsapModule.default;
         const ScrollTrigger = ScrollTriggerModule.ScrollTrigger;
-
         gsap.registerPlugin(ScrollTrigger);
 
+        // Animación desde izquierda
         gsap.fromTo(
-          elementRef.current!,
-          { opacity: 0, x: -50 }, // 👈 viene desde la izquierda
+          ref.current!,
+          { autoAlpha: 0, x: -distance },
           {
-            opacity: 1,
+            autoAlpha: 1,
             x: 0,
-            duration: 1.0, // editable
+            duration,
+            delay,
             ease: "power2.out",
             scrollTrigger: {
-              trigger: elementRef.current,
+              trigger: ref.current,
               start: "top 85%",
               toggleActions: "play none none none",
             },
@@ -34,7 +44,11 @@ export default function AnimateFromLeft({ children }: Props) {
         );
       });
     });
-  }, []);
+  }, [distance, duration, delay]);
 
-  return <div ref={elementRef}>{children}</div>;
+  return (
+    <div ref={ref} style={{ opacity: 0 }}>
+      {children}
+    </div>
+  );
 }

@@ -1,12 +1,11 @@
-/** HowItWorksGallery.tsx */
 import { h } from "preact";
-import { useState } from "preact/hooks";
-import AnimateFromLeft from "./animations/AnimateFromLeft";
-import AnimateOnScroll from "./animations/AnimateOnScroll";
+import { useState, useEffect } from "preact/hooks";
+import AnimateEntrance from "./animations/AnimateEntrance";
+import HowItWorksGalleryModal from "./HowItWorksGalleryModal";
 
 interface Tab {
-  text: string; // nombre del botón
-  subtitle: string; // subtítulo dinámico
+  text: string;
+  subtitle: string;
   images: { src: string; alt?: string }[];
 }
 
@@ -26,18 +25,26 @@ export default function HowItWorksGallery({ title, tabs }: Props) {
 
   // Modal
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalImage, setModalImage] = useState("");
+  const [modalIndex, setModalIndex] = useState(0);
+
+  // Inicializamos tab desde query string
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialTab = urlParams.get("tab");
+    if (initialTab && tabKeys.includes(initialTab)) {
+      setActiveTab(initialTab);
+    }
+  }, []);
 
   return (
     <section class="bg-[#1E2A47] py-12 lg:py-16 text-white">
       <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col gap-y-6">
-        <AnimateFromLeft>
-          {/* Header */}
-          <div class="flex flex-col items-center text-center">
+   <AnimateEntrance origin={"Left"} useScrollTrigger={false} triggerClass="text-col" stagger={0.2}>
+          <div class="flex flex-col items-center text-center text-col">
             <h2 class="text-3xl lg:text-5xl font-semibold">{title}</h2>
             <p class="mt-4 text-base lg:text-lg">{tabs[activeTab].subtitle}</p>
 
-            {/* Botones desktop */}
+            {/* Botones Desktop */}
             <div class="hidden lg:flex gap-x-3 mt-6">
               {tabKeys.map((key) => (
                 <button
@@ -55,7 +62,7 @@ export default function HowItWorksGallery({ title, tabs }: Props) {
               ))}
             </div>
 
-            {/* Dropdown mobile */}
+            {/* Dropdown Mobile */}
             <div class="lg:hidden mt-6 relative">
               <button
                 type="button"
@@ -64,7 +71,6 @@ export default function HowItWorksGallery({ title, tabs }: Props) {
               >
                 <span>{tabs[activeTab].text}</span>
               </button>
-
               {dropdownOpen && (
                 <div class="absolute mt-2 w-64 bg-white rounded-xl shadow-lg z-50">
                   {tabKeys.map((key) => (
@@ -84,82 +90,47 @@ export default function HowItWorksGallery({ title, tabs }: Props) {
               )}
             </div>
           </div>
-        </AnimateFromLeft>
+        </AnimateEntrance>
 
         {/* Galería */}
-        <AnimateOnScroll>
-          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+           <AnimateEntrance origin={"top"} useScrollTrigger={true} triggerClass="gallery-col" stagger={0.2}>
+
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8 gallery-col">
             {tabs[activeTab].images.map((img, idx) => (
               <div
                 key={idx}
                 class="relative w-full h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg group cursor-pointer"
                 onClick={() => {
-                  setModalImage(img.src);
+                  setModalIndex(idx);
                   setModalOpen(true);
                 }}
               >
+                {/* Imagen */}
                 <img
                   src={img.src}
                   alt={img.alt ?? "Galería"}
                   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
 
-                {/* Overlay */}
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-12 w-12 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z"
-                    />
+                {/* Overlay con animación hover */}
+                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-70 transition-opacity duration-300 flex items-center justify-center">
+                  {/* Icono lupa */}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z" />
                   </svg>
                 </div>
               </div>
             ))}
           </div>
-        </AnimateOnScroll>
+        </AnimateEntrance>
       </div>
 
-      {/* Modal */}
       {modalOpen && (
-        <div
-          class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
-          onClick={() => setModalOpen(false)}
-        >
-          <div class="relative max-w-4xl w-full mx-4">
-            <button
-              onClick={() => setModalOpen(false)}
-              class="absolute -top-4 -right-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-200 transition"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 text-gray-800"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            <img
-              src={modalImage}
-              alt="Vista completa"
-              class="w-full h-auto rounded-lg shadow-lg"
-            />
-          </div>
-        </div>
+        <HowItWorksGalleryModal
+          images={tabs[activeTab].images}
+          initialIndex={modalIndex}
+          onClose={() => setModalOpen(false)}
+        />
       )}
     </section>
   );

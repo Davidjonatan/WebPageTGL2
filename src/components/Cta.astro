@@ -1,7 +1,6 @@
 ---
 // HeroSection.astro
-import AnimateOnScroll from "./animations/AnimateOnScroll.tsx"; // para la imagen
-import AnimateFromLeft from "./animations/AnimateFromLeft.tsx"; // para el texto
+import AnimateEntrance from './animations/AnimateEntrance'; // para el texto
 
 const {
   backgroundColor = "", // fondo de la section
@@ -19,8 +18,8 @@ const {
       class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#1E2A47] via-slate-800 to-slate-900 lg:grid lg:grid-cols-2"
     >
       <!-- Texto -->
-      <AnimateFromLeft client:load>
-        <div class="flex flex-col justify-center px-6 py-12 lg:px-16 lg:py-24">
+   <AnimateEntrance client:load origin={"Left"} useScrollTrigger={true} triggerClass="text-col" stagger={0.2}>
+        <div class="flex flex-col justify-center px-6 py-12 lg:px-16 lg:py-24 text-col">
           
           <!-- Div del título amarillo -->
           <div class="bg-yellow-500 p-3 lg:p-4 rounded-xl shadow-lg inline-block max-w-xl">
@@ -63,9 +62,9 @@ const {
 
       <!-- Imagen -->
       <figure class="flex items-center justify-center py-12 lg:py-0">
-        <AnimateOnScroll client:load>
+   <AnimateEntrance client:load origin={"Right"} useScrollTrigger={true} triggerClass="image-col" stagger={0.2}>
           <img
-            class="h-96 lg:h-[36rem] object-contain"
+            class="h-96 lg:h-[36rem] object-contain image-col"
             src={image}
             alt="Mockup"
           />

@@ -15,6 +15,7 @@
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.5",
     "astro-seo": "^0.8.4",
+    "framer-motion": "^12.23.24",
     "gsap": "^3.13.0",
     "tailwindcss": "^4.1.13"
   },

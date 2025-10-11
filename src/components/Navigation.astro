@@ -1,173 +1,176 @@
 ---
+import AnimateEntrance from "./animations/AnimateEntrance";
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="sticky top-0 left-0 w-full z-40 border-b border-none">
-  <div class="w-full" x-data="{ mobileMenuOpen: false }">
-    <!-- Barra principal -->
-    <div
-      class="backdrop-blur-md bg-white/70 border-b border-white/30
-             flex items-center justify-between
-             py-2 px-6 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]"
-    >
-      <!-- Logo a la izquierda -->
-      <div class="flex items-center">
-        <a href="/" title="Home" class="animate-slideRight delay-100">
-          <img class="h-12 lg:h-14" src="./images/logosinfondo.png" alt="Logo" />
-        </a>
+  <AnimateEntrance client:load origin="topRight" useScrollTrigger={false} triggerClass="footer-col" stagger={0.2}>
+    <div class="w-full" x-data="{ mobileMenuOpen: false }">
+      <!-- Barra principal -->
+      <div
+        class="backdrop-blur-md bg-white/70 border-b border-white/30
+               flex items-center justify-between
+               py-2 px-6 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]"
+      >
+        <!-- Logo a la izquierda -->
+        <div class="flex items-center footer-col">
+          <a href="/" title="Home">
+            <img class="h-12 lg:h-14" src="./images/logosinfondo.png" alt="Logo" />
+          </a>
+        </div>
+
+        <!-- Navegación centrada -->
+        <nav class="hidden lg:flex items-center">
+          <ul class="flex items-center gap-x-8">
+            <li class="footer-col">
+              <a
+                href="/ejemplo/"
+                class={`font-semibold transition px-3 py-2 ${
+                  currentPath === "/ejemplo/"
+                    ? "text-[#3aabe4]"
+                    : "text-neutral-700 hover:text-neutral-600"
+                }`}
+              >
+                Inicio
+              </a>
+            </li>
+            <li class="footer-col">
+              <a
+                href="/ejemplo/nosotros"
+                class={`font-semibold transition px-3 py-2 ${
+                  currentPath === "/ejemplo/nosotros"
+                    ? "text-[#3aabe4]"
+                    : "text-neutral-700 hover:text-neutral-600"
+                }`}
+              >
+                Nosotros
+              </a>
+            </li>
+            <li class="footer-col">
+              <a
+                href="/ejemplo/servicios"
+                class={`font-semibold transition px-3 py-2 ${
+                  currentPath === "/ejemplo/servicios"
+                    ? "text-[#3aabe4]"
+                    : "text-neutral-700 hover:text-neutral-600"
+                }`}
+              >
+                Nuestros Servicios
+              </a>
+            </li>
+            <li class="footer-col">
+              <a
+                href="/ejemplo/contacto"
+                class={`font-semibold transition px-3 py-2 ${
+                  currentPath === "/ejemplo/contacto"
+                    ? "text-[#3aabe4]"
+                    : "text-neutral-700 hover:text-neutral-600"
+                }`}
+              >
+                Contáctanos
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Elementos a la derecha (banderas) -->
+        <div class="flex items-center gap-x-3">
+          <!-- Banderas -->
+          <a href="/login.astro" title="Log in" class="footer-col">
+            <img
+              src="./images/bandera_us.png"
+              alt="Bandera USA"
+              class="rounded-full object-cover hover:scale-105 transition-transform w-8 h-8"
+            />
+          </a>
+          <a href="/ejemplo/" title="Try free" class="footer-col">
+            <img
+              src="./images/mexico.png"
+              alt="Bandera México"
+              class="rounded-full object-cover hover:scale-105 transition-transform w-8 h-8"
+            />
+          </a>
+
+          <!-- Botón menú móvil -->
+          <button
+            type="button"
+            aria-label="Open menu"
+            class="lg:hidden ml-2"
+            @click="mobileMenuOpen = !mobileMenuOpen"
+          >
+            <svg
+              class="h-6 w-6 text-slate-500"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <!-- Navegación centrada -->
-      <nav class="hidden lg:flex items-center">
-        <ul class="flex items-center gap-x-8">
-          <li class="animate-slideRight delay-200">
+      <!-- Menú móvil -->
+      <div
+        x-show="mobileMenuOpen"
+        x-transition
+        class="lg:hidden mt-2 backdrop-blur-md bg-white/70 border border-white/30 shadow-md"
+      >
+        <ul class="flex flex-col px-4 py-2 gap-2">
+          <li>
             <a
               href="/ejemplo/"
-              class={`font-semibold transition px-3 py-2 ${
+              class={`block py-2 px-3 rounded transition ${
                 currentPath === "/ejemplo/"
-                  ? "text-[#3aabe4]"
-                  : "text-neutral-700 hover:text-neutral-600"
+                  ? "bg-[#3aabe4] text-white"
+                  : "text-neutral-700 hover:bg-[#e0f0ff]"
               }`}
             >
               Inicio
             </a>
           </li>
-          <li class="animate-slideRight delay-300">
+          <li>
             <a
               href="/ejemplo/nosotros"
-              class={`font-semibold transition px-3 py-2 ${
+              class={`block py-2 px-3 rounded transition ${
                 currentPath === "/ejemplo/nosotros"
-                  ? "text-[#3aabe4]"
-                  : "text-neutral-700 hover:text-neutral-600"
+                  ? "bg-[#3aabe4] text-white"
+                  : "text-neutral-700 hover:bg-[#e0f0ff]"
               }`}
             >
               Nosotros
             </a>
           </li>
-          <li class="animate-slideRight delay-400">
+          <li>
             <a
               href="/ejemplo/servicios"
-              class={`font-semibold transition px-3 py-2 ${
+              class={`block py-2 px-3 rounded transition ${
                 currentPath === "/ejemplo/servicios"
-                  ? "text-[#3aabe4]"
-                  : "text-neutral-700 hover:text-neutral-600"
+                  ? "bg-[#3aabe4] text-white"
+                  : "text-neutral-700 hover:bg-[#e0f0ff]"
               }`}
             >
               Nuestros Servicios
             </a>
           </li>
-          <li class="animate-slideRight delay-500">
+          <li>
             <a
               href="/ejemplo/contacto"
-              class={`font-semibold transition px-3 py-2 ${
+              class={`block py-2 px-3 rounded transition ${
                 currentPath === "/ejemplo/contacto"
-                  ? "text-[#3aabe4]"
-                  : "text-neutral-700 hover:text-neutral-600"
+                  ? "bg-[#3aabe4] text-white"
+                  : "text-neutral-700 hover:bg-[#e0f0ff]"
               }`}
             >
               Contáctanos
             </a>
           </li>
         </ul>
-      </nav>
-
-      <!-- Elementos a la derecha (banderas) -->
-      <div class="flex items-center gap-x-3">
-        <!-- Banderas -->
-        <a href="/login.astro" title="Log in" class="animate-fall delay-600">
-          <img
-            src="./images/bandera_us.png"
-            alt="Bandera USA"
-            class="rounded-full object-cover hover:scale-105 transition-transform w-8 h-8"
-          />
-        </a>
-        <a href="/ejemplo/" title="Try free" class="animate-fall delay-700">
-          <img
-            src="./images/mexico.png"
-            alt="Bandera México"
-            class="rounded-full object-cover hover:scale-105 transition-transform w-8 h-8"
-          />
-        </a>
-
-        <!-- Botón menú móvil -->
-        <button
-          type="button"
-          aria-label="Open menu"
-          class="lg:hidden ml-2"
-          @click="mobileMenuOpen = !mobileMenuOpen"
-        >
-          <svg
-            class="h-6 w-6 text-slate-500"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </button>
       </div>
     </div>
-
-    <!-- Menú móvil -->
-    <div
-      x-show="mobileMenuOpen"
-      x-transition
-      class="lg:hidden mt-2 backdrop-blur-md bg-white/70 border border-white/30 shadow-md"
-    >
-      <ul class="flex flex-col px-4 py-2 gap-2">
-        <li>
-          <a
-            href="/ejemplo/"
-            class={`block py-2 px-3 rounded transition ${
-              currentPath === "/ejemplo/"
-                ? "bg-[#3aabe4] text-white"
-                : "text-neutral-700 hover:bg-[#e0f0ff]"
-            }`}
-          >
-            Inicio
-          </a>
-        </li>
-        <li>
-          <a
-            href="/ejemplo/nosotros"
-            class={`block py-2 px-3 rounded transition ${
-              currentPath === "/ejemplo/nosotros"
-                ? "bg-[#3aabe4] text-white"
-                : "text-neutral-700 hover:bg-[#e0f0ff]"
-            }`}
-          >
-            Nosotros
-          </a>
-        </li>
-        <li>
-          <a
-            href="/ejemplo/servicios"
-            class={`block py-2 px-3 rounded transition ${
-              currentPath === "/ejemplo/servicios"
-                ? "bg-[#3aabe4] text-white"
-                : "text-neutral-700 hover:bg-[#e0f0ff]"
-            }`}
-          >
-            Nuestros Servicios
-          </a>
-        </li>
-        <li>
-          <a
-            href="/ejemplo/contacto"
-            class={`block py-2 px-3 rounded transition ${
-              currentPath === "/ejemplo/contacto"
-                ? "bg-[#3aabe4] text-white"
-                : "text-neutral-700 hover:bg-[#e0f0ff]"
-            }`}
-          >
-            Contáctanos
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+  </AnimateEntrance>
 </header>

@@ -1,45 +1,35 @@
 ---
-import SlideDownOnScroll from "./animations/SlideDownOnScroll.tsx";
+import AnimateEntrance from './animations/AnimateEntrance';
 
 interface Props {
   backgroundImage?: string;
   title?: string;
   height?: string;
-  titleColor?: string;
-  titleSize?: string;
-  titleWeight?: string;
-  titleAlign?: string;
-  maxWidth?: string;
+  titleStyle?: string;
+  origin?: "topRight" | "bottomLeft" | "topLeft" | "bottomRight" | "top" | "bottom" | "Left" | "Right"; // nueva prop
 }
 
 const {
   backgroundImage = '',
   title = '',
   height = '',
-  titleColor = '',
-  titleSize = '',
-  titleWeight = '',
-  titleAlign = '',
-  maxWidth = '',
+  titleStyle = 'titulo-principal',
+  origin = "topRight", // valor por defecto
 } = Astro.props;
 ---
-<SlideDownOnScroll client:load>
+<AnimateEntrance client:load origin={origin} useScrollTrigger={true} triggerClass="title-col" stagger={0.2}>
   <section
-    class={`relative bg-cover bg-center overflow-hidden ${height}`}
+    class={`relative bg-cover bg-center overflow-hidden title-col ${height}`}
     style={`background-image: url('${backgroundImage}');`}
   >
     <!-- Capa oscura opcional -->
     <div class="absolute inset-0 bg-black/30"></div>
 
     <!-- Contenido -->
-    <div class={`relative z-10 flex flex-col justify-center h-full px-4 ${titleAlign}`}>
-      <h1
-        class={`${titleColor} ${titleSize} ${titleWeight} leading-tight ${maxWidth} mx-auto`}
-      >
+    <div class="relative z-10 flex flex-col justify-center h-full px-4">
+      <h1 class={`${titleStyle} mx-auto`}>
         {title}
       </h1>
     </div>
   </section>
-</SlideDownOnScroll>
-
-
+</AnimateEntrance>

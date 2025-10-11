@@ -57,3 +57,81 @@ body {
   /* Gap vertical menú móvil */
   --mobile-gap-y: 0.5rem; /* space-y-2 */
 }
+/* index-hero sección */
+.titulo-principal {
+  font-size: clamp(3rem, 6vw, 7rem);
+  color: white;
+  line-height: 1.1;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  animation: slideInLeft 1s ease-out forwards;
+  font-weight: 600;
+}
+
+/* index-logo sección */
+.logo-indexarriba {
+  @apply text-white text-4xl sm:text-5xl md:text-6xl font-extrabold text-center max-w-3xl;
+}
+
+.logo-indexabajo {
+  @apply text-white text-2xl sm:text-2xl md:text-3xl font-extrabold text-center max-w-3xl;
+}
+
+.logo-nosotros{
+  @apply text-white text-4xl sm:text-5xl md:text-6xl font-bold text-center max-w-3xl
+}
+
+/* Pricing-index sección */
+.titulo-pricing {
+  @apply text-white text-3xl md:text-4xl font-bold text-center mb-12;
+}
+
+.titulo-card-pricing {
+  @apply text-white text-xl font-semibold text-center mb-4;
+}
+
+.boton-card-pricing {
+  @apply mt-4 px-5 py-2 rounded-lg bg-white/60 hover:bg-white/80 text-slate-900 text-sm font-medium shadow-md flex items-center gap-2 transition;
+}
+
+
+/* services-logo sección */
+
+.logo-card1{
+  @apply text-white text-5xl md:text-7xl lg:text-8xl font-extrabold text-center max-w-5xl
+}
+.logo-card2{
+  @apply text-white text-2xl sm:text-2xl md:text-3xl font-sans  text-center max-w-3xl
+}
+
+/* card2-index sección */
+.list-1{
+  @apply text-white text-lg md:text-3xl
+}
+
+/* card2-nosotros sección */
+.list-2{
+  @apply text-white text-2xl
+}
+
+.titlelist-1{
+  @apply text-white text-5xl
+}
+
+/* card-nosotros sección */
+.text-1{
+  @apply text-white text-xl md:text-2xl lg:text-3xl font-bold leading-tight
+}
+
+/* card3-nosotros sección */
+.title1-card3-nosotros{
+  @apply text-white text-lg md:text-5xl 
+}
+
+.text1-card3-nosotros{
+  @apply text-white text-lg md:text-3xl max-w-xl 
+}
+
+/* card3-servicios sección */
+.title1-card3-servicios{
+  @apply text-white text-lg md:text-5xl
+}

@@ -1,10 +1,10 @@
 ---
-import AnimateFooter from "./animations/AnimateFooter.tsx";
+import AnimateEntrance from "./animations/AnimateEntrance.tsx";
 const year = new Date().getFullYear();
 ---
 
 <footer class="bg-slate-900 text-gray-300 py-12">
-<AnimateFooter client:load>
+<AnimateEntrance client:load origin="bottomRight" useScrollTrigger={true} triggerClass="footer-col" stagger={0.2}>
   <div class="max-w-7xl mx-auto px-6 grid gap-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 	
 	
@@ -70,7 +70,7 @@ const year = new Date().getFullYear();
       </a>
     </div>
   </div>
-</AnimateFooter>
+</AnimateEntrance>
   <!-- Línea inferior -->
   <div class="border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between px-6 text-sm text-gray-400">
     <p>© Transportes Garza Leal {year}. Todos los derechos reservados.</p>

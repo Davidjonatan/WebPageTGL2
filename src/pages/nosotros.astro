@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LogoCloud from '../components/LogoCloud.astro';
 import Card3 from '../components/Card3.astro';
-import Testimonials from '../components/Testimonials.tsx';
 import Card from '../components/Card.astro'
 import Card2 from '../components/Card2.astro'
 import ImageCarousel from '../components/Carrouselimages';
@@ -18,67 +17,70 @@ const features = [
   { text: 'Certificaciones ISO 9001:2015 C-TPAT, HACCP.' },
 ]
 const items = [
-  { text: '32 años de experiencia.' },
-  { text: 'Unidades de modelo reciente.' },
-  { text: 'Responsables con el medio ambiente.' },
-  { text: 'Unidades con rastreo satelital.' },
-  { text: 'Unidades limpias y sanitizadas.' },
+  { text: 'Honestidad: Actuar con propiedad y apego a las normas de la empresa.' },
+  { text: 'Responsabilidad: Cumplir con los compromisos y deberes tanto en el trabajo como en la familia, asumiendo las consecuencias de los actos.' },
+  { text: 'Respeto: Reconocer la dignidad y los derechos propios y de las demás personas.' },
+  { text: 'Servicio: Brindar atención oportuna con eficiencia y amabilidad a los clientes internos y externos.' },
+  { text: 'Justicia: Dar a cada quien lo que corresponde.' },
 ];
 ---
 
 <BaseLayout>
     <Card 
+    client:load
     bgSvg = "./images/Card.svg",
   image = "./images/eteserch.png",
-  title = "Con innovación constante, un equipo altamente capacitado y tecnología avanzada, garantizamos calidad y confianza en cada servicio que ofrecemos.",
-  textColor = "text-white",
-  imagePosition = "right",
-  textSize = "text-1xl md:text-2xl lg:text-3xl", 
+  text = "Transportes Garza Leal tiene como misión ofrecer el mejor servicio de transporte, cumpliendo con los estándares de nuestros clientes y comprometidos con la mejora continua de nuestra calidad.",
+  textStyle='text-1'
+  imageOrigin = "Right",
+  textOrigin = "Left",
 />
 	<LogoCloud 
     backgroundImage = './images/wave.svg',
-  title = 'Déjanos moverte con honestidad y grandeza.',
-  height = 'h-[80vh]',
-  titleColor = 'text-white',
-  titleSize = 'text-4xl sm:text-5xl md:text-6xl',
-  titleWeight = 'font-extrabold',
-  titleAlign = 'text-center',
-  maxWidth = 'max-w-3xl',/>
+  title = 'POLITICA DE CALIDAD',
+  height = 'h-[30vh]',
+  titleStyle = 'logo-nosotros',/>
   <Card3 
-     bgImage="./images/Card.svg"
-    image="./images/seca.jpg"
-    imagePosition="left"
-    title="Misión"
-    text="Somos una empresa con años de experiencia en el sector, comprometida con la calidad y la innovación."
-    textSize="text-lg md:text-3xl"
-    textColor="text-white"
-    titleColor='text-white',
-    titlesize='text-lg md:text-5xl',
+    client:load
+    bgImage="./images/degradado2.svg",
+    image="./images/seca.jpg",
+    imagePosition="left",
+    title="MISIÓN",
+    text="Brindar a nuestros Clientes un excelente Servicio, confiable y puntual, con Unidades limpias y bien presentadas",
+    titleStyle = "title1-card3-nosotros",
+    textStyle = "text1-card3-nosotros",
+    textAlign = "left",
+    textOrigin = "top",
+    imageOrigin = "bottom",
+    titleOrigin = "bottomRight",
   />
   <Card3 
-     bgImage="./images/Card.svg",
+    client:load
+     bgImage="./images/degradado1.svg",
     image="./images/valores.png",
     imagePosition="right",
-    title="Visión",
-    titleColor='text-white',
-    titlesize='text-lg md:text-5xl',
-    text="Somos una empresa con años de experiencia en el sector, comprometida con la calidad y la innovación.",
-    textSize="text-lg md:text-3xl",
-    textColor="text-white",
+    title="VISIÓN",
+    text="Ser una de las Principales Empresas de Autotransporte Federal de carga en Nuestro País, y que esto refleje la Confiabilidad en nuestros Clientes, Equipos perfectamente presentados.",
+    titleStyle = "title1-card3-nosotros",
+    textStyle = "text1-card3-nosotros",
+    textAlign = "left",
+    textOrigin = "Right",
+    imageOrigin = "bottomLeft",
+    titleOrigin = "topRight",
   />
   <Card2
-  bgImage = "./images/Card.svg",
+  bgImage = "./images/degradado2.svg",
   items = {items},
   image= "./images/thermo.jpg",
   imagePosition = "left",
-  listColor = "text-white",
-  listSize='text-2xl',
-  titleColor='text-white',
-  titleSize='text-5xl',
-  title='Valores',  />
+  listStyle='list-2'
+  titleStyle='titlelist-1'
+  title='VALORES',
+  animateImage = {false},
+  animateList = {true},  />
   <ImageCarousel client:load
       title="Historia"
-      description="Transportes Garza Leal es fundada el 23 de Noviembre 1989,incursion en el negocio del Autotransporte Federal con base en la ciudad de Lerdo, Durango que forma parte de la Comarca Lagunera."
+      description="Transportes Garza Leal es una empresa 100% mexicana, que finca sus orígenes hace 36 años, con la visión y el empuje de los hermanos Garza Leal, quienes decidieron incursionar en el negocio del autotransporte en 1989, para cubrir las necesidades del Transporte de alimentos en Nuestra región."
       slides={[
         { src: "./images/past1.jpg", alt: "img1" },
         { src: "./images/past2.jpg", alt: "img2" },
@@ -86,12 +88,4 @@ const items = [
       ]}
       interval={4000} 
   />
-	<Testimonials client:load
-  testimonials={[
-    { quote: "Todas nuestras unidades cuentan con sistema de rastreo satelital el cual es monitoreado las 24 hrs para asegurar que el viaje llegue a su destino sin ningún contratiempo"},
-    { quote: "Equipos de telecomunicaciones con cobertura en todo el territorio nacional y extranjero"},
-    { quote: "Al ser grado alimenticio todas nuestras unidades pasan por un proceso de lavado y sanitizado antes de salir a cada viaje asegurando la calidad a nuestros clientes"}
-  ]}/>
-
-  
 </BaseLayout>
