@@ -37,7 +37,7 @@ export default function HowItWorksGallery({ title, tabs }: Props) {
   }, []);
 
   return (
-    <section class="bg-[#1E2A47] py-12 lg:py-16 text-white">
+    <section class="bg-gradient-to-b from-[#121843] to-[#121833] py-12 lg:py-16 text-white">
       <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col gap-y-6">
    <AnimateEntrance origin={"Left"} useScrollTrigger={false} triggerClass="text-col" stagger={0.2}>
           <div class="flex flex-col items-center text-center text-col">

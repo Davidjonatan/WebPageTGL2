@@ -37,7 +37,7 @@ export default function ImageCarousel({
     setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
 
   return (
-    <section class="bg-gradient-to-b from-[#1E2A47] to-slate-900 py-12 lg:py-20">
+    <section class="bg-gradient-to-b from-[#121833] to-[#121843] py-12 lg:py-20">
       <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 items-start">
         {/* Texto (izquierda, arriba) */}
         <div class="flex flex-col justify-start self-start text-center md:text-left space-y-4 mt-4">

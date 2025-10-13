@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
 
 /* Custom base styles */
 html {
@@ -59,12 +60,23 @@ body {
 }
 /* index-hero sección */
 .titulo-principal {
-  font-size: clamp(3rem, 6vw, 7rem);
-  color: white;
+  font-size: clamp(1rem, 5vw, 7rem);
+  color: rgb(255, 255, 255);
   line-height: 1.1;
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
   animation: slideInLeft 1s ease-out forwards;
-  font-weight: 600;
+  font-weight: 400; /* primer span semi-bold */
+}
+
+/* Primer span: semi-bold (ya lo cubre el font-weight del padre, opcional) */
+.titulo-principal span:first-child {
+  font-weight: 900;
+  font-size: 1.1em;
+}
+
+/* Segundo span: más grueso */
+.titulo-principal span:last-child {
+  font-weight: 400; /* extra-bold */
 }
 
 /* index-logo sección */

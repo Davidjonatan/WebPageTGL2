@@ -23,9 +23,12 @@ const {
 
 <section  
   class="relative bg-center bg-cover bg-no-repeat text-white min-h-screen flex items-center"
-  style="background-image: url('./images/thermo.jpg');"
+  style="background-image: url('./images/stats.jpeg');"
 >
-  <div class="max-w-7xl mx-auto px-4 xl:px-0 w-full">
+  <!-- Overlay oscuro -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 xl:px-0 w-full">
     <!-- Header -->
     <div class="flex flex-col items-center text-center">
       <AnimateEntrance client:load origin={"bottom"} useScrollTrigger={true} triggerClass="text-col" stagger={0.2}>
@@ -41,7 +44,6 @@ const {
         </div>
       </AnimateEntrance>
     </div>
-
     <!-- Stats con animación individual -->
     <div
       class="mt-12 grid items-center gap-y-8 text-center md:px-4 lg:grid-cols-4 lg:gap-x-12 lg:gap-y-0 lg:px-8"

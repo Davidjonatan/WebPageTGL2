@@ -15,7 +15,7 @@ const services: Service[] = [
 ];
 ---
 
-<section class="bg-gradient-to-t from-[#1E2A47] to-slate-900 py-16 lg:py-20" x-data="{ modalOpen: false, modalImage: '' }">
+<section class="bg-[#121843] py-16 lg:py-20" x-data="{ modalOpen: false, modalImage: '' }">
   <div class="max-w-7xl mx-auto px-4">
     <!-- Título -->
     <AnimateEntrance client:load origin={"Left"} useScrollTrigger={true} triggerClass="title-col" stagger={0.2}>
@@ -39,7 +39,7 @@ const services: Service[] = [
           @click={`modalImage = '${service.image}'; modalOpen = true`}
         >
             <!-- 🔥 Glow animado detrás -->
-          <AnimatedGlowBorder client:load color="rgba(79,70,229,1)" thickness={4} />
+          <AnimatedGlowBorder client:load color="rgba(251,191,10  ,1)" thickness={4} />
 
           <img 
             src={service.image} 

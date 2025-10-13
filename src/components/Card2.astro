@@ -5,32 +5,35 @@ import AnimateFromLeft from './animations/AnimateFromLeft';
 
 interface Props {
   bgImage?: string;
+  bgColor?:string;
   items: { text: string }[];
   image: string;
   imagePosition?: "left" | "right";
   titleStyle?: string;
   listStyle?: string;
   title?: string;
-  bgSvg?: string;
   animateImage?: boolean;
   animateList?: boolean;
 }
 
 const {
-  bgImage = "/images/Card.svg",
+  bgImage = "",
+  bgColor = "",
   items = [],
   image,
   imagePosition = "right",
   listStyle = "",
   title = "",
   titleStyle = "",
-  animateImage = 'false',
-  animateList = 'false',
+  animateImage = false,
+  animateList = false,
 } = Astro.props;
 ---
 <section
   class="relative w-full flex flex-col md:flex-row items-stretch min-h-[400px]"
-  style={`background-image: url(${bgImage}); background-size: cover; background-position: center;`}
+  style={`background: ${
+    bgColor ? bgColor : `url(${bgImage})`
+  }; background-size: cover; background-position: center;`}
 >
   <!-- En móvil: texto siempre arriba, imagen siempre abajo -->
   <!-- En desktop: orden según imagePosition -->

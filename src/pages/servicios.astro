@@ -46,17 +46,18 @@ const tabs = {
 ---
 
 <BaseLayout>
-	<LogoCloud 
-    backgroundImage = './images/wave.svg',
-  title = 'SERVICIOS',
-  height = 'h-[55vh]',
-  titleStyle = 'logo-card1',/>
+	
 	  <HowItWorks client:load 
-        title="GALERIA DE SERVICIOS" 
+        title="GALERIA" 
         tabs={tabs} 
       />
+      <LogoCloud 
+    backgroundImage = './images/wave.svg',
+  title = 'SERVICIOS',
+  height = 'h-[50vh]',
+  titleStyle = 'logo-card1',/>
     <Card3 client:load
-      bgImage="./images/gradient.svg"
+      bgColor="#121833",
     image="./images/cajaseca.png"
     imagePosition="left"
     title="CAJA SECA"
@@ -66,13 +67,14 @@ const tabs = {
     titleOrigin = "bottomRight",
     />
     <LogoCloud 
-     backgroundImage = './images/pixel.svg',
+     backgroundImage = './images/prueba.svg',
   title = 'Ofrecemos un servicio de transporte en caja seca con altos estándares de calidad y eficiencia, garantizando entregas seguras y puntuales de mercancías, materiales y un sinfín de productos en seco, cuidando cada detalle para asegurar la satisfacción total de nuestros clientes.',
   height = 'h-[35vh]',
   titleStyle = 'logo-card2',
     />
-        <Card3 client:load
-      bgImage="./images/gradient.svg"
+        <Card3 
+    client:load
+    bgColor="#121833",
     image="./images/tanque1.png"
     imagePosition="right"
     title="TANQUE DE ACERO INOXIDABLE"
@@ -82,13 +84,13 @@ const tabs = {
     titleOrigin = "bottomRight",
     />
     <LogoCloud 
-     backgroundImage = './images/pixel2.svg',
+     backgroundImage = './images/prueba.svg',
   title = 'Transportamos diferentes productos en autotanques de acero inoxidable de grado alimenticio como leche, crema de leche, sueros lácteos, fructuosa, glucosa, aceites vegetales refinados, jugos, concentrados de naranja, manzana, uva, piña etc.',
   height = 'h-[45vh]',
   titleStyle = 'logo-card2',
     />
         <Card3 client:load
-        bgImage="./images/gradient.svg"
+        bgColor="#121833",
     image="./images/cajathermo.png"
     imagePosition="left"
     title="CAJA THERMO"
@@ -98,7 +100,7 @@ const tabs = {
     titleOrigin = "bottomRight",
     />
     <LogoCloud 
-     backgroundImage = './images/pixel.svg',
+     backgroundImage = './images/prueba.svg',
   title = 'En nuestras cajas refrigeradas transportamos una amplia variedad de productos perecederos como frutas, verduras, carnes de res, pescados, pollo y mucho más, garantizando en todo momento la cadena de frío y el máximo nivel de calidad. Contamos con unidades equipadas con tecnología de refrigeración avanzada y personal altamente capacitado para el manejo seguro de cada carga.',
   height = 'h-[45vh]',
   titleStyle = 'logo-card2',

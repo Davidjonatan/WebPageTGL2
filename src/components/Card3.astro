@@ -3,6 +3,7 @@ import AnimateEntrance from './animations/AnimateEntrance';
 
 interface Props {
   bgImage?: string;
+  bgColor?: string;
   image: string;
   imagePosition?: "left" | "right";
   title?: string;
@@ -17,6 +18,7 @@ interface Props {
 
 const {
   bgImage = "/images/Card.svg",
+  bgColor= "",
   image,
   imagePosition = "right",
   title = "", 
@@ -39,31 +41,45 @@ const textAlignClass = textAlign === "center"
 
 <section
   class="relative w-full flex flex-col md:flex-row items-stretch min-h-[300px]"
-  style={`background-image: url(${bgImage}); background-size: cover; background-position: center;`}
+   style={`background: ${
+    bgColor ? bgColor : `url(${bgImage})`
+  }; background-size: cover; background-position: center;`}
 >
+  <!-- Contenedor de imagen cuando está a la izquierda -->
+  {imagePosition === "left" && (
+    <div class="w-full md:w-1/2 flex justify-center px-4 pb-4 md:px-0 md:pb-0">
+      <AnimateEntrance client:load origin={imageOrigin} useScrollTrigger={true} triggerClass="image-col" stagger={0.2}>
+        <img
+          src={image}
+          alt="Imagen lateral"
+          class="w-full max-w-md object-cover md:w-full md:h-full md:max-w-none image-col"
+        />
+      </AnimateEntrance>
+    </div>
+  )}
+
   <!-- Contenedor de texto -->
   <div
-    class={`flex flex-col justify-center z-10 w-full md:w-1/2 p-8 md:p-12 order-1 md:order-none ${textAlignClass}`}
+    class={`flex flex-col justify-center z-10 w-full md:w-1/2 p-8 md:p-12 space-y-4 order-1 md:order-none ${textAlignClass}`}
   >
    <AnimateEntrance client:load origin={titleOrigin} useScrollTrigger={true} triggerClass="title-col" stagger={0.2}>
     {title && <h2 class={`${titleStyle} title-col`}>{title}</h2>}
   </AnimateEntrance>
    <AnimateEntrance client:load origin={textOrigin} useScrollTrigger={true} triggerClass="text-col" stagger={0.2}>
-    {text && <p class={`${textStyle} text-col mt-8`}>{text}</p>}
+    {text && <p class={`${textStyle} text-col  mt-8`}>{text}</p>}
   </AnimateEntrance>
   </div>
 
-  <!-- Contenedor de imagen -->
-  <div
-    class={`w-full md:w-1/2 flex justify-center px-4 pb-4 md:px-0 md:pb-0 mt-auto md:mt-0 order-2 
-      ${imagePosition === "right" ? "md:order-last" : "md:order-first"}`}
-  >
-  <AnimateEntrance client:load origin={imageOrigin} useScrollTrigger={true} triggerClass="image-col" stagger={0.2}>
-    <img
-      src={image}
-      alt="Imagen lateral"
-      class="w-full max-w-md object-cover md:w-full md:h-full md:max-w-none image-col"
-    />
-  </AnimateEntrance>
-  </div>
+  <!-- Contenedor de imagen cuando está a la derecha -->
+  {imagePosition === "right" && (
+    <div class="w-full md:w-1/2 flex justify-center px-4 pb-4 md:px-0 md:pb-0">
+      <AnimateEntrance client:load origin={imageOrigin} useScrollTrigger={true} triggerClass="image-col" stagger={0.2}>
+        <img
+          src={image}
+          alt="Imagen lateral"
+          class="w-full max-w-md object-cover md:w-full md:h-full md:max-w-none image-col"
+        />
+      </AnimateEntrance>
+    </div>
+  )}
 </section>

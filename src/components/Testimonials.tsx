@@ -33,7 +33,7 @@ export default function TestimonialsCarousel({
     setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
 
   return (
-    <section class="bg-gradient-to-b from-[#1E2A47] to-slate-900 py-8 lg:py-12">
+    <section class="bg-gradient-to-b from-[#121843] to-[#121833] py-8 lg:py-12">
       <AnimateOnScrollTop>
         <div class="max-w-3xl mx-auto px-4 xl:px-0 relative">
           <figure

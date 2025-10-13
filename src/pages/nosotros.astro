@@ -28,7 +28,7 @@ const items = [
 <BaseLayout>
     <Card 
     client:load
-    bgSvg = "./images/Card.svg",
+  bgColor="#121833"
   image = "./images/eteserch.png",
   text = "Transportes Garza Leal tiene como misión ofrecer el mejor servicio de transporte, cumpliendo con los estándares de nuestros clientes y comprometidos con la mejora continua de nuestra calidad.",
   textStyle='text-1'
@@ -36,13 +36,14 @@ const items = [
   textOrigin = "Left",
 />
 	<LogoCloud 
-    backgroundImage = './images/wave.svg',
+    backgroundImage = './images/logo1.svg',
   title = 'POLITICA DE CALIDAD',
   height = 'h-[30vh]',
-  titleStyle = 'logo-nosotros',/>
+  titleStyle = 'logo-nosotros'
+  origin ="bottom",/>
   <Card3 
     client:load
-    bgImage="./images/degradado2.svg",
+    bgImage="./images/degradadoright.svg",
     image="./images/seca.jpg",
     imagePosition="left",
     title="MISIÓN",
@@ -56,7 +57,7 @@ const items = [
   />
   <Card3 
     client:load
-     bgImage="./images/degradado1.svg",
+    bgImage="./images/degradadoleft.svg",
     image="./images/valores.png",
     imagePosition="right",
     title="VISIÓN",
@@ -69,7 +70,7 @@ const items = [
     titleOrigin = "topRight",
   />
   <Card2
-  bgImage = "./images/degradado2.svg",
+  bgImage = "./images/degradadoright.svg",
   items = {items},
   image= "./images/thermo.jpg",
   imagePosition = "left",
@@ -85,6 +86,7 @@ const items = [
         { src: "./images/past1.jpg", alt: "img1" },
         { src: "./images/past2.jpg", alt: "img2" },
         { src: "./images/past3.jpg", alt: "img3" },
+        {src: "./images/past4.jpg", alt: "img4"},
       ]}
       interval={4000} 
   />
