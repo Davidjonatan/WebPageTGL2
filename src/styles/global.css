@@ -97,10 +97,10 @@ body {
 /* services-logo sección */
 
 .logo-card1{
-  @apply text-white text-5xl md:text-7xl lg:text-8xl font-extrabold text-center max-w-5xl
+  @apply text-white text-5xl md:text-7xl lg:text-8xl font-extrabold text-center max-w-5xl md:text-justify text-balance 
 }
 .logo-card2{
-  @apply text-white text-2xl sm:text-2xl md:text-3xl font-sans  text-center max-w-3xl
+  @apply text-white text-2xl sm:text-2xl md:text-2xl font-sans  text-center max-w-3xl md:text-justify text-balance 
 }
 
 /* card2-index sección */
@@ -119,16 +119,16 @@ body {
 
 /* card-nosotros sección */
 .text-1{
-  @apply text-white text-xl md:text-2xl lg:text-3xl font-bold leading-tight
+  @apply text-white text-xl md:text-2xl lg:text-3xl font-bold leading-tight md:text-justify text-balance
 }
 
 /* card3-nosotros sección */
 .title1-card3-nosotros{
-  @apply text-white text-lg md:text-5xl 
+  @apply text-white text-lg md:text-5xl text-center 
 }
 
 .text1-card3-nosotros{
-  @apply text-white text-lg md:text-3xl max-w-xl 
+  @apply text-white text-lg md:text-3xl max-w-xl md:text-justify text-balance
 }
 
 /* card3-servicios sección */
