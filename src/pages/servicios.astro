@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LogoCloud from '../components/LogoCloud.astro';
 import HowItWorks from '../components/HowItWorks';
-import Card3 from '../components/Card3.astro';
+import Card4 from '../components/Card4.astro';
 
 
 const features = [
@@ -49,20 +49,20 @@ const tabs = {
 	
 	  <HowItWorks client:load 
         title="GALERIA" 
-        tabs={tabs} 
+        tabs={tabs}
+        textStyle='title1-card3-servicios'
       />
       <LogoCloud 
     backgroundImage = './images/wave.svg',
   title = 'SERVICIOS',
   height = 'h-[50vh]',
   titleStyle = 'logo-card1',/>
-    <Card3 client:load
-      bgColor="#121833",
+    <Card4 client:load
+    bgImage=" ",
     image="./images/cajaseca.png"
     imagePosition="left"
     title="CAJA SECA"
     titleStyle = "title1-card3-servicios",
-    textAlign = "left",
     imageOrigin = "bottom",
     titleOrigin = "bottomRight",
     />
@@ -70,39 +70,37 @@ const tabs = {
      backgroundImage = './images/prueba.svg',
   title = 'Ofrecemos un servicio de transporte en caja seca con altos estándares de calidad y eficiencia, garantizando entregas seguras y puntuales de mercancías, materiales y un sinfín de productos en seco, cuidando cada detalle para asegurar la satisfacción total de nuestros clientes.',
   height = 'h-[35vh]',
-  titleStyle = 'logo-card2',
+  titleStyle = 'logo-card3',
     />
-        <Card3 
+        <Card4 
     client:load
-    bgColor="#121833",
+    bgImage="",
     image="./images/tanque1.png"
     imagePosition="right"
     title="TANQUE DE ACERO INOXIDABLE"
     titleStyle = "title1-card3-servicios",
-    textAlign = "center",
     imageOrigin = "bottom",
     titleOrigin = "bottomRight",
     />
     <LogoCloud 
      backgroundImage = './images/prueba.svg',
-  title = 'Transportamos diferentes productos en autotanques de acero inoxidable de grado alimenticio como leche, crema de leche, sueros lácteos, fructuosa, glucosa, aceites vegetales refinados, jugos, concentrados de naranja, manzana, uva, piña etc.',
+  title = 'Transportamos diferentes productos en autotanques de acero inoxidable de grado alimenticio como leche, sueros lácteos, fructuosa, aceites vegetales refinados, concentrados.',
   height = 'h-[45vh]',
-  titleStyle = 'logo-card2',
+  titleStyle = 'logo-card3',
     />
-        <Card3 client:load
-        bgColor="#121833",
-    image="./images/cajathermo.png"
+        <Card4 client:load
+    bgImage = "",
+    image="./images/tanques-05.jpg"
     imagePosition="left"
     title="CAJA THERMO"
     titleStyle = "title1-card3-servicios",
-    textAlign = "left",
     imageOrigin = "bottom",
-    titleOrigin = "bottomRight",
+    titleOrigin = "topRight",
     />
     <LogoCloud 
      backgroundImage = './images/prueba.svg',
   title = 'En nuestras cajas refrigeradas transportamos una amplia variedad de productos perecederos como frutas, verduras, carnes de res, pescados, pollo y mucho más, garantizando en todo momento la cadena de frío y el máximo nivel de calidad. Contamos con unidades equipadas con tecnología de refrigeración avanzada y personal altamente capacitado para el manejo seguro de cada carga.',
   height = 'h-[45vh]',
-  titleStyle = 'logo-card2',
+  titleStyle = 'logo-card3',
     />
 </BaseLayout>

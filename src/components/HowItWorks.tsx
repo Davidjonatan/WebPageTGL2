@@ -16,9 +16,10 @@ interface Tabs {
 interface Props {
   title: string;
   tabs: Tabs;
+  textStyle: string;
 }
 
-export default function HowItWorksGallery({ title, tabs }: Props) {
+export default function HowItWorksGallery({ title, tabs, textStyle }: Props) {
   const tabKeys = Object.keys(tabs);
   const [activeTab, setActiveTab] = useState(tabKeys[0]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -41,7 +42,7 @@ export default function HowItWorksGallery({ title, tabs }: Props) {
       <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col gap-y-6">
    <AnimateEntrance origin={"Left"} useScrollTrigger={false} triggerClass="text-col" stagger={0.2}>
           <div class="flex flex-col items-center text-center text-col">
-            <h2 class="text-3xl lg:text-5xl font-semibold">{title}</h2>
+            {title &&<h2 class={`${textStyle} text-col`}>{title}</h2>}
             <p class="mt-4 text-base lg:text-lg">{tabs[activeTab].subtitle}</p>
 
             {/* Botones Desktop */}

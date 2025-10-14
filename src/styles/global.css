@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&family=Oswald:wght@200;400;700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Custom base styles */
 html {
@@ -111,9 +111,26 @@ body {
 .logo-card1{
   @apply text-white text-5xl md:text-7xl lg:text-8xl font-extrabold text-center max-w-5xl md:text-justify text-balance 
 }
-.logo-card2{
-  @apply text-white text-2xl sm:text-2xl md:text-2xl font-sans  text-center max-w-3xl md:text-justify text-balance 
+.logo-card2 {
+  @apply text-white font-sans text-center text-lg sm:text-xl md:text-2xl;
+  
+  /* Evita que el texto se corte en móviles */
+  @apply break-words overflow-hidden;
+  
+  /* Ancho flexible */
+  width: 100%;
+  max-width: 100%;
+  
+  /* Espaciado interno */
+  padding: 0 1rem;
+  
+  /* Solo justificar en desktop grande */
+  @apply md:text-justify;
+  
+  /* Alternativa moderna para balance de líneas si el navegador lo soporta */
+  text-wrap: balance;
 }
+
 
 /* card2-index sección */
 .list-1{
@@ -144,6 +161,38 @@ body {
 }
 
 /* card3-servicios sección */
-.title1-card3-servicios{
-  @apply text-white text-lg md:text-5xl
+.title1-card3-servicios {
+  @apply text-white font-bold text-center md:text-center leading-tight;
+
+  height: 100%; /* o un alto definido */
+  text-align: center; 
+  /* Fuente Oswald */
+  font-family: 'Oswald', sans-serif;
+
+  /* Tamaño adaptable */
+  font-size: clamp(1.25rem, 5vw, 3rem);
+  line-height: 1.2;
+
+  /* Sombra opcional para legibilidad */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
+.logo-card3 {
+  @apply text-white font-sans text-center text-lg sm:text-xl md:text-2xl;
+  
+  /* Para evitar que el texto se corte en móviles */
+  @apply break-words overflow-hidden;
+  
+  /* Máximo ancho adaptable */
+  max-width: 50%;        /* se adapta al contenedor */
+  width: 50%;            /* ocupa todo el ancho disponible */
+  
+  /* Espaciado interno opcional */
+  padding: 0 1rem;        /* evita que el texto toque los bordes */
+  
+  /* Para alinear justificado en desktop si quieres */
+  @apply md:text-justify;
+
+  /* Opcional: balance de líneas si el navegador lo soporta */
+  text-wrap: balance;
+}
+

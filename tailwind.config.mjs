@@ -7,6 +7,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+      oswald: ['Oswald', 'sans-serif'],
       },
     },
   },
