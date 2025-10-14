@@ -3,6 +3,7 @@ import AnimateOnScrollTop from "./animations/AnimateOnScrollTop";
 
 interface Testimonial {
   quote: string;
+  
 }
 
 interface Props {
@@ -41,7 +42,7 @@ export default function TestimonialsCarousel({
          h-52 md:h-60 lg:h-64 xl:h-72 overflow-hidden"
 >
   <blockquote class="h-full overflow-y-auto px-2">
-    <p class="text-base md:text-lg xl:text-xl font-medium text-slate-100">
+    <p class="testimonials">
       “{testimonials[current].quote}”
     </p>
   </blockquote>

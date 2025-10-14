@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap&family=Oswald:wght@200..700&display=swap&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap&family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900');
 @import 'tailwindcss';
 
 /* Custom base styles */
@@ -61,6 +61,7 @@ body {
 }
 /* index-hero sección */
 .titulo-principal {
+  font-family: 'Roboto', sans-serif; /* Fuente Roboto aplicada */
   font-size: clamp(1rem, 5vw, 7rem);
   color: rgb(255, 255, 255);
   line-height: 1.1;
@@ -83,19 +84,33 @@ body {
 /* index-logo sección */
 .logo-indexarriba {
   @apply text-white text-4xl sm:text-5xl md:text-6xl font-extrabold text-center max-w-3xl;
+  font-family: 'Roboto', sans-serif; /* Aplicando Roboto */
 }
-
 .logo-indexabajo {
   @apply text-white text-2xl sm:text-2xl md:text-3xl font-extrabold text-center max-w-3xl;
+  font-family:'Space Grotesk', sans-serif;
 }
 
 .logo-nosotros{
-  @apply text-white text-4xl sm:text-5xl md:text-6xl font-bold text-center max-w-3xl
+  @apply text-white text-4xl sm:text-5xl md:text-6xl font-extrabold text-center max-w-3xl;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Pricing-index sección */
 .titulo-pricing {
-  @apply text-white text-3xl md:text-4xl font-bold text-center mb-12;
+   @apply text-white font-bold text-center md:text-center leading-tight mb-12;
+  
+  height: 100%; /* o un alto definido */
+  text-align: center; 
+  /* Fuente Oswald */
+  font-family: 'Oswald', sans-serif;
+
+  /* Tamaño adaptable */
+  font-size: clamp(1.25rem, 5vw, 3rem);
+  line-height: 1.2;
+
+  /* Sombra opcional para legibilidad */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .titulo-card-pricing {
@@ -110,7 +125,9 @@ body {
 /* services-logo sección */
 
 .logo-card1{
-  @apply text-white text-5xl md:text-7xl lg:text-8xl font-extrabold text-center max-w-5xl md:text-justify text-balance 
+  @apply text-white text-5xl md:text-7xl lg:text-7xl font-semibold text-center max-w-5xl md:text-justify text-balance;
+  font-family:'Roboto', sans-serif; 
+
 }
 .logo-card2 {
   @apply text-white font-sans text-center text-lg sm:text-xl md:text-2xl;
@@ -135,30 +152,107 @@ body {
 
 /* card2-index sección */
 .list-1{
-  @apply text-white text-lg md:text-3xl
+  @apply text-white text-lg md:text-4xl;
+  font-family: 'Merriweather, Sans';
 }
 
 /* card2-nosotros sección */
-.list-2{
-  @apply text-white text-2xl
+/* Título principal */
+.titlelist-1 {
+  @apply text-white font-extrabold text-center;
+  font-family: 'Merriweather Sans', sans-serif;
+
+  font-size: 2rem; /* móvil - reducido */
+  line-height: 1.2;
 }
 
-.titlelist-1{
-  @apply text-white text-5xl
+@media (min-width: 768px) {
+  .titlelist-1 {
+    font-size: 3rem; /* md */
+  }
 }
+
+@media (min-width: 1024px) {
+  .titlelist-1 {
+    font-size: 4rem; /* lg */
+  }
+}
+
+/* Texto */
+.list-2 {
+  @apply text-white max-w-xl;
+  font-family: 'Fira Sans Condensed', sans-serif;
+
+  font-size: 1rem; /* móvil - reducido desde 1.25rem */
+  line-height: 1.4;
+  text-align: left; /* móvil */
+  word-break: break-word;
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .list-2 {
+    font-size: 1.5rem; /* md - reducido */
+    text-align: justify;
+  }
+}
+
+@media (min-width: 1024px) {
+  .list-2 {
+    font-size: 1.5rem; /* lg - reducido */
+  }
+}
+
 
 /* card-nosotros sección */
-.text-1{
-  @apply text-white text-xl md:text-2xl lg:text-3xl font-bold leading-tight md:text-justify text-balance
+.text-1 {
+  @apply text-white md:text-2xl lg:text-3xl font-normal md:text-justify leading-tight;
+  font-family: 'Fira Sans Condensed', sans-serif;
 }
-
 /* card3-nosotros sección */
-.title1-card3-nosotros{
-  @apply text-white text-lg md:text-5xl text-center 
+.title1-card3-nosotros {
+  @apply text-white font-extrabold text-center;
+  font-family: 'Merriweather Sans', sans-serif;
+
+  font-size: 1.75rem; /* móvil - base */
+  line-height: 1.2;
 }
 
-.text1-card3-nosotros{
-  @apply text-white text-lg md:text-3xl max-w-xl md:text-justify text-balance
+@media (min-width: 768px) {
+  .title1-card3-nosotros {
+    font-size: 3rem; /* md */
+  }
+}
+
+@media (min-width: 1024px) {
+  .title1-card3-nosotros {
+    font-size: 3.75rem; /* lg */
+  }
+}
+
+/* Texto del card 3 - nosotros */
+.text1-card3-nosotros {
+  @apply text-white max-w-xl;
+  font-family: 'Fira Sans Condensed', sans-serif;
+
+  font-size: 1.125rem; /* text-base / móvil */
+  line-height: 1.4;
+  text-align: left; /* móviles: alineado a la izquierda */
+  word-break: break-word; /* evita que se corte el texto */
+  text-wrap: balance; /* balancea líneas si el navegador lo soporta */
+}
+
+@media (min-width: 768px) {
+  .text1-card3-nosotros {
+    font-size: 1.875rem; /* md:text-3xl */
+    text-align: justify; /* solo justificar en desktop */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text1-card3-nosotros {
+    font-size: 2rem; /* lg:text-2xl */
+  }
 }
 
 /* card3-servicios sección */
@@ -177,6 +271,7 @@ body {
   /* Sombra opcional para legibilidad */
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
+
 .logo-card3 {
   @apply text-white font-sans text-center text-lg sm:text-xl md:text-2xl;
   
@@ -197,3 +292,47 @@ body {
   text-wrap: balance;
 }
 
+.testimonials {
+  @apply text-base md:text-lg xl:text-xl font-medium text-slate-100;
+  font-family: 'Space Grotesk', sans-serif; /* Aplicando Space Grotesk */
+}
+
+.cobertura-index{
+  @apply text-2xl lg:text-4xl font-semibold text-white leading-tight ;
+  text-align: center;
+  font-family:'Roboto', sans-serif;
+}
+
+/* Título historia */
+.history-title {
+  @apply text-white font-extrabold leading-tight;
+  font-family: 'Merriweather Sans', sans-serif;
+
+  font-size: 2.25rem; /* text-3xl móvil */
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .history-title {
+    font-size: 3.25rem; /* md:text-4xl */
+  }
+}
+
+/* Descripción p */
+.history-description {
+  @apply text-slate-300 max-w-md;
+  font-family: 'Fira Sans Condensed', sans-serif;
+
+  font-size: 1.25rem; /* text-base móvil */
+  line-height: 1.4;
+  text-align: left; /* móvil */
+  word-break: break-word;
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .history-description {
+    font-size: 1.25rem; /* md:text-lg */
+    text-align: justify; /* justificar solo en desktop */
+  }
+}

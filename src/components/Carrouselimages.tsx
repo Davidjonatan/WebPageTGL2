@@ -1,4 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
+import AnimateEntrance from "./animations/AnimateEntrance";
 
 interface Slide {
   src: string;
@@ -41,16 +42,21 @@ export default function ImageCarousel({
       <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 items-start">
         {/* Texto (izquierda, arriba) */}
         <div class="flex flex-col justify-start self-start text-center md:text-left space-y-4 mt-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight">
+         <AnimateEntrance origin="topRight" useScrollTrigger={true} triggerClass="title-col" stagger={0.2}>
+          <h2 class="history-title title-col">
             {title}
           </h2>
-          <p class="text-base md:text-lg text-slate-300 max-w-md">
+          </AnimateEntrance>
+          <AnimateEntrance origin="bottom" useScrollTrigger={true} triggerClass="description-col" stagger={0.2}>
+          <p class="history-description description-col">
             {description}
           </p>
+          </AnimateEntrance>
         </div>
 
         {/* Carrusel de imágenes (derecha, grande) */}
-        <div class="relative flex flex-col items-center">
+        <AnimateEntrance origin="Right" useScrollTrigger={true} triggerClass="carrousel-col" stagger={0.2}>
+        <div class="relative flex flex-col items-center carrousel-col">
           <figure class="relative w-full max-w-2xl h-80 md:h-[28rem] lg:h-[32rem] overflow-hidden rounded-2xl shadow-2xl">
             <img
               src={slides[current].src}
@@ -93,6 +99,7 @@ export default function ImageCarousel({
             ))}
           </div>
         </div>
+      </AnimateEntrance>
       </div>
     </section>
   );

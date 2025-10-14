@@ -1,20 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LogoCloud from '../components/LogoCloud.astro';
-import Testimonials from '../components/Testimonials.tsx';
-import Cta from '../components/Cta.astro';
-import HowItWorks from '../components/HowItWorks';
 
-const features = [
-  { text: '32 años de experiencia.' },
-  { text: 'Unidades de modelo reciente.' },
-  { text: 'Responsables con el medio ambiente.' },
-  { text: 'Unidades con rastreo satelital.' },
-  { text: 'Unidades limpias y sanitizadas.' },
-  { text: 'Implementacion de Web Service con nuestros clientes.' },
-  { text: 'Personal de logistica y atencion a clientes 24/7.' },
-  { text: 'Certificaciones ISO 9001:2015 C-TPAT, HACCP.' },
-]
+
+
 const tabs = {
   tab1: { text: 'Tanque', image: './images/tanque2.jpg' },
   tab2: { text: 'Caja Thermo', image: './images/thermo.jpg' },
@@ -25,12 +14,8 @@ const tabs = {
 <BaseLayout>
 	<LogoCloud 
    backgroundImage="./images/wave.svg"
-  title="Déjanos moverte con honestidad y grandeza."
-  height="h-[60vh]"/>
-	<Testimonials client:load
-  testimonials={[
-    { quote: "Todas nuestras unidades cuentan con sistema de rastreo satelital el cual es monitoreado las 24 hrs para asegurar que el viaje llegue a su destino sin ningún contratiempo"},
-    { quote: "Equipos de telecomunicaciones con cobertura en todo el territorio nacional y extranjero"},
-    { quote: "Al ser grado alimenticio todas nuestras unidades pasan por un proceso de lavado y sanitizado antes de salir a cada viaje asegurando la calidad a nuestros clientes"}
-  ]}/>
+  title="CONTACTANOS"
+  height="h-[50vh]"
+  origin='bottom'/>
+	
 </BaseLayout>
