@@ -15,17 +15,12 @@ const items = [
   { text: 'Personal de logistica y atencion a clientes 24/7.' },
   { text: 'Certificaciones ISO 9001:2015 C-TPAT, HACCP.' },
 ]
-const tabs = {
-  tab1: { text: 'Tanque', image: './images/tanque2.jpg' },
-  tab2: { text: 'Caja Thermo', image: './images/thermo.jpg' },
-  tab3: { text: 'Caja Seca', image: './images/seca.jpg' },
-};
 ---
 
 <BaseLayout>
 	<Hero />
 	<LogoCloud client:load
-  backgroundImage = './images/wave.svg',
+  backgroundImage = './images/svgs/wave.svg',
   title = 'DEJANOS MOVERTE CON HONESTIDAD Y GRANDEZA',
   height = 'h-[50vh]',
   titleStyle='logo-indexarriba'
@@ -44,7 +39,7 @@ const tabs = {
   text= "Prestamos nuestros servicios a todo lo largo y ancho del territorio nacional, así como productos de exportación hacia los Estados Unidos, contamos con diferentes tipos de licencia para el cruce de mercancía y unidades en los estados unidos.",
   buttonText = "CONTACTANOS",
   buttonColor = "bg-amber-500 text-white hover:bg-amber-600",
-  image = "./images/mapa.jpg",
+  image = "./images/index/mapa.jpg",
   />  
 	
 	<Stats 
@@ -58,14 +53,15 @@ const tabs = {
     <Card2
   bgColor="#121833"
   items = {items}
-  image= "./images/tracto3.png",
+  image= "./images/index/tracto3.png",
   imagePosition = "left",
   listStyle='list-1',
   animateImage = {false},
   animateList = {true},
+  imageOrigin='Left'
    />
  <LogoCloud 
-   backgroundImage = './images/waves.svg',
+   backgroundImage = './images/svgs/waves.svg',
   title = 'Transportes Garza Leal es fundada el 23 de Noviembre 1989,incursion en el negocio del Autotransporte Federal con base en la ciudad de Lerdo, Durango que forma parte de la Comarca Lagunera.',
   height = 'h-[50vh]',
   titleStyle='logo-indexabajo'

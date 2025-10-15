@@ -1,8 +1,7 @@
 ---
 import AnimateListOnScroll from './animations/AnimateListOnScroll';
 import DancingSlide from './animations/DancingSlide';
-import AnimateFromLeft from './animations/AnimateFromLeft';
-
+import AnimateEntrance from './animations/AnimateEntrance';
 interface Props {
   bgImage?: string;
   bgColor?:string;
@@ -14,6 +13,7 @@ interface Props {
   title?: string;
   animateImage?: boolean;
   animateList?: boolean;
+  imageOrigin?: "topRight" | "bottomLeft" | "topLeft" | "bottomRight" | "top" | "bottom" | "Left" | "Right";
 }
 
 const {
@@ -27,6 +27,7 @@ const {
   titleStyle = "",
   animateImage = false,
   animateList = false,
+  imageOrigin= "top",
 } = Astro.props;
 ---
 <section
@@ -77,21 +78,21 @@ const {
  
     <div class={`w-full md:w-1/2 flex justify-center px-4 pb-4 md:px-0 md:pb-0 mt-auto md:mt-0 order-2 
                 ${imagePosition === "right" ? "md:order-last" : "md:order-first"}`}>
-    <AnimateFromLeft client:load>
-    {animateImage ? (
+ <AnimateEntrance client:load origin={imageOrigin} useScrollTrigger={true} triggerClass="image-col" stagger={0.2}>
+      {animateImage ? (
       <DancingSlide client:load amplitude={25} speed={2}>
       <img
         src={image}
         alt="Imagen lateral"
-        class="w-full max-w-md object-cover md:w-full md:h-full md:max-w-none"
+        class="w-full max-w-md object-cover md:w-full md:h-full md:max-w-none image-col"
       />
     </DancingSlide>)
     :( <img
         src={image}
         alt="Imagen lateral"
-        class="w-full max-w-md object-cover md:w-full md:h-full md:max-w-none"
+        class="w-full max-w-md object-cover md:w-full md:h-full md:max-w-none image-col"
       />)}
-      </AnimateFromLeft>
+      </AnimateEntrance>
     </div>
 
 </section>

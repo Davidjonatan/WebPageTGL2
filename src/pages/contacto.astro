@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LogoCloud from '../components/LogoCloud.astro';
-
+import Contactoprovisional from '../components/contactoprovisional.astro';
 
 
 const tabs = {
@@ -13,9 +13,13 @@ const tabs = {
 
 <BaseLayout>
 	<LogoCloud 
-   backgroundImage="./images/wave.svg"
-  title="CONTACTANOS"
-  height="h-[50vh]"
+   backgroundImage="./images/svgs/wave.svg"
+  title=""
+  height="h-[55vh]"
   origin='bottom'/>
-	
+	<Contactoprovisional
+    titleStyle="contact-title"
+  textStyle="contact-text"
+  infoStyle="contact-info"
+  />
 </BaseLayout>

@@ -29,22 +29,22 @@ const items = [
     <Card 
     client:load
   bgColor="#121833"
-  image = "./images/eteserch.png",
+  image = "./images/nosotros/eteserch.png",
   text = "TRANSPORTES GARZA LEAL TIENE COMO MISIÓN OFRECER EL MEJOR SERVICIO DE TRANSPORTE, CUMPLIENDO CON LOS ESTÁNDARES DE NUESTROS CLIENTES Y COMPROMETIDOS CON LA MEJORA CONTINUA DE NUESTRA CALIDAD.",
   textStyle='text-1'
   imageOrigin = "Right",
   textOrigin = "Left",
 />
 	<LogoCloud 
-    backgroundImage = './images/logo1.svg',
+    backgroundImage = './images/svgs/logo1.svg',
   title = 'POLITICA DE CALIDAD',
   height = 'h-[30vh]',
   titleStyle = 'logo-nosotros'
   origin ="bottom",/>
   <Card3 
     client:load
-    bgImage="./images/degradadoright.svg",
-    image="./images/seca.jpg",
+    bgImage="./images/svgs/degradadoright.svg",
+    image="./images/nosotros/seca.jpg",
     imagePosition="left",
     title="MISIÓN",
     text="Brindar a nuestros Clientes un excelente Servicio, confiable y puntual, con Unidades limpias y bien presentadas",
@@ -57,8 +57,8 @@ const items = [
   />
   <Card3 
     client:load
-    bgImage="./images/degradadoleft.svg",
-    image="./images/valores.png",
+    bgImage="./images/svgs/degradadoleft.svg",
+    image="./images/nosotros/valores.png",
     imagePosition="right",
     title="VISIÓN",
     text="Ser una de las Principales Empresas de Autotransporte Federal de carga en Nuestro País, y que esto refleje la Confiabilidad en nuestros Clientes, Equipos perfectamente presentados.",
@@ -70,7 +70,7 @@ const items = [
     titleOrigin = "topRight",
   />
   <Card2
-  bgImage = "./images/degradadoright.svg",
+  bgImage = "./images/svgs/degradadoright.svg",
   items = {items},
   image= "./images/thermo.jpg",
   imagePosition = "left",
@@ -78,15 +78,16 @@ const items = [
   titleStyle='titlelist-1'
   title='VALORES',
   animateImage = {false},
-  animateList = {true},  />
+  animateList = {true},
+  imageOrigin = "Left",  />
   <ImageCarousel client:load
       title="Historia"
       description="Transportes Garza Leal es una empresa 100% mexicana, que finca sus orígenes hace 36 años, con la visión y el empuje de los hermanos Garza Leal, quienes decidieron incursionar en el negocio del autotransporte en 1989, para cubrir las necesidades del Transporte de alimentos en Nuestra región."
       slides={[
-        { src: "./images/past1.jpg", alt: "img1" },
-        { src: "./images/past2.jpg", alt: "img2" },
-        { src: "./images/past3.jpg", alt: "img3" },
-        {src: "./images/past4.jpg", alt: "img4"},
+        { src: "./images/nosotros/past1.jpg", alt: "img1" },
+        { src: "./images/nosotros/past2.jpg", alt: "img2" },
+        { src: "./images/nosotros/past3.jpg", alt: "img3" },
+        {src: "./images/nosotros/past4.jpg", alt: "img4"},
       ]}
       interval={4000} 
   />
