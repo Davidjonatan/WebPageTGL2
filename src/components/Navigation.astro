@@ -1,14 +1,15 @@
 ---
 import AnimateEntrance from "./animations/AnimateEntrance";
+import SocialIcon from "../../public/icons/SocialIcon";
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 left-0 w-full z-40 border-b border-none">
+<header class="absolute top-0 left-0 w-full z-40 border-b border-none">
   <AnimateEntrance client:load origin="topRight" useScrollTrigger={false} triggerClass="footer-col" stagger={0.2}>
     <div class="w-full" x-data="{ mobileMenuOpen: false }">
       <!-- Barra principal -->
       <div
-        class="backdrop-blur-md bg-white/70 border-b border-white/30
+        class="backdrop-blur-md bg-transparent  
                flex items-center justify-between
                py-2 px-6 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]"
       >
@@ -84,13 +85,15 @@ const currentPath = Astro.url.pathname;
             />
           </a>
           <a href="/ejemplo/" title="Try free" class="footer-col">
-            <img
-              src="./images/logos/mexico.png"
-              alt="Bandera México"
-              class="rounded-full object-cover hover:scale-105 transition-transform w-8 h-8"
-            />
+            
+               <SocialIcon type="phone" animation="pulse" />
+          
           </a>
-
+          <a href="/ejemplo/" title="Try free" class="footer-col">
+            
+               <SocialIcon type="facebook" animation="float" delay={0.5} />
+          
+          </a>
           <!-- Botón menú móvil -->
           <button
             type="button"
