@@ -257,39 +257,43 @@ body {
 
 /* card3-servicios sección */
 .title1-card3-servicios {
-  @apply text-white font-bold text-center md:text-center leading-tight;
-
-  height: 100%; /* o un alto definido */
-  text-align: center; 
-  /* Fuente Oswald */
-  font-family: 'Oswald', sans-serif;
+  @apply text-white font-bold text-center leading-tight break-words flex items-center justify-center h-auto;
 
   /* Tamaño adaptable */
   font-size: clamp(1.25rem, 5vw, 3rem);
-  line-height: 1.2;
 
-  /* Sombra opcional para legibilidad */
+  /* Sombra para legibilidad */
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+  /* Fuente Oswald */
+  font-family: 'Oswald', sans-serif;
 }
 
 .logo-card3 {
-  @apply text-white font-sans text-center text-lg sm:text-xl md:text-2xl;
-  
-  /* Para evitar que el texto se corte en móviles */
-  @apply break-words overflow-hidden;
-  
-  /* Máximo ancho adaptable */
-  max-width: 50%;        /* se adapta al contenedor */
-  width: 50%;            /* ocupa todo el ancho disponible */
-  
-  /* Espaciado interno opcional */
-  padding: 0 1rem;        /* evita que el texto toque los bordes */
-  
-  /* Para alinear justificado en desktop si quieres */
-  @apply md:text-justify;
+  @apply text-white font-sans break-words;
 
-  /* Opcional: balance de líneas si el navegador lo soporta */
+  /* Fuente responsiva un poco más pequeña */
+  font-size: clamp(1rem, 4vw, 2rem);
+  line-height: 1.4;
+
+  /* Ancho adaptativo para no salirse */
+  max-width: 100%;
+  width: 100%;
+  padding: 0 1rem;
+
+  /* Justificado en desktop, centrado en móvil */
+  @apply text-center md:text-left;
+
+  /* Evita separación exagerada de palabras */
+  word-spacing: normal;
+  letter-spacing: normal;
   text-wrap: balance;
+
+  /* Sombra para legibilidad */
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+
+  /* Altura automática según contenido */
+  height: auto;
 }
 
 .testimonials {
@@ -355,4 +359,51 @@ body {
   @apply text-sm sm:text-base md:text-lg text-gray-200 text-center md:text-left;
   font-family: 'Fira Sans', sans-serif;
   line-height: 1.6;
+}
+
+/* Título y descripción de stats */
+.title-and-descrption-stats {
+  @apply text-white font-bold text-center leading-tight break-words flex flex-col items-center justify-center h-auto;
+
+  /* Fuente responsiva */
+  font-size: clamp(1rem, 4vw, 3rem);
+  line-height: 1.4;
+
+  /* Sombra para legibilidad */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+  /* Fuente Oswald */
+  font-family: 'Oswald', sans-serif;
+
+  /* Ajustes para que no se salga del contenedor */
+  max-width: 100%;
+  width: 100%;
+  padding: 0 1rem;
+
+  /* Evita separación exagerada de palabras */
+  word-spacing: normal;
+  letter-spacing: normal;
+  text-wrap: balance;
+
+  /* Justificado en desktop, centrado en móvil */
+  @apply text-center md:text-justify;
+}
+
+/* Descripción */
+.title-and-descrption-stats-description {
+  @apply block font-medium text-black mt-2;
+
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(0.875rem, 2.5vw, 1.25rem); /* más pequeña que el título */
+  line-height: 1.5;
+
+  /* Justificado solo en desktop */
+  text-align: center;
+  @apply md:text-justify;
+  text-justify: inter-word;
+
+  /* Limitar ancho máximo para que no se vea tan separado */
+  max-width: 600px; 
+  margin-left: auto;
+  margin-right: auto;
 }

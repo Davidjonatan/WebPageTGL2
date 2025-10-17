@@ -4,7 +4,6 @@ import AnimateEntrance from './animations/AnimateEntrance';
 interface Props {
   backgroundImage?: string;
   title?: string;
-  height?: string;
   titleStyle?: string;
   origin?: "topRight" | "bottomLeft" | "topLeft" | "bottomRight" | "top" | "bottom" | "Left" | "Right"; // nueva prop
 }
@@ -12,24 +11,23 @@ interface Props {
 const {
   backgroundImage = '',
   title = '',
-  height = '',
   titleStyle = 'titulo-principal',
   origin = "topRight", // valor por defecto
 } = Astro.props;
 ---
 <AnimateEntrance client:load origin={origin} useScrollTrigger={true} triggerClass="title-col" stagger={0.2}>
-  <section
-    class={`relative bg-cover bg-center overflow-hidden title-col ${height}`}
-    style={`background-image: url('${backgroundImage}');`}
-  >
-    <!-- Capa oscura opcional -->
-    <div class="absolute inset-0 bg-black/30"></div>
+<section
+  class={`relative bg-cover bg-center overflow-hidden title-col`}
+  style={`background-image: url('${backgroundImage}');`}
+>
+  {/* Capa oscura */}
+  <div class="absolute inset-0 bg-black/30"></div>
 
-    <!-- Contenido -->
-    <div class="relative z-10 flex flex-col justify-center h-full px-4">
-      <h1 class={`${titleStyle} mx-auto`}>
-        {title}
-      </h1>
-    </div>
-  </section>
+  {/* Contenido */}
+  <div class="relative z-10 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 py-12">
+    <h1 class={`${titleStyle}`}>
+      {title}
+    </h1>
+  </div>
+</section>
 </AnimateEntrance>
