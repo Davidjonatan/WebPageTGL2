@@ -1,57 +1,62 @@
 ---
 import AnimateEntrance from './animations/AnimateEntrance';
-
 ---
 
 <section class="w-full bg-[#0f172a] text-white py-16 px-6 md:px-12 flex flex-col md:flex-row gap-10 items-center justify-center">
   <!-- 🧭 Columna Izquierda -->
   <div class="w-full md:w-1/3 space-y-6 text-center md:text-left">
-     <AnimateEntrance client:load origin={"Left"} useScrollTrigger={true} triggerClass="list-col" stagger={0.2}>
-    <h2 class="contact-title list-col">¡Contáctanos!</h2>
-    <p class="contact-text list-col mb-8">
-      Llámanos, envíanos un correo electrónico o reserva una cita individual,
-      estamos aquí para ayudarlo con el traslado de sus productos.
-      Esperamos escuchar de usted.
-      Contamos con bases en Lerdo Durango, Tula Hidalgo, Abasolo Guanajuato y Delicias Chihuahua.
-    </p>    
-    <div class="contact-info space-y-2">
-      <p class="list-col "><strong>Dirección:</strong>
-        <a href="https://www.google.com/maps?q=Periférico+Km.+14.5+Lerdo+Dgo"
-           target="_blank"
-           class="text-blue-400 hover:underline">
-           Periférico Km. 14.5 Lerdo, Dgo.
-        </a>
-      </p>
-      <p class="list-col"><strong>Teléfono:</strong> 871 175 0600</p>
-      <p class="list-col">
-        <strong>Correo:</strong>
-        <a href="mailto:info@tgarzaleal.com"
-           class="text-blue-400 hover:underline">
-           info@tgarzaleal.com
-        </a>
-      </p>
-     
-    </div> 
-</AnimateEntrance>
+    <AnimateEntrance client:load origin={"Left"} useScrollTrigger={false} triggerClass="list-col" stagger={0.2}>
+      <h2 class="contact-title list-col mt-8">¡Contáctanos!</h2>
+
+      <!-- 🔁 Imagen en lugar del párrafo -->
+      <img 
+        src="./images/contactanos/contactanos.png" 
+        alt="Contacto Transportes Garza Leal" 
+        class="list-col w-full rounded-2xl shadow-lg mx-auto object-cover"
+        loading="lazy"
+      />
+
+      <div class="contact-info space-y-2">
+        <p class="list-col">
+          <strong>Dirección:</strong>
+          <a href="https://www.google.com/maps?q=Periférico+Km.+14.5+Lerdo+Dgo"
+            target="_blank"
+            class="text-blue-400 hover:underline">
+            Periférico Km. 14.5 Lerdo, Dgo.
+          </a>
+        </p>
+
+        <p class="list-col"><strong>Teléfono:</strong> 871 175 0600</p>
+
+        <p class="list-col">
+          <strong>Correo:</strong>
+          <a href="mailto:info@tgarzaleal.com"
+            class="text-blue-400 hover:underline">
+            info@tgarzaleal.com
+          </a>
+        </p>
+      </div>
+    </AnimateEntrance>
   </div>
 
   <!-- 🗺️ Columna Derecha -->
-  <div class="w-full md:w-2/3 space-y-4 flex flex-col items-center">
-    <AnimateEntrance client:load origin={"Left"} useScrollTrigger={true} triggerClass="title-col" stagger={0.2}>
-    <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 tracking-wide text-center title-col">
+<div class="w-full md:w-2/3 space-y-6 flex flex-col items-center mt-[-1.9rem]">
+  <AnimateEntrance client:load origin={"Right"} useScrollTrigger={false} triggerClass="title-col" stagger={0.2}>
+    <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 tracking-wide text-center title-col mb-8">
       ¡ENCUÉNTRANOS AQUÍ!
     </h3>
-    </AnimateEntrance>    
+  </AnimateEntrance>
+
   <div class="w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl map-col">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3599.8158669471636!2d-103.53492822515123!3d25.544509717546656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fda42932bc6d3%3A0xed9bec7d71ee1407!2sTransportes%20Garza%20Leal!5e0!3m2!1ses-419!2smx!4v1760481879768!5m2!1ses-419!2smx"
-    width="100%"
-    height="100%"
-    style="border:0;"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3599.8158669471636!2d-103.53492822515123!3d25.544509717546656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fda42932bc6d3%3A0xed9bec7d71ee1407!2sTransportes%20Garza%20Leal!5e0!3m2!1ses-419!2smx!4v1760481879768!5m2!1ses-419!2smx"
+      width="100%"
+      height="100%"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
 </div>
 </section>
