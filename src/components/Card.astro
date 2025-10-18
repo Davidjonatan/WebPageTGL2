@@ -30,7 +30,7 @@ style={`background: ${
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-8 md:gap-x-16">
     
     <!-- Texto -->
-   <AnimateEntrance client:load origin={textOrigin} useScrollTrigger={true} triggerClass="title-col" stagger={0.2}>
+   <AnimateEntrance client:load origin={textOrigin} useScrollTrigger={false} triggerClass="title-col" stagger={0.2}>
     <div class="flex flex-col justify-center text-right z-10 order-1 md:order-1 title-col">
       <h2 class={`${textStyle}`}>
         {text}
@@ -38,7 +38,7 @@ style={`background: ${
     </div>
     </AnimateEntrance>
     <!-- Imagen -->
-    <AnimateEntrance client:load origin={imageOrigin} useScrollTrigger={true} triggerClass="image-col" stagger={0.2}>
+    <AnimateEntrance client:load origin={imageOrigin} useScrollTrigger={false} triggerClass="image-col" stagger={0.2}>
     <div class="flex justify-center md:justify-start order-2 md:order-2 md:ml-4 image-col">
       <img 
         src={image} 

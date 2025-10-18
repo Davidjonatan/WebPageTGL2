@@ -93,7 +93,7 @@ export default function HowItWorksGallery({ title, tabs, textStyle }: Props) {
         </AnimateEntrance>
 
         {/* 🎨 Galería Fancy */}
-        <AnimateEntrance origin="top" useScrollTrigger={true} triggerClass="gallery-col" stagger={0.2}>
+        <AnimateEntrance origin="top" useScrollTrigger={false} triggerClass="gallery-col" stagger={0.2}>
           <div class="relative mt-10 gallery-col">
             {/* Contenedor delimitado */}
             <div class="max-h-[850px] overflow-hidden rounded-3xl shadow-2xl p-4 bg-[#101437]/40 backdrop-blur-sm">

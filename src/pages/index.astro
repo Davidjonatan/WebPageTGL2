@@ -19,19 +19,20 @@ const items = [
 
 <BaseLayout>
 	<Hero />
-	<LogoCloud client:load
+	<LogoCloud 
   backgroundImage = './images/svgs/wave.svg',
   title = 'DEJANOS MOVERTE CON HONESTIDAD Y GRANDEZA',
   titleStyle='logo-indexarriba'
   origin = "topRight",/>
-  <Pricing client:load/>	 
-  <Testimonials client:load
+  <Pricing />	 
+  <Testimonials
+  client:load
   testimonials={[
     { quote: "Todas nuestras unidades cuentan con sistema de rastreo satelital el cual es monitoreado las 24 hrs para asegurar que el viaje llegue a su destino sin ningún contratiempo"},
     { quote: "Equipos de telecomunicaciones con cobertura en todo el territorio nacional y extranjero"},
     { quote: "Al ser grado alimenticio todas nuestras unidades pasan por un proceso de lavado y sanitizado antes de salir a cada viaje asegurando la calidad a nuestros clientes"}
   ]}/>
-  <Cobertura client:load
+  <Cobertura 
   backgroundColor = "bg-[#121833]", // fondo de la section
   cardColor = "bg-gradient-to-r from-[#1E2A47] via-slate-800 to-slate-900",      // fondo del div principal
   title = "COBERTURA",
