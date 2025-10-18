@@ -245,7 +245,7 @@ body {
 @media (min-width: 768px) {
   .text1-card3-nosotros {
     font-size: 1.875rem; /* md:text-3xl */
-    text-align: justify; /* solo justificar en desktop */
+    text-align: left; /* solo justificar en desktop */
   }
 }
 
@@ -297,10 +297,13 @@ body {
 }
 
 .testimonials {
-  @apply text-base md:text-lg xl:text-xl font-medium text-slate-100;
-  font-family: 'Space Grotesk', sans-serif; /* Aplicando Space Grotesk */
+  @apply text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-medium text-slate-100 leading-snug sm:leading-relaxed;
+  font-family: 'Space Grotesk', sans-serif;
+  max-width: 70ch; /* límite de ancho legible */
+  text-align: center; /* centrado para frases o testimonios */
+  margin-inline: auto; /* centrado horizontal */
+  text-wrap: balance; /* mejora el equilibrio del texto si el navegador lo soporta */
 }
-
 .cobertura-index{
   @apply text-2xl lg:text-4xl font-semibold text-white leading-tight ;
   text-align: center;
