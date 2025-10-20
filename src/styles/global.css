@@ -431,3 +431,99 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* ===== NAVIGATION STYLES ===== */
+
+/* Estados de los enlaces del navigation */
+.nav-link {
+  @apply font-semibold transition-all duration-300 px-3 py-2 text-sm xl:text-base relative;
+}
+
+/* Estado normal (scroll) */
+.nav-link-scrolled {
+  @apply text-neutral-700 hover:text-neutral-600;
+}
+
+/* Estado transparente (arriba) */
+.nav-link-transparent {
+  @apply text-white hover:text-gray-300;
+}
+
+/* Enlace activo */
+.nav-link-active {
+  @apply text-[#3aabe4];
+}
+
+/* Subrayado animado para hover */
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#3aabe4] transition-all duration-300;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  @apply w-3/4;
+}
+
+.nav-link-active::after {
+  @apply w-3/4 bg-[#3aabe4];
+}
+
+/* Estados específicos para SVG de redes sociales */
+.social-svg-scrolled {
+  @apply text-[#1C274C] hover:text-[#AFC1DB] hover:animate-bounce;
+}
+
+.social-svg-transparent {
+  @apply text-white hover:text-gray-300 hover:animate-bounce;
+}
+
+/* Animación de bounce invertida para estado transparente */
+@keyframes bounce-slow-inverted {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.hover\:animate-bounce-slow-inverted:hover {
+  animation: bounce-slow-inverted 2s infinite;
+}
+
+/* Botón menú móvil */
+.mobile-menu-btn-scrolled {
+  @apply text-slate-500;
+}
+
+.mobile-menu-btn-transparent {
+  @apply text-white;
+}
+
+/* Menú móvil */
+.mobile-menu-scrolled {
+  @apply bg-white/70 border-white/30;
+}
+
+.mobile-menu-transparent {
+  @apply bg-black/40 border-white/20;
+}
+
+/* Enlaces del menú móvil */
+.mobile-link-scrolled {
+  @apply text-neutral-700 hover:bg-[#e0f0ff];
+}
+
+.mobile-link-transparent {
+  @apply text-white hover:bg-white/20;
+}
+
+/* Border del menú móvil */
+.mobile-border-scrolled {
+  @apply border-gray-200;
+}
+
+.mobile-border-transparent {
+  @apply border-white/20;
+}

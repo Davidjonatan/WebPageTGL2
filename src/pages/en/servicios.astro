@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LogoCloud from '../../components/LogoCloud.astro';
+import HowItWorks from '../../components/HowItWorks';
+import Card4 from '../../components/Card4.astro';
+import Hero from '../../components/Hero';
+
+const features = [
+  { text: '32 years of experience.' },
+  { text: 'Recent model units.' },
+  { text: 'Environmentally responsible.' },
+  { text: 'Units with satellite tracking.' },
+  { text: 'Clean and sanitized units.' },
+  { text: 'Web Service implementation with our clients.' },
+  { text: 'Logistics personnel and 24/7 customer service.' },
+  { text: 'ISO 9001:2015 C-TPAT, HACCP certifications.' },
+]
+
+const tabs = {
+  tab1: {
+    text: "TANKS",
+    subtitle: "Explore our tank fleet.",
+    images: [
+      { src: "/ejemplo/images/servicios/gallery/tanque.jpg", alt: "Tank 1" },
+      { src: "/ejemplo/images/servicios/gallery/tanque2.jpeg", alt: "Tank 2" },
+      { src: "/ejemplo/images/servicios/gallery/tanque3.jpeg", alt: "Tank 3" },
+      { src: "/ejemplo/images/servicios/gallery/tanque4.jpeg", alt: "Tank 4" },
+      { src: "/ejemplo/images/servicios/gallery/tanque5.jpeg", alt: "Tank 5" },
+      { src: "/ejemplo/images/servicios/gallery/tanque6.jpeg", alt: "Tank 6" },
+      { src: "/ejemplo/images/servicios/gallery/tanque7.jpeg", alt: "Tank 7" },
+      { src: "/ejemplo/images/servicios/gallery/tanque8.jpeg", alt: "Tank 8" },
+      { src: "/ejemplo/images/servicios/gallery/tanque9.jpg", alt: "Tank 9" },
+      { src: "/ejemplo/images/servicios/gallery/tanque10.jpg", alt: "Tank 10" },
+      { src: "/ejemplo/images/servicios/gallery/tanque11.jpeg", alt: "Tank 11" },
+      { src: "/ejemplo/images/servicios/gallery/tanque12.jpeg", alt: "Tank 12" },
+    ],
+  },
+  tab2: {
+    text: "DRY BOXES",
+    subtitle: "Our modern dry boxes.",
+    images: [
+      { src: "/ejemplo/images/servicios/gallery/seca.jpg", alt: "Dry Box 1" },
+      { src: "/ejemplo/images/servicios/gallery/seca2.jpg", alt: "Dry Box 2" },
+      { src: "/ejemplo/images/servicios/gallery/seca3.jpg", alt: "Dry Box 3" },
+      { src: "/ejemplo/images/servicios/gallery/seca4.jpg", alt: "Dry Box 4" },
+      { src: "/ejemplo/images/servicios/gallery/seca5.jpg", alt: "Dry Box 5" },
+      { src: "/ejemplo/images/servicios/gallery/seca6.jpg", alt: "Dry Box 6" },
+      { src: "/ejemplo/images/servicios/gallery/seca7.jpg", alt: "Dry Box 7" },
+      { src: "/ejemplo/images/servicios/gallery/seca8.jpg", alt: "Dry Box 8" },
+      { src: "/ejemplo/images/servicios/gallery/seca9.jpg", alt: "Dry Box 9" },
+    ],
+  },
+  tab3: {
+    text: "THERMO BOXES",
+    subtitle: "Refrigerated cargo solutions.",
+    images: [
+      { src: "/ejemplo/images/servicios/gallery/thermo.jpeg", alt: "Thermo 1" },
+      { src: "/ejemplo/images/servicios/gallery/thermo2.jpeg", alt: "Thermo 2" },
+      { src: "/ejemplo/images/servicios/gallery/thermo3.jpeg", alt: "Thermo 3" },
+      { src: "/ejemplo/images/servicios/gallery/thermo4.jpeg", alt: "Thermo 4" },
+      { src: "/ejemplo/images/servicios/gallery/thermo5.jpeg", alt: "Thermo 5" },
+      { src: "/ejemplo/images/servicios/gallery/thermo6.jpeg", alt: "Thermo 6" },
+      { src: "/ejemplo/images/servicios/gallery/thermo7.jpeg", alt: "Thermo 7" },
+      { src: "/ejemplo/images/servicios/gallery/thermo8.jpeg", alt: "Thermo 8" },
+      { src: "/ejemplo/images/servicios/gallery/thermo9.jpeg", alt: "Thermo 9" },
+    ],
+  },
+};
+---
+
+<BaseLayout>
+	<Hero 
+  backgroundType="image"
+  backgroundSrc="/ejemplo/images/servicios/servicios.jpeg"
+  enableCarousel={false}
+    slides={[
+    { title: "WE ARE PART OF YOU" }
+  ]}
+/>
+	  <HowItWorks
+    client:load
+        title="GALLERY" 
+        tabs={tabs}
+        textStyle='title1-card3-servicios'
+      />
+      
+      <LogoCloud 
+    backgroundImage="/ejemplo/images/svgs/wave.svg"
+  title="SERVICES"
+  titleStyle="logo-card1"
+  origin="bottom"/>
+  
+    <Card4
+    bgImage="/ejemplo/images/servicios/degradado1.png"
+    image="/ejemplo/images/servicios/cajaseca.png"
+    imagePosition="left"
+    title="DRY BOX"
+    titleStyle="title1-card3-servicios"
+    imageOrigin="bottom"
+    titleOrigin="bottomRight"
+    />
+    
+    <LogoCloud 
+     backgroundImage="/ejemplo/images/servicios/degradado2.png"
+  title="We offer a dry box transportation service with high standards of quality and efficiency, guaranteeing safe and timely deliveries of goods, materials and a wide range of dry products, taking care of every detail to ensure total satisfaction of our customers."
+  titleStyle="logo-card3"
+  origin="topRight"
+    />
+    
+    <Card4 
+    client:load
+    bgImage="/ejemplo/images/servicios/degradado3.png"
+    image="/ejemplo/images/servicios/tanque1.png"
+    imagePosition="right"
+    title="STAINLESS STEEL TANK"
+    titleStyle="title1-card3-servicios"
+    imageOrigin="bottom"
+    titleOrigin="bottomRight"
+    />
+    
+    <LogoCloud 
+     backgroundImage="/ejemplo/images/servicios/degradado2.png"
+  title="We transport different products in food grade stainless steel tank trucks such as milk, dairy whey, fructose, refined vegetable oils, concentrates."
+  titleStyle="logo-card3"
+  origin="topLeft"
+    />
+    
+    <Card4
+    bgImage="/ejemplo/images/servicios/degradado1.png"
+    image="/ejemplo/images/servicios/cajathermo.png"
+    imagePosition="left"
+    title="THERMO BOX"
+    titleStyle="title1-card3-servicios"
+    imageOrigin="bottom"
+    titleOrigin="topRight"
+    />
+    
+    <LogoCloud 
+     backgroundImage="/ejemplo/images/servicios/degradado2.png"
+  title="In our refrigerated boxes we transport a wide variety of perishable products such as fruits and vegetables, meats and much more, guaranteeing at all times the cold chain and the highest level of quality. We have advanced refrigeration technology for the safe handling of each load."
+  titleStyle="logo-card3"
+  origin="topRight"
+    />
+</BaseLayout>

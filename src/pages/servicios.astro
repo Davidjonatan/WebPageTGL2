@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import LogoCloud from '../components/LogoCloud.astro';
 import HowItWorks from '../components/HowItWorks';
 import Card4 from '../components/Card4.astro';
+import Hero from '../components/Hero';
 
 
 const features = [
@@ -69,7 +70,14 @@ const tabs = {
 ---
 
 <BaseLayout>
-	
+	<Hero 
+  backgroundType="image"
+  backgroundSrc="/ejemplo/images/servicios/servicios.jpeg"
+  enableCarousel={false}
+    slides={[
+    { title: "SOMOS PARTE DE TI" }
+  ]}
+/>
 	  <HowItWorks
     client:load
         title="GALERIA" 

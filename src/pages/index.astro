@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
+import Hero from '../components/Hero.tsx';
 import LogoCloud from '../components/LogoCloud.astro';
 import Card2 from '../components/Card2.astro';
 import Stats from '../components/Stats.astro';
@@ -18,7 +18,12 @@ const items = [
 ---
 
 <BaseLayout>
-	<Hero />
+	<Hero
+  client:load
+  backgroundType="video"
+  backgroundSrc="/ejemplo/images/index/video.mp4"
+  enableCarousel={true}
+/>
 	<LogoCloud 
   backgroundImage = '/ejemplo/images/svgs/wave.svg',
   title = 'DEJANOS MOVERTE CON HONESTIDAD Y GRANDEZA',

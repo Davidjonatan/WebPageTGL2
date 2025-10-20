@@ -5,6 +5,7 @@ import Card3 from '../components/Card3.astro';
 import Card from '../components/Card.astro'
 import Card2 from '../components/Card2.astro'
 import ImageCarousel from '../components/Carrouselimages';
+import Hero from '../components/Hero';
 
 const features = [
   { text: '32 años de experiencia.' },
@@ -26,6 +27,14 @@ const items = [
 ---
 
 <BaseLayout>
+  <Hero
+  backgroundType="image"
+  backgroundSrc="/ejemplo/images/nosotros/nosotros.jpeg"
+  enableCarousel={false}
+  slides={[
+    { title: "VAMOS CONTIGO" }
+  ]}
+  />
     <Card 
   bgSvg="/ejemplo/images/nosotros/fondoserch.png"
   image = "/ejemplo/images/nosotros/eteserch.png",

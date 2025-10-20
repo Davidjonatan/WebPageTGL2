@@ -1,79 +1,111 @@
 ---
 import AnimateEntrance from "./animations/AnimateEntrance.tsx";
+
+// Detectar idioma
+const currentPath = Astro.url.pathname;
+const isEnglish = currentPath.includes('/en/');
+
 const year = new Date().getFullYear();
+
+// Textos dinámicos
+const footerTexts = {
+  es: {
+    description: "Con más de 32 años de experiencia en la industria, somos tu mejor opción en el traslado de productos, siempre buscando eficiencia, seguridad y calidad, con los mayores estándares de calidad.",
+    socialMedia: "Redes Sociales",
+    contactDetails: "Detalles de Contacto",
+    location: "Periférico Km. 14.5 Lerdo, Dgo.",
+    phone: "871 175 0600",
+    email: "info@tgarzaleal.com",
+    usaService: "USA Service",
+    rights: "Todos los derechos reservados.",
+    privacy: "Política de Privacidad"
+  },
+  en: {
+    description: "With over 32 years of experience in the industry, we are your best option for product transportation, always seeking efficiency, safety and quality, with the highest quality standards.",
+    socialMedia: "Social Media", 
+    contactDetails: "Contact Details",
+    location: "Peripheral Km. 14.5 Lerdo, Dgo.",
+    phone: "871 175 0600",
+    email: "info@tgarzaleal.com",
+    usaService: "USA Service",
+    rights: "All rights reserved.",
+    privacy: "Privacy Policy"
+  }
+}[isEnglish ? 'en' : 'es'];
 ---
 
 <footer class="bg-slate-900 text-gray-300 py-12">
 <AnimateEntrance client:load origin="bottomRight" useScrollTrigger={true} triggerClass="footer-col" stagger={0.2}>
   <div class="max-w-7xl mx-auto px-6 grid gap-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-	
-	
+    
     <!-- Columna 1: Logo + Descripción -->
     <div class="footer-col">
       <img src="/ejemplo/images/logos/logosinfondo.png" alt="T Garza Leal" class="h-12 mb-4" />
       <p class="text-sm leading-relaxed">
-        Con más de 32 años de experiencia en la industria, somos tu mejor opción 
-        en el traslado de productos, siempre buscando eficiencia, seguridad y calidad, 
-        con los mayores estándares de calidad.
+        {footerTexts.description}
       </p>
     </div>
+    
     <!-- Columna 2: Redes Sociales -->
     <div class="footer-col">
-      <h3 class="text-lg font-semibold text-white mb-4">Redes Sociales</h3>
+      <h3 class="text-lg font-semibold text-white mb-4">{footerTexts.socialMedia}</h3>
       <div class="flex gap-4">
         <!-- Facebook -->
-        <a href="#" aria-label="Facebook" class="hover:text-[ghostwhite] transition">
+        <a href="https://www.facebook.com/share/16ns4Ae2CM/?mibextid=wwXIfr" aria-label="Facebook" class="hover:text-[ghostwhite] transition">
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-7 h-7" viewBox="0 0 24 24">
             <path d="M22.675 0h-21.35C.597 0 0 .598 0 1.333v21.333C0 23.403.597 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.098 2.796.142v3.24l-1.92.001c-1.507 0-1.797.717-1.797 1.767v2.317h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.667V1.333C24 .598 23.403 0 22.675 0z"/>
           </svg>
         </a>
         <!-- TikTok -->
-        <a href="#" aria-label="TikTok" class="hover:text-[ghostwhite] transition">
+        <a href="https://www.tiktok.com/@transportes.garza.leal?_t=ZS-90iHtSYYDGm&_r=1" aria-label="TikTok" class="hover:text-[ghostwhite] transition">
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-7 h-7" viewBox="0 0 24 24">
             <path d="M12.004 0h3.67c.087 1.326.54 2.583 1.29 3.62.748.992 1.792 1.732 2.965 2.106v3.66c-1.01-.032-2.016-.26-2.94-.67-.396-.176-.767-.39-1.138-.6v7.37c-.037 1.7-.69 3.39-1.84 4.65-1.27 1.38-3.15 2.14-5.01 1.95-1.77-.15-3.47-1.13-4.5-2.6-.77-1.1-1.14-2.45-1.06-3.8.09-1.68.88-3.32 2.2-4.4 1.28-1.07 3.04-1.59 4.71-1.38v3.72c-.66-.21-1.41-.08-1.97.34-.57.42-.93 1.13-.91 1.86-.02.94.74 1.86 1.68 2.01.88.16 1.82-.36 2.19-1.17.15-.33.22-.7.21-1.07V0z"/>
           </svg>
         </a>
       </div>
     </div>
+    
     <!-- Columna 3: Contacto -->
     <div class="footer-col">
-      <h3 class="text-lg font-semibold text-white mb-4">Detalles de Contacto</h3>
+      <h3 class="text-lg font-semibold text-white mb-4">{footerTexts.contactDetails}</h3>
       <ul class="space-y-4 text-sm">
         <li class="flex items-center gap-3">
           <!-- Icono ubicación -->
           <span class="w-5 h-5" aria-hidden="true">
             <svg fill="#ffffff" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256,144c-44.188,0-80,38.609-80,80c0,22.031,11,32.344,32,69.906c18.453,32.984,33.859,62.938,33.859,62.938 c7.641,14.859,20.172,14.875,27.828,0.031c0,0,15.516-30,34.312-62.969c21.406-37.562,32-47.859,32-69.906 C336,182.609,300.188,144,256,144z M256,272c-26.5,0-48-21.5-48-48c0-26.508,21.5-48,48-48c26.516,0,48,21.492,48,48 C304,250.5,282.516,272,256,272z"/><path d="M256,0C114.625,0,0,114.609,0,256s114.625,256,256,256c141.406,0,256-114.609,256-256S397.406,0,256,0z M256,472 c-119.281,0-216-96.703-216-216S136.719,40,256,40c119.312,0,216,96.703,216,216S375.312,472,256,472z"/></svg>
           </span>
-          Periférico Km. 14.5 Lerdo, Dgo.
+          {footerTexts.location}
         </li>
         <li class="flex items-center gap-3">
           <!-- Icono teléfono -->
           <span class="w-5 h-5" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><path d="M5.14 12.77C3.76 10.27 3 7.3 3 4l1.97-.49c.72-.18 1.08-.27 1.4-.21.28.05.55.19.76.39.23.22.36.56.64 1.25l.71 1.78c.19.47.28.7.29.93.01.21-.02.42-.09.61-.08.22-.24.42-.55.82l-3.99 4.69ZM5.14 12.77c1.52 2.76 3.79 4.95 6.63 6.37 2.38 1.2 5.16 1.86 8.23 1.86l.49-1.97c.18-.72.27-1.08.21-1.4a1.3 1.3 0 0 0-.39-.76c-.23-.22-.57-.36-1.26-.63l-1.58-.64c-.53-.22-.79-.33-1.04-.34a1.3 1.3 0 0 0-.68.14c-.24.11-.45.31-.85.73l-3.97 4.65ZM21 7V3h-4m4 0-6 6"/></svg>
           </span>
-          871 175 0600
+          {footerTexts.phone}
         </li>
         <li class="flex items-center gap-3">
           <!-- Icono correo -->
           <span class="w-5 h-5" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><path d="M4 7l6.2 4.65c1.07.8 2.54.8 3.6 0L20 7"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
           </span>
-          info@tgarzaleal.com
+          {footerTexts.email}
         </li>
       </ul>
     </div>
+    
     <!-- Columna 4: USA Service -->
     <div class="footer-col">
-      <h3 class="text-lg font-semibold text-white mb-4">USA Service</h3>
+      <h3 class="text-lg font-semibold text-white mb-4">{footerTexts.usaService}</h3>
       <a href="https://www.alluretrucking.net" target="_blank" rel="noopener noreferrer">
-        <img src="./images/logos/allure.jpeg" alt="Allure Trucking" class="h-28 object-contain hover:scale-105 transition" />
+        <img src="/ejemplo/images/logos/allure.jpeg" alt="Allure Trucking" class="h-28 object-contain hover:scale-105 transition" />
       </a>
     </div>
   </div>
 </AnimateEntrance>
+  
   <!-- Línea inferior -->
   <div class="border-t border-gray-700 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between px-6 text-sm text-gray-400">
-    <p>© Transportes Garza Leal {year}. Todos los derechos reservados.</p>
-    <a href="#" class="hover:text-white mt-2 md:mt-0">Política de Privacidad</a>
+    <p>© Transportes Garza Leal {year}. {footerTexts.rights}</p>
+    <a href="#" class="hover:text-white mt-2 md:mt-0">{footerTexts.privacy}</a>
   </div>
 </footer>

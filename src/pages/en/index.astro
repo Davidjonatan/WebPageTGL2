@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.tsx';
+import LogoCloud from '../../components/LogoCloud.astro';
+import Card2 from '../../components/Card2.astro';
+import Stats from '../../components/Stats.astro';
+import Testimonials from '../../components/Testimonials.tsx';
+import Cobertura from '../../components/Cobertura.astro';
+import Pricing from '../../components/Pricing.astro';
+
+const items = [
+  { text: 'Environmentally responsible.' },
+  { text: 'Clean and sanitized units.' },
+  { text: 'Web Service implementation with our clients.' },
+  { text: 'Logistics personnel and 24/7 customer service.' },
+  { text: 'ISO 9001:2015 C-TPAT, HACCP certifications.' },
+]
+---
+
+<BaseLayout>
+	<Hero 
+  client:load
+  slides={[
+    { title: "QUALITY AND SPEED" },
+    { title: "EXPERIENCE AS SUPPORT" },
+    { title: "SERVICE SECURITY" },
+    { title: "CAREFUL TRANSPORTATION" }
+  ]} />
+	<LogoCloud 
+  backgroundImage = '/ejemplo/images/svgs/wave.svg'
+  title = 'LET US MOVE YOU WITH HONESTY AND GREATNESS'
+  titleStyle='logo-indexarriba'
+  origin = "topRight"/>
+  
+  <Pricing 
+    mainTitle="Our Services"
+    buttonText="Learn More"
+    services={[
+    { title: "Tank Transport", image: "/ejemplo/images/index/tanque2.jpg", tabKey: "tab1" },
+    { title: "Dry Boxes", image: "/ejemplo/images/index/seca.jpg", tabKey: "tab2" },
+    { title: "refrigerated boxes", image: "/ejemplo/images/index/thermo.jpg", tabKey: "tab3" },
+  ]}
+    baseUrl="/ejemplo/en/servicios"
+  />	 
+  
+  <Testimonials
+  client:load
+  testimonials={[
+    { quote: "All our units have satellite tracking systems that are monitored 24 hours a day to ensure that the trip reaches its destination without any setbacks" },
+    { quote: "Telecommunications equipment with coverage throughout the national territory and abroad" },
+    { quote: "Being food grade, all our units go through a washing and sanitizing process before each trip, ensuring quality for our clients" }
+  ]}/>
+  
+  <Cobertura 
+  backgroundColor = "bg-[#121833]"
+  cardColor = "bg-gradient-to-r from-[#1E2A47] via-slate-800 to-slate-900"
+  title = "COVERAGE"
+  text= "We provide our services throughout the national territory, as well as export products to the United States. We have different types of licenses for crossing merchandise and units in the United States."
+  buttonText = "CONTACT US"
+  buttonColor = "bg-amber-500 text-white hover:bg-amber-600"
+  image = "/ejemplo/images/index/mapa.jpg"
+  />  
+	
+	<Stats 
+  title="Our Infrastructure"
+  description='Over 32 years of experience providing reliable transportation, with modern units, highly trained personnel, satellite tracking, sanitized processes and international certifications that guarantee quality and safety.'
+  stats={[
+    { number: 32, label: "Years of experience" },
+    { number: 400, label: "Tractor trucks" },
+    { number: 550, label: "Trailers" },
+    { number: 600, label: "Dedicated personnel" }]}/>
+    
+    <Card2
+  bgImage="/ejemplo/images/index/lista.png"
+  items = {items}
+  image= "/ejemplo/images/index/tracto3.png"
+  imagePosition = "left"
+  listStyle='list-1'
+  animateImage = {false}
+  animateList = {true}
+  imageOrigin='Left'
+   />
+   
+ <LogoCloud 
+   backgroundImage = '/ejemplo/images/index/logoindexabajo.png'
+  title = 'Transportes Garza Leal was founded on November 23, 1989, entering the Federal Trucking business based in the city of Lerdo, Durango, which is part of the Comarca Lagunera.'
+  titleStyle='logo-indexabajo'
+  origin = "topRight"/>
+</BaseLayout>

@@ -1,93 +1,155 @@
 ---
 import AnimateEntrance from "./animations/AnimateEntrance";
+
 const currentPath = Astro.url.pathname;
+const isEnglish = currentPath.includes('/en/');
+
+const getPath = (path: string) => {
+  if (isEnglish) {
+    return `/ejemplo/en${path.replace('/ejemplo', '')}`;
+  }
+  return `/ejemplo${path}`;
+};
+
+const getAlternateLanguagePath = () => {
+  if (isEnglish) {
+    return currentPath.replace('/en/', '/');
+  } else {
+    return currentPath.replace('/ejemplo/', '/ejemplo/en/');
+  }
+};
+
+const isActivePath = (path: string) => {
+  const targetPath = getPath(path);
+  return currentPath === targetPath || currentPath === `${targetPath}/`;
+};
 ---
 
-<header class="sticky top-0 left-0 w-full z-40 border-b border-none">
+<header 
+  class="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-transparent"
+  x-data="{ scrolled: false }"
+  x-init="
+    scrolled = window.scrollY > 50;
+    window.addEventListener('scroll', () => {
+      scrolled = window.scrollY > 50;
+    })
+  "
+  x-bind:class="scrolled ? 'bg-white/70 backdrop-blur-md shadow-lg' : 'bg-transparent'"
+>
   <AnimateEntrance client:load origin="topRight" useScrollTrigger={false} triggerClass="footer-col" stagger={0.2}>
     <div class="w-full" x-data="{ mobileMenuOpen: false }">
       <!-- Barra principal -->
-      <div
-        class="backdrop-blur-md bg-white/70 border-b border-white/30
-               flex items-center justify-between
-               py-2 px-6 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]"
-      >
-        <!-- Logo a la izquierda -->
-        <div class="flex items-center footer-col">
-          <a href="/" title="Home">
-            <img class="h-12 lg:h-14" src="/ejemplo/images/logos/logosinfondo.png" alt="Logo" />
+      <div class="flex items-center justify-between py-2 px-4 sm:px-6 border-b transition-all duration-300"
+           x-bind:class="scrolled ? 'border-white/30' : 'border-transparent'">
+        
+        <!-- Logo -->
+        <div class="flex items-center footer-col flex-shrink-0">
+          <a href={getPath("/")} title="Home">
+            <img 
+              class="h-10 sm:h-12 lg:h-14 w-auto object-contain" 
+              src="/ejemplo/images/logos/logosinfondo.png" 
+              alt="Logo" 
+            />
           </a>
         </div>
 
-        <!-- Navegación centrada -->
-        <nav class="hidden lg:flex items-center">
-          <ul class="flex items-center gap-x-8">
+        <!-- Navegación Desktop -->
+        <nav class="hidden lg:flex items-center flex-1 justify-center">
+          <ul class="flex items-center gap-x-4 xl:gap-x-8">
             <li class="footer-col">
               <a
-                href="/ejemplo/"
-                class={`font-semibold transition px-3 py-2 ${
-                  currentPath === "/ejemplo/"
-                    ? "text-[#3aabe4]"
-                    : "text-neutral-700 hover:text-neutral-600"
-                }`}
+                href={getPath("/nosotros")}
+                class="font-semibold transition-all duration-300 px-3 py-2 text-sm xl:text-base relative"
+                x-bind:class="isActivePath('/nosotros') 
+                  ? 'text-[#3aabe4] after:absolute after:bottom-0 after:left-1/2 after:w-3/4 after:h-0.5 after:bg-[#3aabe4] after:transform after:-translate-x-1/2' 
+                  : (scrolled 
+                    ? 'text-neutral-700 hover:text-neutral-600 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-[#3aabe4] after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4' 
+                    : 'text-white hover:text-gray-200 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4')"
               >
-                Inicio
+                {isEnglish ? "About Us" : "Nosotros"}
               </a>
             </li>
             <li class="footer-col">
               <a
-                href="/ejemplo/nosotros"
-                class={`font-semibold transition px-3 py-2 ${
-                  currentPath === "/ejemplo/nosotros"
-                    ? "text-[#3aabe4]"
-                    : "text-neutral-700 hover:text-neutral-600"
-                }`}
+                href={getPath("/servicios")}
+                class="font-semibold transition-all duration-300 px-3 py-2 text-sm xl:text-base relative"
+                x-bind:class="isActivePath('/servicios') 
+                  ? 'text-[#3aabe4] after:absolute after:bottom-0 after:left-1/2 after:w-3/4 after:h-0.5 after:bg-[#3aabe4] after:transform after:-translate-x-1/2' 
+                  : (scrolled 
+                    ? 'text-neutral-700 hover:text-neutral-600 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-[#3aabe4] after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4' 
+                    : 'text-white hover:text-gray-200 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4')"
               >
-                Nosotros
+                {isEnglish ? "Services" : "Nuestros Servicios"}
               </a>
             </li>
             <li class="footer-col">
               <a
-                href="/ejemplo/servicios"
-                class={`font-semibold transition px-3 py-2 ${
-                  currentPath === "/ejemplo/servicios"
-                    ? "text-[#3aabe4]"
-                    : "text-neutral-700 hover:text-neutral-600"
-                }`}
+                href={getPath("/contacto")}
+                class="font-semibold transition-all duration-300 px-3 py-2 text-sm xl:text-base relative"
+                x-bind:class="isActivePath('/contacto') 
+                  ? 'text-[#3aabe4] after:absolute after:bottom-0 after:left-1/2 after:w-3/4 after:h-0.5 after:bg-[#3aabe4] after:transform after:-translate-x-1/2' 
+                  : (scrolled 
+                    ? 'text-neutral-700 hover:text-neutral-600 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-[#3aabe4] after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4' 
+                    : 'text-white hover:text-gray-200 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4')"
               >
-                Nuestros Servicios
-              </a>
-            </li>
-            <li class="footer-col">
-              <a
-                href="/ejemplo/contacto"
-                class={`font-semibold transition px-3 py-2 ${
-                  currentPath === "/ejemplo/contacto"
-                    ? "text-[#3aabe4]"
-                    : "text-neutral-700 hover:text-neutral-600"
-                }`}
-              >
-                Contáctanos
+                {isEnglish ? "Contact" : "Contáctanos"}
               </a>
             </li>
           </ul>
         </nav>
 
-        <!-- Elementos a la derecha (banderas) -->
-        <div class="flex items-center gap-x-3">
-          <!-- Banderas -->
-          <a href="/login.astro" title="Log in" class="footer-col">
+        <!-- Elementos derecha -->
+        <div class="flex items-center gap-x-2 sm:gap-x-3 flex-shrink-0">
+          
+          <!-- Redes sociales a la izquierda -->
+          <div class="flex items-center gap-x-2 mr-2">
+            <a href="https://www.facebook.com/share/16ns4Ae2CM/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="footer-col hidden sm:block">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8 transition duration-300 hover:scale-110" 
+                   viewBox="0 0 32 32" 
+                   x-bind:class="scrolled 
+                     ? 'text-[#1C274C] hover:text-[#AFC1DB] hover:animate-bounce-slow' 
+                     : 'text-white hover:text-gray-200 hover:animate-bounce-slow-inverted'">
+                <!-- No scrolled: fondo blanco, icono azul -->
+                <path x-show="!scrolled" fill="white" d="M6,2h20c2.2,0,4,1.8,4,4v20c0,2.2-1.8,4-4,4H6c-2.2,0-4-1.8-4-4V6C2,3.8,3.8,2,6,2z"/>
+                <path x-show="!scrolled" fill="#1C274C" d="M13.2,16.1v9.7c0,0.1,0.1,0.3,0.3,0.3h3.9c0.2,0,0.3-0.1,0.3-0.3v-9.8h2.8c0.1,0,0.3-0.1,0.3-0.2l0.3-3
+                c0-0.2-0.1-0.3-0.3-0.3h-3.1v-2.1c0-0.5,0.4-0.9,1-0.9h2.2c0.2,0,0.3-0.1,0.3-0.3V6.3C21,6.1,20.9,6,20.7,6h-3.6
+                c-2.1,0-3.9,1.6-3.9,3.6v2.9h-1.9c-0.2,0-0.3,0.1-0.3,0.3v3c0,0.1,0.1,0.3,0.3,0.3h1.9V16.1z"/>
+                
+                <!-- Scrolled: fondo azul, icono blanco -->
+                <path x-show="scrolled" fill="#1C274C" d="M6,2h20c2.2,0,4,1.8,4,4v20c0,2.2-1.8,4-4,4H6c-2.2,0-4-1.8-4-4V6C2,3.8,3.8,2,6,2z"/>
+                <path x-show="scrolled" fill="white" d="M13.2,16.1v9.7c0,0.1,0.1,0.3,0.3,0.3h3.9c0.2,0,0.3-0.1,0.3-0.3v-9.8h2.8c0.1,0,0.3-0.1,0.3-0.2l0.3-3
+                c0-0.2-0.1-0.3-0.3-0.3h-3.1v-2.1c0-0.5,0.4-0.9,1-0.9h2.2c0.2,0,0.3-0.1,0.3-0.3V6.3C21,6.1,20.9,6,20.7,6h-3.6
+                c-2.1,0-3.9,1.6-3.9,3.6v2.9h-1.9c-0.2,0-0.3,0.1-0.3,0.3v3c0,0.1,0.1,0.3,0.3,0.3h1.9V16.1z"/>
+              </svg>
+            </a>
+
+            <a href="https://www.tiktok.com/@transportes.garza.leal?_t=ZS-90iHtSYYDGm&_r=1" target="_blank" rel="noopener noreferrer" class="footer-col hidden sm:block">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8 transition duration-300 hover:scale-110 delay-200" 
+                   viewBox="0 0 32 32" 
+                   x-bind:class="scrolled 
+                     ? 'text-[#1C274C] hover:text-[#AFC1DB] hover:animate-bounce-slow' 
+                     : 'text-white hover:text-gray-200 hover:animate-bounce-slow-inverted'">
+                <!-- No scrolled: fondo blanco, icono azul -->
+                <path x-show="!scrolled" fill="white" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
+                <path x-show="!scrolled" fill="#1C274C" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
+                
+                <!-- Scrolled: fondo azul, icono blanco -->
+                <path x-show="scrolled" fill="#1C274C" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
+                <path x-show="scrolled" fill="white" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Bandera -->
+          <a 
+            href={getAlternateLanguagePath()} 
+            title={isEnglish ? "Switch to Spanish" : "Cambiar a inglés"} 
+            class="footer-col flex items-center"
+          >
             <img
-              src="/ejemplo/images/logos/bandera_us.png"
-              alt="Bandera USA"
-              class="rounded-full object-cover hover:scale-105 transition-transform w-8 h-8"
-            />
-          </a>
-          <a href="/ejemplo/" title="Try free" class="footer-col">
-            <img
-              src="/ejemplo/images/logos/mexico.png"
-              alt="Bandera México"
-              class="rounded-full object-cover hover:scale-105 transition-transform w-8 h-8"
+              src={isEnglish ? "/ejemplo/images/logos/mexico.png" : "/ejemplo/images/logos/bandera_us.png"}
+              alt={isEnglish ? "Bandera México" : "Bandera USA"}
+              class="rounded-full object-cover hover:scale-105 transition-transform w-7 h-7 sm:w-8 sm:h-8"
             />
           </a>
 
@@ -95,11 +157,12 @@ const currentPath = Astro.url.pathname;
           <button
             type="button"
             aria-label="Open menu"
-            class="lg:hidden ml-2"
+            class="lg:hidden ml-2 transition-colors duration-300"
+            x-bind:class="scrolled ? 'text-slate-500' : 'text-white'"
             @click="mobileMenuOpen = !mobileMenuOpen"
           >
             <svg
-              class="h-6 w-6 text-slate-500"
+              class="h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
@@ -118,59 +181,69 @@ const currentPath = Astro.url.pathname;
       <div
         x-show="mobileMenuOpen"
         x-transition
-        class="lg:hidden mt-2 backdrop-blur-md bg-white/70 border border-white/30 shadow-md"
+        class="lg:hidden mt-2 backdrop-blur-md border shadow-md transition-all duration-300"
+        x-bind:class="scrolled ? 'bg-white/70 border-white/30' : 'bg-black/40 border-white/20'"
       >
         <ul class="flex flex-col px-4 py-2 gap-2">
           <li>
             <a
-              href="/ejemplo/"
-              class={`block py-2 px-3 rounded transition ${
-                currentPath === "/ejemplo/"
-                  ? "bg-[#3aabe4] text-white"
-                  : "text-neutral-700 hover:bg-[#e0f0ff]"
-              }`}
+              href={getPath("/nosotros")}
+              class="block py-2 px-3 rounded transition text-sm"
+              x-bind:class="isActivePath('/nosotros') 
+                ? 'bg-[#3aabe4] text-white' 
+                : (scrolled ? 'text-neutral-700 hover:bg-[#e0f0ff]' : 'text-white hover:bg-white/20')"
+              @click="mobileMenuOpen = false"
             >
-              Inicio
+              {isEnglish ? "About Us" : "Nosotros"}
             </a>
           </li>
           <li>
             <a
-              href="/ejemplo/nosotros"
-              class={`block py-2 px-3 rounded transition ${
-                currentPath === "/ejemplo/nosotros"
-                  ? "bg-[#3aabe4] text-white"
-                  : "text-neutral-700 hover:bg-[#e0f0ff]"
-              }`}
+              href={getPath("/servicios")}
+              class="block py-2 px-3 rounded transition text-sm"
+              x-bind:class="isActivePath('/servicios') 
+                ? 'bg-[#3aabe4] text-white' 
+                : (scrolled ? 'text-neutral-700 hover:bg-[#e0f0ff]' : 'text-white hover:bg-white/20')"
+              @click="mobileMenuOpen = false"
             >
-              Nosotros
+              {isEnglish ? "Services" : "Nuestros Servicios"}
             </a>
           </li>
           <li>
             <a
-              href="/ejemplo/servicios"
-              class={`block py-2 px-3 rounded transition ${
-                currentPath === "/ejemplo/servicios"
-                  ? "bg-[#3aabe4] text-white"
-                  : "text-neutral-700 hover:bg-[#e0f0ff]"
-              }`}
+              href={getPath("/contacto")}
+              class="block py-2 px-3 rounded transition text-sm"
+              x-bind:class="isActivePath('/contacto') 
+                ? 'bg-[#3aabe4] text-white' 
+                : (scrolled ? 'text-neutral-700 hover:bg-[#e0f0ff]' : 'text-white hover:bg-white/20')"
+              @click="mobileMenuOpen = false"
             >
-              Nuestros Servicios
-            </a>
-          </li>
-          <li>
-            <a
-              href="/ejemplo/contacto"
-              class={`block py-2 px-3 rounded transition ${
-                currentPath === "/ejemplo/contacto"
-                  ? "bg-[#3aabe4] text-white"
-                  : "text-neutral-700 hover:bg-[#e0f0ff]"
-              }`}
-            >
-              Contáctanos
+              {isEnglish ? "Contact" : "Contáctanos"}
             </a>
           </li>
         </ul>
       </div>
     </div>
   </AnimateEntrance>
+
+  <style>
+    /* Animaciones inline para asegurar funcionamiento */
+    @keyframes bounce-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    
+    @keyframes bounce-slow-inverted {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
+    }
+    
+    .hover\:animate-bounce-slow:hover {
+      animation: bounce-slow 2s infinite;
+    }
+    
+    .hover\:animate-bounce-slow-inverted:hover {
+      animation: bounce-slow-inverted 2s infinite;
+    }
+  </style>
 </header>

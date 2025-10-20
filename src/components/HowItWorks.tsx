@@ -39,7 +39,7 @@ export default function HowItWorksGallery({ title, tabs, textStyle }: Props) {
   return (
     <section class="bg-gradient-to-b from-[#121843] to-[#121833] py-12 lg:py-16 text-white relative overflow-visible">
       <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col gap-y-6">
-        <AnimateEntrance origin="Left" useScrollTrigger={false} triggerClass="text-col" stagger={0.2}>
+        <AnimateEntrance origin="Left" useScrollTrigger={true} triggerClass="text-col" stagger={0.2}>
           <div class="flex flex-col items-center text-center text-col relative z-[20]">
             {title && <h2 class={`${textStyle} text-col`}>{title}</h2>}
             <p class="mt-4 text-base lg:text-lg">{tabs[activeTab].subtitle}</p>
@@ -93,7 +93,7 @@ export default function HowItWorksGallery({ title, tabs, textStyle }: Props) {
         </AnimateEntrance>
 
         {/* 🎨 Galería Fancy */}
-        <AnimateEntrance origin="top" useScrollTrigger={false} triggerClass="gallery-col" stagger={0.2}>
+        <AnimateEntrance origin="top" useScrollTrigger={true} triggerClass="gallery-col" stagger={0.2}>
           <div class="relative mt-10 gallery-col">
             {/* Contenedor delimitado */}
             <div class="max-h-[850px] overflow-hidden rounded-3xl shadow-2xl p-4 bg-[#101437]/40 backdrop-blur-sm">

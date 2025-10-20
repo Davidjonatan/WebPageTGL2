@@ -2,17 +2,29 @@
 import AnimateEntrance from "./animations/AnimateEntrance";
 import AnimatedGlowBorder from "./animations/AnimatedGlowBorder"; 
 
-interface Service {
+export interface Service {
   title: string;
   image: string;
   tabKey: string;
 }
 
-const services: Service[] = [
-  { title: "Tanques", image: "./images/index/tanque2.jpg", tabKey: "tab1" },
-  { title: "Cajas Secas", image: "./images/index/seca.jpg", tabKey: "tab2" },
-  { title: "Thermo", image: "./images/index/thermo.jpg", tabKey: "tab3" },
-];
+export interface Props {
+  mainTitle?: string;
+  services?: Service[];
+  buttonText?: string;
+  baseUrl?: string;
+}
+
+const {
+  mainTitle = "Nuestros Servicios",
+  services = [
+    { title: "Tanques", image: "/ejemplo/images/index/tanque2.jpg", tabKey: "tab1" },
+    { title: "Cajas Secas", image: "/ejemplo/images/index/seca.jpg", tabKey: "tab2" },
+    { title: "Thermo", image: "/ejemplo/images/index/thermo.jpg", tabKey: "tab3" },
+  ],
+  buttonText = "Ver más",
+  baseUrl = "/ejemplo/servicios"
+} = Astro.props;
 ---
 
 <section class="bg-[#121843] py-16 lg:py-20" x-data="{ modalOpen: false, modalImage: '' }">
@@ -20,7 +32,7 @@ const services: Service[] = [
     <!-- Título -->
     <AnimateEntrance client:load origin={"Left"} useScrollTrigger={true} triggerClass="title-col" stagger={0.2}>
   <h2 class="titulo-pricing title-col">
-    Nuestros Servicios
+    {mainTitle}
   </h2>
 </AnimateEntrance>
 
@@ -59,13 +71,13 @@ const services: Service[] = [
         <!-- Botón -->
         <button class="boton-card-pricing">
         <a
-    href={`/ejemplo/servicios?tab=${service.tabKey}`}
+    href={`${baseUrl}?tab=${service.tabKey}`}
     class="boton-card-servicio inline-flex items-center gap-2"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4l3 10 4-18 3 8h4" />
       </svg>
-      Ver más
+      {buttonText}
       </a>
         </button>
       </div>

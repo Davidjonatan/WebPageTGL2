@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LogoCloud from '../../components/LogoCloud.astro';
+import Card3 from '../../components/Card3.astro';
+import Card from '../../components/Card.astro'
+import Card2 from '../../components/Card2.astro'
+import ImageCarousel from '../../components/Carrouselimages';
+import Hero from '../../components/Hero';
+
+const features = [
+  { text: '32 years of experience.' },
+  { text: 'Recent model units.' },
+  { text: 'Environmentally responsible.' },
+  { text: 'Units with satellite tracking.' },
+  { text: 'Clean and sanitized units.' },
+  { text: 'Web Service implementation with our clients.' },
+  { text: 'Logistics personnel and 24/7 customer service.' },
+  { text: 'ISO 9001:2015 C-TPAT, HACCP certifications.' },
+]
+
+const items = [
+  { text: 'Honesty: Acting with propriety and adherence to company norms.' },
+  { text: 'Responsibility: Fulfilling commitments and duties both at work and in family, assuming the consequences of actions.' },
+  { text: 'Respect: Recognizing the dignity and rights of oneself and others.' },
+  { text: 'Service: Providing timely attention with efficiency and kindness to internal and external clients.' },
+  { text: 'Justice: Giving each person what corresponds to them.' },
+];
+---
+
+<BaseLayout>
+    <Hero
+  backgroundType="image"
+  backgroundSrc="/ejemplo/images/nosotros/nosotros.jpeg"
+  enableCarousel={false}
+  slides={[
+    { title: "let's go with you" }
+  ]}
+  />
+    <Card 
+  bgSvg="/ejemplo/images/nosotros/fondoserch.png"
+  image="/ejemplo/images/nosotros/eteserch.png"
+  text="AT TRANSPORTES GARZA LEAL OUR MAIN MISSION IS TO OFFER THE BEST SERVICE TO OUR CLIENTS IN THE TRANSPORTATION OF THEIR PRODUCTS, COMPLYING WITH LEGAL, REGULATORY AND CLIENT STANDARDS, COMMITTED TO THE CONTINUOUS IMPROVEMENT OF OUR QUALITY MANAGEMENT SYSTEM."
+  textStyle='text-1'
+  imageOrigin="Right"
+  textOrigin="Left"
+/>
+	<LogoCloud 
+    backgroundImage="/ejemplo/images/svgs/logo1.svg"
+  title="QUALITY POLICY"
+  titleStyle="logo-nosotros"
+  origin="bottom"/>
+  
+  <Card3 
+    bgImage="/ejemplo/images/nosotros/degradadoright.png"
+    image="/ejemplo/images/nosotros/mision.png"
+    imagePosition="left"
+    title="MISSION"
+    text="Provide our Customers with an excellent, reliable and punctual Service, with clean and well-presented Units"
+    titleStyle="title1-card3-nosotros"
+    textStyle="text1-card3-nosotros"
+    textAlign="left"
+    textOrigin="top"
+    imageOrigin="bottom"
+    titleOrigin="bottomRight"
+  />
+  
+  <Card3 
+    bgImage="/ejemplo/images/nosotros/degradadoleft.png"
+    image="/ejemplo/images/nosotros/vision.png"
+    imagePosition="right"
+    title="VISION"
+    text="To be one of the Main Federal Cargo Transportation Companies in Our Country, and for this to reflect Reliability in our Customers, perfectly presented equipment."
+    titleStyle="title1-card3-nosotros"
+    textStyle="text1-card3-nosotros"
+    textAlign="left"
+    textOrigin="Right"
+    imageOrigin="bottomLeft"
+    titleOrigin="topRight"
+  />
+  
+  <Card2
+  bgImage="/ejemplo/images/nosotros/degradadoright.png"
+  items={items}
+  image="/ejemplo/images/nosotros/valores.png"
+  imagePosition="left"
+  listStyle='list-2'
+  titleStyle='titlelist-1'
+  title='VALUES'
+  animateImage={false}
+  animateList={true}
+  imageOrigin="Left"/>
+  
+  <ImageCarousel
+      client:load
+      title="History"
+      description="Transportes Garza Leal is a 100% Mexican company, founded 36 years ago, with the vision and drive of the Garza Leal brothers, who decided to enter the transportation business in 1989, to meet the food transportation needs in Our region."
+      slides={[
+        { src: "/ejemplo/images/nosotros/history/past1.jpg", alt: "img1" },
+        { src: "/ejemplo/images/nosotros/history/past2.jpg", alt: "img2" },
+        { src: "/ejemplo/images/nosotros/history/past3.jpg", alt: "img3" },
+        { src: "/ejemplo/images/nosotros/history/past4.jpg", alt: "img4" },
+      ]}
+      interval={4000} 
+  />
+</BaseLayout>
