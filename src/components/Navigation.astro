@@ -5,18 +5,13 @@ const currentPath = Astro.url.pathname;
 const isEnglish = currentPath.includes('/en/');
 
 const getPath = (path: string) => {
-  if (isEnglish) {
-    return `/public_html/en${path.replace('/public_html', '')}`;
-  }
+  if (isEnglish) return `/public_html/en${path.replace('/public_html', '')}`;
   return `/public_html${path}`;
 };
 
 const getAlternateLanguagePath = () => {
-  if (isEnglish) {
-    return currentPath.replace('/en/', '/');
-  } else {
-    return currentPath.replace('/public_html', '/public_html/en/');
-  }
+  if (isEnglish) return currentPath.replace('/en/', '/');
+  return currentPath.replace('/public_html', '/public_html/en/');
 };
 
 const isActivePath = (path: string) => {
@@ -33,89 +28,75 @@ const isActivePath = (path: string) => {
 >
   <AnimateEntrance client:load origin="topRight" useScrollTrigger={false} triggerClass="footer-col" stagger={0.2}>
     <div class="w-full" x-data="{ mobileMenuOpen: false }">
+
       <!-- Barra principal -->
       <div class="flex items-center justify-between py-2 px-4 sm:px-6 border-b transition-all duration-300"
            x-bind:class="scrolled ? 'border-white/30' : 'border-transparent'">
-        
+
         <!-- Logo -->
         <div class="flex items-center footer-col flex-shrink-0">
           <a href={getPath("/")} title="Home">
-            <img 
-              class="h-10 sm:h-12 lg:h-14 w-auto object-contain" 
-              src="/public_html/images/logos/logosinfondo.png" 
-              alt="Logo" 
-            />
+            <img class="h-10 sm:h-12 lg:h-14 w-auto object-contain" 
+                 src="/public_html/images/logos/logosinfondo.png" 
+                 alt="Logo" />
           </a>
         </div>
 
         <!-- Navegación Desktop -->
-      <nav class="hidden lg:flex items-center flex-1 justify-center">
-  <ul class="flex items-center gap-x-6 xl:gap-x-10">
+        <nav class="hidden lg:flex items-center flex-1 justify-center">
+          <ul class="flex items-center gap-x-6 xl:gap-x-10">
 
-    <!-- NOSOTROS -->
-    <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
-    :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"> 
-      <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
-      <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-      <li class="footer-col relative">
-        <a
-          href={getPath("/nosotros")}
-          class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
-          :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
-        >
-          {isEnglish ? "ABOUT US" : "NOSOTROS"}
-        </a>
+            <!-- NOSOTROS -->
+            <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
+                 :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'">
+              <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
+              <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+              <li class="footer-col relative">
+                <a href={getPath("/nosotros")}
+                   class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
+                   :class="scrolled ? 'text-[#1C274C]' : 'text-white'">
+                  {isEnglish ? "ABOUT US" : "NOSOTROS"}
+                </a>
+              </li>
+            </div>
 
-        <!-- Bordes animados -->
-       
-      </li>
-    </div>
+            <!-- SERVICIOS -->
+            <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
+                 :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'">
+              <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
+              <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+              <li class="footer-col relative">
+                <a href={getPath("/servicios")}
+                   class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
+                   :class="scrolled ? 'text-[#1C274C]' : 'text-white'">
+                  {isEnglish ? "SERVICES" : "NUESTROS SERVICIOS"}
+                </a>
+              </li>
+            </div>
 
-    <!-- SERVICIOS -->
-    <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
-    :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"> 
-        <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
-        <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-      <li class="footer-col relative">
-        <a
-          href={getPath("/servicios")}
-          class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
-          :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
-        >
-          {isEnglish ? "SERVICES" : "NUESTROS SERVICIOS"}
-        </a>
+            <!-- CONTACTO -->
+            <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
+                 :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'">
+              <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
+              <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+              <li class="footer-col relative">
+                <a href={getPath("/contacto")}
+                   class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
+                   :class="scrolled ? 'text-[#1C274C]' : 'text-white'">
+                  {isEnglish ? "CONTACT" : "CONTACTANOS"}
+                </a>
+              </li>
+            </div>
 
-        
-      </li>
-    </div>
-
-    <!-- CONTACTO -->
-    <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
-     :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'">
-     <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
-     <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-      <li class="footer-col relative">
-        <a
-          href={getPath("/contacto")}
-          class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
-          :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
-        >
-          {isEnglish ? "CONTACT" : "CONTACTANOS"}
-        </a>
-
-        
-      </li>
-    </div>
-
-  </ul>
-</nav>
+          </ul>
+        </nav>
 
         <!-- Elementos derecha -->
         <div class="flex items-center gap-x-2 sm:gap-x-3 flex-shrink-0">
+
+          <!-- Facebook -->
           
-          <!-- Redes sociales a la izquierda -->
-          <div class="flex items-center gap-x-2 mr-2">
-            <a href="https://www.facebook.com/share/16ns4Ae2CM/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="footer-col hidden sm:block">
+            <a href="https://www.facebook.com/share/16ns4Ae2CM/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="footer-col">
               <svg class="w-7 h-7 sm:w-8 sm:h-8 transition duration-300 hover:scale-110" 
                    viewBox="0 0 32 32" 
                    x-bind:class="scrolled 
@@ -135,131 +116,100 @@ const isActivePath = (path: string) => {
               </svg>
             </a>
 
-            <a href="https://www.tiktok.com/@transportes.garza.leal?_t=ZS-90iHtSYYDGm&_r=1" target="_blank" rel="noopener noreferrer" class="footer-col hidden sm:block">
-              <svg class="w-7 h-7 sm:w-8 sm:h-8 transition duration-300 hover:scale-110 delay-200" 
-                   viewBox="0 0 32 32" 
-                   x-bind:class="scrolled 
-                     ? 'text-[#1C274C] hover:text-[#AFC1DB] hover:animate-bounce-slow' 
-                     : 'text-white hover:text-gray-200 hover:animate-bounce-slow-inverted'">
-                <!-- No scrolled: fondo blanco, icono azul -->
-                <path x-show="!scrolled" fill="#1C274C" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
-                <path x-show="!scrolled" fill="white" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
-                
-                <!-- Scrolled: fondo azul, icono blanco -->
-                <path x-show="scrolled" fill="white" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
-                <path x-show="scrolled" fill="#1C274C" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
-              </svg>
-            </a>
-          </div>
+   
+ <!-- Instagram -->
+<a href="https://www.instagram.com/transportes.garza.leal" target="_blank" rel="noopener noreferrer" class="footer-col">
+  <svg 
+    class="w-7 h-7 sm:w-8 sm:h-8 transition duration-300 hover:scale-110"
+    viewBox="0 0 24 24" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    x-bind:class="scrolled 
+      ? 'text-[#1C274C] hover:text-[#AFC1DB] hover:animate-bounce-slow' 
+      : 'text-white hover:text-gray-200 hover:animate-bounce-slow-inverted'">
+    
+    <!-- No scrolled: fondo blanco, icono azul -->
+    <g x-show="!scrolled">
+      <rect x="2" y="2" width="20" height="20" rx="4" fill="white"></rect>
+      <path 
+        fill-rule="evenodd" 
+        clip-rule="evenodd" 
+        d="M12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9ZM7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM17.5 8C18.3284 8 19 7.32843 19 6.5C19 5.67157 18.3284 5 17.5 5C16.6716 5 16 5.67157 16 6.5C16 7.32843 16.6716 8 17.5 8Z"
+        fill="#1C274C" />
+    </g>
+
+    <!-- Scrolled: fondo azul, icono blanco -->
+    <g x-show="scrolled">
+      <rect x="2" y="2" width="20" height="20" rx="4" fill="#1C274C"></rect>
+      <path 
+        fill-rule="evenodd" 
+        clip-rule="evenodd" 
+        d="M12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9ZM7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM17.5 8C18.3284 8 19 7.32843 19 6.5C19 5.67157 18.3284 5 17.5 5C16.6716 5 16 5.67157 16 6.5C16 7.32843 16.6716 8 17.5 8Z"
+        fill="white" />
+    </g>
+  </svg>
+</a>
+
 
           <!-- Bandera -->
-          <a 
-            href={getAlternateLanguagePath()} 
-            title={isEnglish ? "Switch to Spanish" : "Cambiar a inglés"} 
-            class="footer-col flex items-center"
-          >
-            <img
-              src={isEnglish ? "/public_html/images/logos/mexico.png" : "/public_html/images/logos/bandera_us.png"}
-              alt={isEnglish ? "Bandera México" : "Bandera USA"}
-              class="rounded-full object-cover hover:scale-105 transition-transform w-7 h-7 sm:w-8 sm:h-8"
-            />
+          <a href={getAlternateLanguagePath()} title={isEnglish ? "Switch to Spanish" : "Cambiar a inglés"} class="footer-col flex items-center">
+            <img src={isEnglish ? "/public_html/images/logos/mexico.png" : "/public_html/images/logos/bandera_us.png"} 
+                 alt={isEnglish ? "Bandera México" : "Bandera USA"} 
+                 class="rounded-full object-cover hover:scale-105 transition-transform w-7 h-7 sm:w-8 sm:h-8" />
           </a>
 
           <!-- Botón menú móvil -->
-          <button
-            type="button"
-            aria-label="Open menu"
-            class="lg:hidden ml-2 transition-colors duration-300"
-            x-bind:class="scrolled ? 'text-slate-500' : 'text-white'"
-            @click="mobileMenuOpen = !mobileMenuOpen"
-          >
-            <svg
-              class="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
-                clip-rule="evenodd"
-              />
+          <button type="button" aria-label="Open menu" class="lg:hidden ml-2 transition-colors duration-300"
+                  x-bind:class="scrolled ? 'text-slate-500' : 'text-white'" @click="mobileMenuOpen = !mobileMenuOpen">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"/>
             </svg>
           </button>
+
         </div>
       </div>
 
       <!-- Menú móvil -->
-      <div
-        x-show="mobileMenuOpen"
-        x-transition
-        class="lg:hidden mt-2 backdrop-blur-md border shadow-md transition-all duration-300"
-        x-bind:class="scrolled ? 'bg-white/70 border-white/30' : 'bg-black/40 border-white/20'"
-      >
-        <ul class="flex flex-col px-4 py-2 gap-2">
-          <li>
-            <a
-              href={getPath("/nosotros")}
-              class="block py-2 px-3 rounded transition text-sm"
-              x-bind:class="isActivePath('/nosotros') 
-                ? 'bg-[#3aabe4] text-white' 
-                : (scrolled ? 'text-neutral-700 hover:bg-[#e0f0ff]' : 'text-white hover:bg-white/20')"
-              @click="mobileMenuOpen = false"
-            >
-              {isEnglish ? "About Us" : "Nosotros"}
-            </a>
-          </li>
-          <li>
-            <a
-              href={getPath("/servicios")}
-              class="block py-2 px-3 rounded transition text-sm"
-              x-bind:class="isActivePath('/servicios') 
-                ? 'bg-[#3aabe4] text-white' 
-                : (scrolled ? 'text-neutral-700 hover:bg-[#e0f0ff]' : 'text-white hover:bg-white/20')"
-              @click="mobileMenuOpen = false"
-            >
-              {isEnglish ? "Services" : "Nuestros Servicios"}
-            </a>
-          </li>
-          <li>
-            <a
-              href={getPath("/contacto")}
-              class="block py-2 px-3 rounded transition text-sm"
-              x-bind:class="isActivePath('/contacto') 
-                ? 'bg-[#3aabe4] text-white' 
-                : (scrolled ? 'text-neutral-700 hover:bg-[#e0f0ff]' : 'text-white hover:bg-white/20')"
-              @click="mobileMenuOpen = false"
-            >
-              {isEnglish ? "Contact" : "Contáctanos"}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </AnimateEntrance>
+      <div x-show="mobileMenuOpen" x-transition:enter="transition transform duration-300" x-transition:enter-start="translate-x-full"
+           x-transition:enter-end="translate-x-0" x-transition:leave="transition transform duration-300"
+           x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
+           class="fixed inset-0 z-50 flex justify-end">
 
-  <style>
-    /* Animaciones inline para asegurar funcionamiento */
-    @keyframes bounce-slow {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
-    }
-    
-    @keyframes bounce-slow-inverted {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(3px); }
-    }
-    
-    .hover\:animate-bounce-slow:hover {
-      animation: bounce-slow 2s infinite;
-    }
-    
-    .hover\:animate-bounce-slow-inverted:hover {
-      animation: bounce-slow-inverted 2s infinite;
-    }
-    .group:hover span:nth-child(2) {
-  transition-delay: 0.1s;
-  transform-origin: center;
-}
-  </style>
+        <!-- Fondo semitransparente -->
+        <div class="fixed inset-0 bg-black/40" @click="mobileMenuOpen = false"></div>
+
+        <!-- Panel lateral -->
+        <div class="relative w-64 bg-white shadow-lg flex flex-col mt-0">
+          <button class="absolute top-2 right-2 p-2 text-gray-700 hover:text-gray-900 transition"
+                  @click="mobileMenuOpen = false" aria-label="Close menu">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+
+          <ul class="flex flex-col px-4 py-6 gap-2">
+            <li><a href={getPath("/nosotros")} class="block py-2 px-3 rounded text-[#1C274C] hover:bg-blue-50 transition text-sm" @click="mobileMenuOpen = false">{isEnglish ? "About Us" : "Nosotros"}</a></li>
+            <li><a href={getPath("/servicios")} class="block py-2 px-3 rounded text-[#1C274C] hover:bg-blue-50 transition text-sm" @click="mobileMenuOpen = false">{isEnglish ? "Services" : "Nuestros Servicios"}</a></li>
+            <li><a href={getPath("/contacto")} class="block py-2 px-3 rounded text-[#1C274C] hover:bg-blue-50 transition text-sm" @click="mobileMenuOpen = false">{isEnglish ? "Contact" : "Contáctanos"}</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <style>
+      @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+      @keyframes bounce-slow-inverted {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(3px); }
+      }
+      .hover\:animate-bounce-slow:hover { animation: bounce-slow 2s infinite; }
+      .hover\:animate-bounce-slow-inverted:hover { animation: bounce-slow-inverted 2s infinite; }
+      .group:hover span:nth-child(2) { transition-delay: 0.1s; transform-origin: center; }
+    </style>
+
+  </AnimateEntrance>
 </header>
