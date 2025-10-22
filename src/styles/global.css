@@ -433,42 +433,6 @@ body {
 }
 
 /* ===== NAVIGATION STYLES ===== */
-
-/* Estados de los enlaces del navigation */
-.nav-link {
-  @apply font-semibold transition-all duration-300 px-3 py-2 text-sm xl:text-base relative;
-}
-
-/* Estado normal (scroll) */
-.nav-link-scrolled {
-  @apply text-neutral-700 hover:text-neutral-600;
-}
-
-/* Estado transparente (arriba) */
-.nav-link-transparent {
-  @apply text-white hover:text-gray-300;
-}
-
-/* Enlace activo */
-.nav-link-active {
-  @apply text-[#3aabe4];
-}
-
-/* Subrayado animado para hover */
-.nav-link::after {
-  content: '';
-  @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#3aabe4] transition-all duration-300;
-  transform: translateX(-50%);
-}
-
-.nav-link:hover::after {
-  @apply w-3/4;
-}
-
-.nav-link-active::after {
-  @apply w-3/4 bg-[#3aabe4];
-}
-
 /* Estados específicos para SVG de redes sociales */
 .social-svg-scrolled {
   @apply text-[#1C274C] hover:text-[#AFC1DB] hover:animate-bounce;
@@ -492,14 +456,6 @@ body {
   animation: bounce-slow-inverted 2s infinite;
 }
 
-/* Botón menú móvil */
-.mobile-menu-btn-scrolled {
-  @apply text-slate-500;
-}
-
-.mobile-menu-btn-transparent {
-  @apply text-white;
-}
 
 /* Menú móvil */
 .mobile-menu-scrolled {

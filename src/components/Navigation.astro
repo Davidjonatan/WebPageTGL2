@@ -6,16 +6,16 @@ const isEnglish = currentPath.includes('/en/');
 
 const getPath = (path: string) => {
   if (isEnglish) {
-    return `/ejemplo/en${path.replace('/ejemplo', '')}`;
+    return `/public_html/en${path.replace('/public_html', '')}`;
   }
-  return `/ejemplo${path}`;
+  return `/public_html${path}`;
 };
 
 const getAlternateLanguagePath = () => {
   if (isEnglish) {
     return currentPath.replace('/en/', '/');
   } else {
-    return currentPath.replace('/ejemplo/', '/ejemplo/en/');
+    return currentPath.replace('/public_html', '/public_html/en/');
   }
 };
 
@@ -25,16 +25,11 @@ const isActivePath = (path: string) => {
 };
 ---
 
-<header 
-  class="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-transparent"
+<header
   x-data="{ scrolled: false }"
-  x-init="
-    scrolled = window.scrollY > 50;
-    window.addEventListener('scroll', () => {
-      scrolled = window.scrollY > 50;
-    })
-  "
-  x-bind:class="scrolled ? 'bg-white/70 backdrop-blur-md shadow-lg' : 'bg-transparent'"
+  x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 0)"
+  :class="scrolled ? 'bg-white/80 shadow-md backdrop-blur-md' : 'bg-transparent'"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-500"
 >
   <AnimateEntrance client:load origin="topRight" useScrollTrigger={false} triggerClass="footer-col" stagger={0.2}>
     <div class="w-full" x-data="{ mobileMenuOpen: false }">
@@ -47,56 +42,73 @@ const isActivePath = (path: string) => {
           <a href={getPath("/")} title="Home">
             <img 
               class="h-10 sm:h-12 lg:h-14 w-auto object-contain" 
-              src="/ejemplo/images/logos/logosinfondo.png" 
+              src="/public_html/images/logos/logosinfondo.png" 
               alt="Logo" 
             />
           </a>
         </div>
 
         <!-- Navegación Desktop -->
-        <nav class="hidden lg:flex items-center flex-1 justify-center">
-          <ul class="flex items-center gap-x-4 xl:gap-x-8">
-            <li class="footer-col">
-              <a
-                href={getPath("/nosotros")}
-                class="font-semibold transition-all duration-300 px-3 py-2 text-sm xl:text-base relative"
-                x-bind:class="isActivePath('/nosotros') 
-                  ? 'text-[#3aabe4] after:absolute after:bottom-0 after:left-1/2 after:w-3/4 after:h-0.5 after:bg-[#3aabe4] after:transform after:-translate-x-1/2' 
-                  : (scrolled 
-                    ? 'text-neutral-700 hover:text-neutral-600 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-[#3aabe4] after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4' 
-                    : 'text-white hover:text-gray-200 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4')"
-              >
-                {isEnglish ? "About Us" : "Nosotros"}
-              </a>
-            </li>
-            <li class="footer-col">
-              <a
-                href={getPath("/servicios")}
-                class="font-semibold transition-all duration-300 px-3 py-2 text-sm xl:text-base relative"
-                x-bind:class="isActivePath('/servicios') 
-                  ? 'text-[#3aabe4] after:absolute after:bottom-0 after:left-1/2 after:w-3/4 after:h-0.5 after:bg-[#3aabe4] after:transform after:-translate-x-1/2' 
-                  : (scrolled 
-                    ? 'text-neutral-700 hover:text-neutral-600 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-[#3aabe4] after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4' 
-                    : 'text-white hover:text-gray-200 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4')"
-              >
-                {isEnglish ? "Services" : "Nuestros Servicios"}
-              </a>
-            </li>
-            <li class="footer-col">
-              <a
-                href={getPath("/contacto")}
-                class="font-semibold transition-all duration-300 px-3 py-2 text-sm xl:text-base relative"
-                x-bind:class="isActivePath('/contacto') 
-                  ? 'text-[#3aabe4] after:absolute after:bottom-0 after:left-1/2 after:w-3/4 after:h-0.5 after:bg-[#3aabe4] after:transform after:-translate-x-1/2' 
-                  : (scrolled 
-                    ? 'text-neutral-700 hover:text-neutral-600 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-[#3aabe4] after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4' 
-                    : 'text-white hover:text-gray-200 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 after:transform after:-translate-x-1/2 hover:after:w-3/4')"
-              >
-                {isEnglish ? "Contact" : "Contáctanos"}
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <nav class="hidden lg:flex items-center flex-1 justify-center">
+  <ul class="flex items-center gap-x-6 xl:gap-x-10">
+
+    <!-- NOSOTROS -->
+    <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
+    :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"> 
+      <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
+      <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+      <li class="footer-col relative">
+        <a
+          href={getPath("/nosotros")}
+          class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
+          :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
+        >
+          {isEnglish ? "ABOUT US" : "NOSOTROS"}
+        </a>
+
+        <!-- Bordes animados -->
+       
+      </li>
+    </div>
+
+    <!-- SERVICIOS -->
+    <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
+    :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"> 
+        <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
+        <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+      <li class="footer-col relative">
+        <a
+          href={getPath("/servicios")}
+          class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
+          :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
+        >
+          {isEnglish ? "SERVICES" : "NUESTROS SERVICIOS"}
+        </a>
+
+        
+      </li>
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
+     :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'">
+     <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
+     <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+      <li class="footer-col relative">
+        <a
+          href={getPath("/contacto")}
+          class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
+          :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
+        >
+          {isEnglish ? "CONTACT" : "CONTACTANOS"}
+        </a>
+
+        
+      </li>
+    </div>
+
+  </ul>
+</nav>
 
         <!-- Elementos derecha -->
         <div class="flex items-center gap-x-2 sm:gap-x-3 flex-shrink-0">
@@ -130,12 +142,12 @@ const isActivePath = (path: string) => {
                      ? 'text-[#1C274C] hover:text-[#AFC1DB] hover:animate-bounce-slow' 
                      : 'text-white hover:text-gray-200 hover:animate-bounce-slow-inverted'">
                 <!-- No scrolled: fondo blanco, icono azul -->
-                <path x-show="!scrolled" fill="white" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
                 <path x-show="!scrolled" fill="#1C274C" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
+                <path x-show="!scrolled" fill="white" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
                 
                 <!-- Scrolled: fondo azul, icono blanco -->
-                <path x-show="scrolled" fill="#1C274C" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
                 <path x-show="scrolled" fill="white" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
+                <path x-show="scrolled" fill="#1C274C" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/>
               </svg>
             </a>
           </div>
@@ -147,7 +159,7 @@ const isActivePath = (path: string) => {
             class="footer-col flex items-center"
           >
             <img
-              src={isEnglish ? "/ejemplo/images/logos/mexico.png" : "/ejemplo/images/logos/bandera_us.png"}
+              src={isEnglish ? "/public_html/images/logos/mexico.png" : "/public_html/images/logos/bandera_us.png"}
               alt={isEnglish ? "Bandera México" : "Bandera USA"}
               class="rounded-full object-cover hover:scale-105 transition-transform w-7 h-7 sm:w-8 sm:h-8"
             />
@@ -245,5 +257,9 @@ const isActivePath = (path: string) => {
     .hover\:animate-bounce-slow-inverted:hover {
       animation: bounce-slow-inverted 2s infinite;
     }
+    .group:hover span:nth-child(2) {
+  transition-delay: 0.1s;
+  transform-origin: center;
+}
   </style>
 </header>

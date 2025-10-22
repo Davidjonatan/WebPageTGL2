@@ -14,7 +14,7 @@ const footerTexts = {
     socialMedia: "Redes Sociales",
     contactDetails: "Detalles de Contacto",
     location: "Periférico Km. 14.5 Lerdo, Dgo.",
-    phone: "871 175 0600",
+    phone: "+52 871 175 0600",
     email: "info@tgarzaleal.com",
     usaService: "USA Service",
     rights: "Todos los derechos reservados.",
@@ -24,14 +24,18 @@ const footerTexts = {
     description: "With over 32 years of experience in the industry, we are your best option for product transportation, always seeking efficiency, safety and quality, with the highest quality standards.",
     socialMedia: "Social Media", 
     contactDetails: "Contact Details",
-    location: "Peripheral Km. 14.5 Lerdo, Dgo.",
-    phone: "871 175 0600",
+    location: "Periférico Km. 14.5 Lerdo, Dgo.",
+    phone: "+52 871 175 0600",
     email: "info@tgarzaleal.com",
     usaService: "USA Service",
     rights: "All rights reserved.",
     privacy: "Privacy Policy"
   }
 }[isEnglish ? 'en' : 'es'];
+// Convertir el número a formato WhatsApp (sin + ni espacios)
+const phoneNumber = footerTexts.phone.replace(/\D/g, '');
+const whatsappMessage = "Hola, quiero más información";
+const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 ---
 
 <footer class="bg-slate-900 text-gray-300 py-12">
@@ -40,7 +44,7 @@ const footerTexts = {
     
     <!-- Columna 1: Logo + Descripción -->
     <div class="footer-col">
-      <img src="/ejemplo/images/logos/logosinfondo.png" alt="T Garza Leal" class="h-12 mb-4" />
+      <img src="/public_html/images/logos/logosinfondo.png" alt="T Garza Leal" class="h-12 mb-4" />
       <p class="text-sm leading-relaxed">
         {footerTexts.description}
       </p>
@@ -81,7 +85,9 @@ const footerTexts = {
           <span class="w-5 h-5" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><path d="M5.14 12.77C3.76 10.27 3 7.3 3 4l1.97-.49c.72-.18 1.08-.27 1.4-.21.28.05.55.19.76.39.23.22.36.56.64 1.25l.71 1.78c.19.47.28.7.29.93.01.21-.02.42-.09.61-.08.22-.24.42-.55.82l-3.99 4.69ZM5.14 12.77c1.52 2.76 3.79 4.95 6.63 6.37 2.38 1.2 5.16 1.86 8.23 1.86l.49-1.97c.18-.72.27-1.08.21-1.4a1.3 1.3 0 0 0-.39-.76c-.23-.22-.57-.36-1.26-.63l-1.58-.64c-.53-.22-.79-.33-1.04-.34a1.3 1.3 0 0 0-.68.14c-.24.11-.45.31-.85.73l-3.97 4.65ZM21 7V3h-4m4 0-6 6"/></svg>
           </span>
-          {footerTexts.phone}
+          <a href={whatsappLink} target="_blank" class="hover:text-white">
+              {footerTexts.phone}
+            </a>
         </li>
         <li class="flex items-center gap-3">
           <!-- Icono correo -->
@@ -97,7 +103,7 @@ const footerTexts = {
     <div class="footer-col">
       <h3 class="text-lg font-semibold text-white mb-4">{footerTexts.usaService}</h3>
       <a href="https://www.alluretrucking.net" target="_blank" rel="noopener noreferrer">
-        <img src="/ejemplo/images/logos/allure.jpeg" alt="Allure Trucking" class="h-28 object-contain hover:scale-105 transition" />
+        <img src="/public_html/images/logos/allure.jpeg" alt="Allure Trucking" class="h-28 object-contain hover:scale-105 transition" />
       </a>
     </div>
   </div>

@@ -15,7 +15,7 @@ export interface HeroSectionProps {
 
 export default function Hero({
   backgroundType = "video",
-  backgroundSrc = "/ejemplo/images/index/video.mp4",
+  backgroundSrc = "/public/images/index/video.mp4",
   slides = [
     { title: "CALIDAD Y RAPIDEZ" },
     { title: "EXPERIENCIA COMO RESPALDO" },

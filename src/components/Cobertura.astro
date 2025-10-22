@@ -9,6 +9,7 @@ const {
   buttonText = "",
   cardColor = "",
   image = "",
+  baseurl = "",
 } = Astro.props;
 ---
 
@@ -39,7 +40,7 @@ const {
           </div>
           <!-- Botón rojo -->
           <a
-            href="#"
+            href=`${baseurl}/contacto  `
             class="mt-6 flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all px-5 py-3 rounded-xl shadow-lg bg-red-600 text-white hover:bg-red-700"
           >
             {buttonText}
