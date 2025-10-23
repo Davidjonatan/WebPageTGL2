@@ -17,7 +17,7 @@ export default function TestimonialsCarousel({
     { quote: "Proin ac lorem id libero sollicitudin cursus." },
     { quote: "Suspendisse potenti. Curabitur non metus sed metus tincidunt." },
   ],
-  interval = 5000,
+  interval = 8000,
 }: Props) {
   const [current, setCurrent] = useState(0);
 

@@ -11,7 +11,7 @@ const getPath = (path: string) => {
 
 const getAlternateLanguagePath = () => {
   if (isEnglish) return currentPath.replace('/en/', '/');
-  return currentPath.replace('/public_html', '/public_html/en/');
+  return currentPath.replace('/public_html', '/public_html/en');
 };
 
 const isActivePath = (path: string) => {
@@ -43,53 +43,74 @@ const isActivePath = (path: string) => {
         </div>
 
         <!-- Navegación Desktop -->
-        <nav class="hidden lg:flex items-center flex-1 justify-center">
-          <ul class="flex items-center gap-x-6 xl:gap-x-10">
+       <nav class="hidden lg:flex items-center flex-1 justify-center">
+  <ul class="flex items-center gap-x-6 xl:gap-x-10">
 
-            <!-- NOSOTROS -->
-            <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
-                 :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'">
-              <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
-              <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-              <li class="footer-col relative">
-                <a href={getPath("/nosotros")}
-                   class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
-                   :class="scrolled ? 'text-[#1C274C]' : 'text-white'">
-                  {isEnglish ? "ABOUT US" : "NOSOTROS"}
-                </a>
-              </li>
-            </div>
+    <!-- NOSOTROS -->
+    <div
+      class="group relative px-5 py-3 rounded-xl transition-all duration-500"
+      :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"
+    >
+      <span
+        class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"
+      ></span>
+      <span
+        class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"
+      ></span>
 
-            <!-- SERVICIOS -->
-            <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
-                 :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'">
-              <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
-              <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-              <li class="footer-col relative">
-                <a href={getPath("/servicios")}
-                   class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
-                   :class="scrolled ? 'text-[#1C274C]' : 'text-white'">
-                  {isEnglish ? "SERVICES" : "NUESTROS SERVICIOS"}
-                </a>
-              </li>
-            </div>
+      <a
+        href={getPath('/nosotros')}
+        class="relative z-10 block font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide text-center w-full h-full"
+        :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
+      >
+        {isEnglish ? 'ABOUT US' : 'NOSOTROS'}
+      </a>
+    </div>
 
-            <!-- CONTACTO -->
-            <div class="group relative px-5 py-3 rounded-xl transition-all duration-500"
-                 :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'">
-              <span class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"></span>
-              <span class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
-              <li class="footer-col relative">
-                <a href={getPath("/contacto")}
-                   class="font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide"
-                   :class="scrolled ? 'text-[#1C274C]' : 'text-white'">
-                  {isEnglish ? "CONTACT" : "CONTACTANOS"}
-                </a>
-              </li>
-            </div>
+    <!-- SERVICIOS -->
+    <div
+      class="group relative px-5 py-3 rounded-xl transition-all duration-500"
+      :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"
+    >
+      <span
+        class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"
+      ></span>
+      <span
+        class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"
+      ></span>
 
-          </ul>
-        </nav>
+      <a
+        href={getPath('/servicios')}
+        class="relative z-10 block font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide text-center w-full h-full"
+        :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
+      >
+        {isEnglish ? 'SERVICES' : 'NUESTROS SERVICIOS'}
+      </a>
+    </div>
+
+    <!-- CONTACTO -->
+    <div
+      class="group relative px-5 py-3 rounded-xl transition-all duration-500"
+      :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"
+    >
+      <span
+        class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"
+      ></span>
+      <span
+        class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"
+      ></span>
+
+      <a
+        href={getPath('/contacto')}
+        class="relative z-10 block font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide text-center w-full h-full"
+        :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
+      >
+        {isEnglish ? 'CONTACT' : 'CONTACTANOS'}
+      </a>
+    </div>
+
+  </ul>
+</nav>
 
         <!-- Elementos derecha -->
         <div class="flex items-center gap-x-2 sm:gap-x-3 flex-shrink-0">
@@ -118,7 +139,7 @@ const isActivePath = (path: string) => {
 
    
  <!-- Instagram -->
-<a href="https://www.instagram.com/transportes.garza.leal" target="_blank" rel="noopener noreferrer" class="footer-col">
+<a href="https://www.instagram.com/transportesgarzaleal/?igshid=YmMyMTA2M2Y%3D" target="_blank" rel="noopener noreferrer" class="footer-col">
   <svg 
     class="w-7 h-7 sm:w-8 sm:h-8 transition duration-300 hover:scale-110"
     viewBox="0 0 24 24" 
@@ -150,6 +171,42 @@ const isActivePath = (path: string) => {
   </svg>
 </a>
 
+        <!--tiktok -->
+
+        <a href="https://www.tiktok.com/@transportes.garza.leal?_t=ZS-90iHtSYYDGm&_r=1" target="_blank" rel="noopener noreferrer" class="footer-col">
+  <svg
+    class="w-7 h-7 sm:w-8 sm:h-8 transition duration-300 hover:scale-110"
+    viewBox="0 0 32 32"
+    xmlns="http://www.w3.org/2000/svg"
+    x-bind:class="scrolled 
+      ? 'text-[#1C274C] hover:text-[#AFC1DB] hover:animate-bounce-slow' 
+      : 'text-white hover:text-gray-200 hover:animate-bounce-slow-inverted'"
+  >
+    <!-- No scrolled: fondo blanco, icono azul -->
+    <path
+      x-show="!scrolled"
+      fill="white"
+      d="M6,2h20c2.2,0,4,1.8,4,4v20c0,2.2-1.8,4-4,4H6c-2.2,0-4-1.8-4-4V6C2,3.8,3.8,2,6,2z"
+    />
+    <path
+      x-show="!scrolled"
+      fill="#1C274C"
+      d="M19.5 8.4c1 .8 2.1 1.2 3.5 1.3v3.1c-1.3 0-2.4-.3-3.5-.9v5.9c0 3-2.4 5.5-5.5 5.5S8.5 20.8 8.5 17.7c0-3 2.4-5.5 5.5-5.5.2 0 .4 0 .6 0v3.3h-.6c-1.2 0-2.2 1-2.2 2.2 0 1.2 1 2.2 2.2 2.2 1.2 0 2.2-1 2.2-2.2V8.4h3.3z"
+    />
+
+    <!-- Scrolled: fondo azul, icono blanco -->
+    <path
+      x-show="scrolled"
+      fill="#1C274C"
+      d="M6,2h20c2.2,0,4,1.8,4,4v20c0,2.2-1.8,4-4,4H6c-2.2,0-4-1.8-4-4V6C2,3.8,3.8,2,6,2z"
+    />
+    <path
+      x-show="scrolled"
+      fill="white"
+      d="M19.5 8.4c1 .8 2.1 1.2 3.5 1.3v3.1c-1.3 0-2.4-.3-3.5-.9v5.9c0 3-2.4 5.5-5.5 5.5S8.5 20.8 8.5 17.7c0-3 2.4-5.5 5.5-5.5.2 0 .4 0 .6 0v3.3h-.6c-1.2 0-2.2 1-2.2 2.2 0 1.2 1 2.2 2.2 2.2 1.2 0 2.2-1 2.2-2.2V8.4h3.3z"
+    />
+  </svg>
+</a>
 
           <!-- Bandera -->
           <a href={getAlternateLanguagePath()} title={isEnglish ? "Switch to Spanish" : "Cambiar a inglés"} class="footer-col flex items-center">

@@ -18,9 +18,9 @@ export interface Props {
 const {
   mainTitle = "Nuestros Servicios",
   services = [
-    { title: "Tanques", image: "/public_html/images/index/tanque2.jpg", tabKey: "tab1" },
-    { title: "Cajas Secas", image: "/public_html/images/index/seca.jpg", tabKey: "tab2" },
-    { title: "Thermo", image: "/public_html/images/index/thermo.jpg", tabKey: "tab3" },
+    { title: "TANQUES DE ACERO INOXIDABLE-GRADO ALIMENTICIO", image: "/public_html/images/index/tanque2.jpg", tabKey: "tab1" },
+    { title: "CAJAS SECAS\n\n", image: "/public_html/images/index/seca.jpg", tabKey: "tab2" },
+    { title: "CAJAS REFRIGERADAS\n\n", image: "/public_html/images/index/thermo.jpg", tabKey: "tab3" },
   ],
   buttonText = "Ver más",
   baseUrl = "/public_html/servicios"
@@ -69,17 +69,15 @@ const {
         </div>
 
         <!-- Botón -->
-        <button class="boton-card-pricing">
         <a
-    href={`${baseUrl}?tab=${service.tabKey}`}
-    class="boton-card-servicio inline-flex items-center gap-2"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4l3 10 4-18 3 8h4" />
-      </svg>
-      {buttonText}
-      </a>
-        </button>
+  href={`${baseUrl}?tab=${service.tabKey}`}
+  class="boton-card-pricing inline-flex items-center gap-2 justify-center"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4l3 10 4-18 3 8h4" />
+  </svg>
+  {buttonText}
+</a>  
       </div>
     ))}
   </div>
