@@ -14,6 +14,7 @@ const items = [
   { text: 'Implementation of Web Service with our clients.' },
   { text: 'Logistics and customer service personnel available 24/7.' },
   { text: 'ISO 9001:2015, C-TPAT, HACCP, OEA (in process) certifications.' },
+  { text: '24/7 unit monitoring.' },
 ]
 ---
 
@@ -50,27 +51,30 @@ const items = [
   <Testimonials
   client:load
   testimonials={[
-    { quote: "All our units are equipped with satellite tracking systems, which are monitored 24/7 to ensure that the journey reaches its destination without any setback" },
-    { quote: "Telecommunication equipment with coverage nationwide and abroad" },
-    { quote: "As they are food grade, all our units undergo a washing and sanitizing process before each trip, ensuring quality for our customers." }
+    { quote: "All our units are equipped with a satellite tracking system that is monitored 24/7 to ensure that the trip reaches its destination without any setbacks." },
+    { quote: "We offer integration via Web Service to our customers' monitoring areas, allowing direct interconnection of our tracking systems and ensuring that the location of your goods is available at all times." },
+    { quote: "As they are food grade, all our units undergo a certified washing and sanitizing process before each trip, ensuring quality for our customers in the transport of their products." },
+    { quote: "We have a highly trained team committed to logistics and cargo security, supervising each shipment from its origin to its final destination." }
   ]}/>
   
   <Cobertura 
   backgroundColor = "bg-[#121833]"
   cardColor = "bg-gradient-to-r from-[#1E2A47] via-slate-800 to-slate-900"
   title = "COVERAGE"
-  text= "We provide our services throughout the national territory, as well as export products to the United States through our company within the Allure Logistics group. We have various types of licenses for the crossing of goods and units in the United States."
+  text= "We provide our services throughout the country, as well as transporting export products to the United States. We have valid licenses and permits for border crossings, are registered with the USDOT, and are certified under the CTPAT program, guaranteeing safe and reliable operations. Through our sister company Allure Trucking, we also provide transportation services in the United States and Canada, strengthening our logistics coverage throughout North America."
   buttonText = "CONTACT US"
   buttonColor = "bg-amber-500 text-white hover:bg-amber-600"
   image = "/public_html/images/index/mapa.jpg"
-  baseurl = "/en"
+  baseurl = " /public_html/en/contacto"
+  mediaType = "image"
+  layout = "text-left"
   />  
 	
 	<Stats 
   title="Our Infrastructure"
-  description='Over 32 years of experience providing reliable transportation, with modern units, highly trained personnel, satellite tracking, sanitized processes and international certifications that guarantee quality and safety.'
+  description='Over 36 years of experience providing reliable transportation, with modern units, highly trained personnel, satellite tracking, sanitized processes and international certifications that guarantee quality and safety.'
   stats={[
-    { number: 32, label: "YEARS OF EXPERIENCE" },
+    { number: 36, label: "YEARS OF EXPERIENCE" },
     { number: 400, label: "TRAILERS" },
     { number: 550, label: "EQUIPMENT" },
     { number: 600, label: "DEDICATED PERSONNEL" }]}/>
@@ -88,7 +92,7 @@ const items = [
    
  <LogoCloud 
    backgroundImage = '/public_html/images/index/logoindexabajo.png'
-  title = 'Transportes Garza Leal was founded on November 23, 1989, entering the Federal Transportation business based in Lerdo City, Durango, Mexico, which is part of the Comarca Lagunera'
+  title = 'Transportes Garza Leal was founded on November 23, 1989, in the city of Lerdo, Durango, Mexico, in the heart of the Comarca Lagunera region. Since its inception, it has specialized in the transportation of food-grade goods, such as dairy products, meat, eggs, juices, oils, refrigerated foods, and dry finished products, complying with the highest standards of quality, safety, and security. Currently, the company has a national presence in Tula de Allende, Hidalgo; Irapuato, Guanajuato; and Delicias, Chihuahua, strengthening its coverage and operational capacity throughout the country.'
   titleStyle='logo-indexabajo'
   origin = "topRight"/>
 </BaseLayout>

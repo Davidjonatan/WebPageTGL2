@@ -5,6 +5,7 @@ export interface Props {
   title?: string;
   contactTitle?: string;
   address?: string;
+  phone2?: string;
   phone?: string;
   email?: string;
   findUs?: string;
@@ -15,7 +16,8 @@ const {
   title = "¡Contáctanos!",
   contactTitle = "¡Contáctanos!",
   address = "Libramiento Perif. 2146, Lerdo, Dgo.",
-  phone = "871 175 0600",
+  phone2 = "871 315 0181",
+  phone = "+52871 315 0181",
   email = "info@tgarzaleal.com",
   findUs = "¡ENCUÉNTRANOS AQUÍ!",
   mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3599.8158669471636!2d-103.53492822515123!3d25.544509717546656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fda42932bc6d3%3A0xed9bec7d71ee1407!2sTransportes%20Garza%20Leal!5e0!3m2!1ses-419!2smx!4v1760481879768!5m2!1ses-419!2smx"
@@ -41,30 +43,40 @@ const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(wha
         loading="lazy"
       />
 
-      <div class="contact-info space-y-2">
-        <p class="list-col">
-          <strong>Dirección:</strong>
+      <div class="contact-info space-y-4 md:space-y-3">
+        <!-- Dirección -->
+        <div class="list-col flex flex-col md:flex-row md:items-start gap-1 md:gap-3">
+          <strong class="block md:w-24 md:flex-shrink-0">Dirección:</strong>
           <a href="https://maps.app.goo.gl/i1FiNn4YuoeT6zek7"
             target="_blank"
-            class="text-blue-400 hover:underline">
+            class="text-blue-400 hover:underline text-sm md:text-base ">
             {address}
           </a>
-        </p>
+        </div>
 
-        <!-- ✅ Teléfono con enlace a WhatsApp -->
-        <p class="list-col">
-          <strong>Teléfono:</strong>
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">
-            {phone}
+        <!-- WhatsApp -->
+        <div class="list-col flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
+          <strong class="block md:w-24 md:flex-shrink-0">Whatsapp:</strong>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm md:text-base">
+            {phone2}
           </a>
-        </p>
+        </div>
 
-        <p class="list-col">
-          <strong>Correo:</strong>
-          <a href={`mailto:${email}`} class="text-blue-400 hover:underline">
+        <!-- Teléfono -->
+        <div class="list-col flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
+          <strong class="block md:w-24 md:flex-shrink-0">Teléfono:</strong>
+          <span class="text-white text-sm md:text-base">
+            {phone}
+          </span>
+        </div>
+
+        <!-- Correo -->
+        <div class="list-col flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
+          <strong class="block md:w-24 md:flex-shrink-0">Correo:</strong>
+          <a href={`mailto:${email}`} class="text-blue-400 hover-underline text-sm md:text-base">
             {email}
           </a>
-        </p>
+        </div>
       </div>
     </AnimateEntrance>
   </div>

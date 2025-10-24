@@ -39,13 +39,13 @@ style={`background: ${
     </AnimateEntrance>
     <!-- Imagen -->
     <AnimateEntrance client:load origin={imageOrigin} useScrollTrigger={true} triggerClass="image-col" stagger={0.2}>
-    <div class="flex justify-center md:justify-start order-2 md:order-2 md:ml-4 image-col">
-      <img 
-        src={image} 
-        alt="Imagen decorativa"
-        class="rounded-xl shadow-lg object-cover w-[580px] h-[340px]"
-      />
-    </div>
+   <div class="flex justify-center md:justify-start order-2 md:order-2 md:ml-4 image-col">
+  <img 
+    src={image} 
+    alt="Imagen decorativa"
+    class="rounded-xl shadow-lg object-contain w-full max-w-sm sm:max-w-md md:max-w-lg lg:w-[650px] h-56 sm:h-64 md:h-72 lg:h-[380px]"
+  />
+</div>
   </AnimateEntrance>
   </div>
 </section>

@@ -6,9 +6,10 @@ import Card from '../../components/Card.astro'
 import Card2 from '../../components/Card2.astro'
 import ImageCarousel from '../../components/Carrouselimages';
 import Hero from '../../components/Hero';
+import Cobertura from '../../components/Cobertura.astro';
 
 const features = [
-  { text: '32 years of experience.' },
+  { text: '36 years of experience.' },
   { text: 'Recent model units.' },
   { text: 'Environmentally responsible.' },
   { text: 'Units with satellite tracking.' },
@@ -49,7 +50,18 @@ const items = [
   title="QUALITY POLICY"
   titleStyle="logo-nosotros"
   origin="bottom"/>
-  
+  <Cobertura 
+  backgroundColor = "bg-[#121833]"
+  cardColor = "bg-gradient-to-r from-[#1E2A47] via-slate-800 to-slate-900"
+  title = "WASHING"
+  text= " At Transportes Garza Leal, we have a food safety-certified car wash center specializing in the cleaning and sanitization of food-grade transport units. Our process guarantees waste elimination, complete disinfection, and cross-contamination control, complying with ISO 9001:2015 and HACCP guidelines. Each unit is inspected and documented through car wash logs and car wash certificates, ensuring it leaves the road in optimal hygiene and safety conditions."
+  buttonText = "OUR SERVICES"
+  buttonColor = "bg-[#1E2A47]"
+  video = "/public_html/images/nosotros/Lavado.mp4"
+  baseurl = " /public_html/en/servicios"
+  mediaType = "video"
+  layout = "text-right"
+  />  
   <Card3 
     bgImage="/public_html/images/nosotros/degradadoright.png"
     image="/public_html/images/nosotros/mision.png"
@@ -99,6 +111,8 @@ const items = [
         { src: "/public_html/images/nosotros/history/past2.jpg", alt: "img2" },
         { src: "/public_html/images/nosotros/history/past3.jpg", alt: "img3" },
         { src: "/public_html/images/nosotros/history/past4.jpg", alt: "img4" },
+        { src: "/public_html/images/nosotros/history/past5.jpeg", alt: "img5"},
+        { src: "/public_html/images/nosotros/history/past6.jpeg", alt: "img6"},
       ]}
       interval={4000} 
   />

@@ -306,9 +306,13 @@ html, body  {
   text-wrap: balance; /* mejora el equilibrio del texto si el navegador lo soporta */
 }
 .cobertura-index{
-  @apply text-2xl lg:text-4xl font-semibold text-white leading-tight ;
+  @apply text-2xl lg:text-2xl font-semibold text-white leading-tight ;
   text-align: center;
   font-family:'Roboto', sans-serif;
+}
+
+.cobertura-text-index{
+  @apply  text-lg lg:text-xl font-normal text-gray-100 leading-snug text-justify;
 }
 
 /* Título historia */

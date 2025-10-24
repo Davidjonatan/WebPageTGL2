@@ -44,70 +44,76 @@ const isActivePath = (path: string) => {
 
         <!-- Navegación Desktop -->
        <nav class="hidden lg:flex items-center flex-1 justify-center">
-  <ul class="flex items-center gap-x-6 xl:gap-x-10">
+  <ul class="flex items-center gap-x-6 xl:gap-x-10 footer-col">
 
     <!-- NOSOTROS -->
-    <div
-      class="group relative px-5 py-3 rounded-xl transition-all duration-500"
-      :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"
-    >
-      <span
-        class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"
-      ></span>
-      <span
-        class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"
-      ></span>
+     <div
+  class="group relative rounded-xl transition-all duration-500"
+  :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"
+>
+  <!-- Bordes animados -->
+  <span
+    class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"
+  ></span>
+  <span
+    class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"
+  ></span>
 
-      <a
-        href={getPath('/nosotros')}
-        class="relative z-10 block font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide text-center w-full h-full"
-        :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
-      >
-        {isEnglish ? 'ABOUT US' : 'NOSOTROS'}
-      </a>
-    </div>
+  <!-- Enlace que abarca todo el div -->
+  <a
+    href={getPath('/nosotros')}
+    class="relative z-10 block w-full h-full px-5 py-3 font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide text-center rounded-xl"
+    :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
+  >
+    {isEnglish ? 'ABOUT US' : 'NOSOTROS'}
+  </a>
+</div>
 
     <!-- SERVICIOS -->
     <div
-      class="group relative px-5 py-3 rounded-xl transition-all duration-500"
-      :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"
-    >
-      <span
-        class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"
-      ></span>
-      <span
-        class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"
-      ></span>
+  class="group relative rounded-xl transition-all duration-500"
+  :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"
+>
+  <!-- Bordes animados -->
+  <span
+    class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"
+  ></span>
+  <span
+    class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"
+  ></span>
 
-      <a
-        href={getPath('/servicios')}
-        class="relative z-10 block font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide text-center w-full h-full"
-        :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
-      >
-        {isEnglish ? 'SERVICES' : 'NUESTROS SERVICIOS'}
-      </a>
-    </div>
+  <!-- Enlace que abarca todo el div -->
+  <a
+    href={getPath('/servicios')}
+    class="relative z-10 block w-full h-full px-5 py-3 font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide text-center rounded-xl"
+    :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
+  >
+    {isEnglish ? 'SERVICES' : 'SERVICIOS'}
+  </a>
+</div>
 
     <!-- CONTACTO -->
     <div
-      class="group relative px-5 py-3 rounded-xl transition-all duration-500"
-      :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"
-    >
-      <span
-        class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"
-      ></span>
-      <span
-        class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"
-      ></span>
+  class="group relative rounded-xl transition-all duration-500"
+  :class="scrolled ? 'hover:bg-blue-50' : 'hover:bg-gray-600'"
+>
+  <!-- Bordes animados -->
+  <span
+    class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-600 transition-all duration-500"
+  ></span>
+  <span
+    class="absolute inset-0 rounded-xl border-2 border-blue-600 scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-500"
+  ></span>
 
-      <a
-        href={getPath('/contacto')}
-        class="relative z-10 block font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide text-center w-full h-full"
-        :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
-      >
-        {isEnglish ? 'CONTACT' : 'CONTACTANOS'}
-      </a>
-    </div>
+  <!-- Enlace que abarca todo el div -->
+  <a
+    href={getPath('/contacto')}
+    class="relative z-10 block w-full h-full px-5 py-3 font-semibold transition-all duration-300 text-base xl:text-lg tracking-wide text-center rounded-xl"
+    :class="scrolled ? 'text-[#1C274C]' : 'text-white'"
+  >
+    {isEnglish ? 'CONTACT' : 'CONTÁCTANOS'}
+  </a>
+</div>
 
   </ul>
 </nav>

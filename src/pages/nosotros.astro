@@ -6,17 +6,8 @@ import Card from '../components/Card.astro'
 import Card2 from '../components/Card2.astro'
 import ImageCarousel from '../components/Carrouselimages';
 import Hero from '../components/Hero';
+import Cobertura from '../components/Cobertura.astro';
 
-const features = [
-  { text: '32 años de experiencia.' },
-  { text: 'Unidades de modelo reciente.' },
-  { text: 'Responsables con el medio ambiente.' },
-  { text: 'Unidades con rastreo satelital.' },
-  { text: 'Unidades limpias y sanitizadas.' },
-  { text: 'Implementacion de Web Service con nuestros clientes.' },
-  { text: 'Personal de logistica y atencion a clientes 24/7.' },
-  { text: 'Certificaciones ISO 9001:2015 C-TPAT, HACCP.' },
-]
 const items = [
   { text: 'Honestidad: Actuar con propiedad y apego a las normas de la empresa.' },
   { text: 'Responsabilidad: Cumplir con los compromisos y deberes tanto en el trabajo como en la familia, asumiendo las consecuencias de los actos.' },
@@ -38,7 +29,7 @@ const items = [
     <Card 
   bgSvg="/public_html/images/nosotros/fondoserch.png"
   image = "/public_html/images/nosotros/eteserch.png",
-  text = "EN TRANSPORTES GARZA LEAL NUESTRA MISION PRINCIPAL ES OFRECER EL MEJOR SERVICIO A NUESTROS CLIENTES EN EL TRASLADO DE SUS PRODUCTOS, CUMPLIENDO CON LOS ESTANDARES LEGALES, REGLAMENTARIOS Y DE CLIENTE, COMPROMETIDOS EN LA MEJORA CONTINUA DE NUESTRO SISTEMA DE GESTIÓN DE CALIDAD.",
+  text = "En transportes Garza Leal nuestra misión principal es ofrecer el mejor servicio a nuestros clientes en el traslado de sus productos, cumpliendo con los estándares legales, reglamentarios y de cliente, comprometidos en la mejora continua de nuestro sistema de gestión de calidad.",
   textStyle='text-1'
   imageOrigin = "Right",
   textOrigin = "Left",
@@ -48,12 +39,24 @@ const items = [
   title = 'POLITICA DE CALIDAD',
   titleStyle = 'logo-nosotros'
   origin ="bottom",/>
+  <Cobertura 
+  backgroundColor = "bg-[#121833]"
+  cardColor = "bg-gradient-to-r from-[#1E2A47] via-slate-800 to-slate-900"
+  title = "LAVADO"
+  text= "En Transportes Garza Leal contamos con un centro de lavado certificado en inocuidad, especializado en la limpieza y sanitización de unidades de transporte grado alimenticio. Nuestro proceso garantiza la eliminación de residuos, desinfección total y control de contaminación cruzada, cumpliendo con los lineamientos de ISO 9001:2015, HACCP. Cada unidad es inspeccionada y documentada mediante bitácoras de lavado, certificados de lavado,  asegurando que salga a ruta en condiciones óptimas de higiene y seguridad."
+  buttonText = "NUESTROS SERVICIOS"
+  buttonColor = "bg-[#1E2A47]"
+  video = "/public_html/images/nosotros/Lavado.mp4"
+  baseurl = " /public_html/servicios"
+  mediaType = "video"
+  layout = "text-right"
+  />  
   <Card3 
     bgImage="/public_html/images/nosotros/degradadoright.png",
     image="/public_html/images/nosotros/mision.png",
     imagePosition="left",
     title="MISIÓN",
-    text="Brindar a nuestros Clientes un excelente Servicio, confiable y puntual, con Unidades limpias y bien presentadas",
+    text="Brindar a nuestros clientes un excelente servicio, confiable y puntual, con unidades limpias y bien presentadas",
     titleStyle = "title1-card3-nosotros",
     textStyle = "text1-card3-nosotros",
     textAlign = "left",
@@ -66,7 +69,7 @@ const items = [
     image="/public_html/images/nosotros/vision.png",
     imagePosition="right",
     title="VISIÓN",
-    text="Ser una de las Principales Empresas de Autotransporte Federal de carga en Nuestro País, y que esto refleje la Confiabilidad en nuestros Clientes, Equipos perfectamente presentados.",
+    text="Ser una de las principales empresas de autotransporte federal de carga en nuestro país y que esto refleje la confiabilidad en nuestros clientes, equipos perfectamente presentados.",
     titleStyle = "title1-card3-nosotros",
     textStyle = "text1-card3-nosotros",
     textAlign = "left",
@@ -94,6 +97,8 @@ const items = [
         { src: "/public_html/images/nosotros/history/past2.jpg", alt: "img2" },
         { src: "/public_html/images/nosotros/history/past3.jpg", alt: "img3" },
         {src: "/public_html/images/nosotros/history/past4.jpg", alt: "img4"},
+        {src: "/public_html/images/nosotros/history/past5.jpeg", alt: "img5"},
+        {src: "/public_html/images/nosotros/history/past6.jpeg", alt: "img6"},
       ]}
       interval={4000} 
   />
